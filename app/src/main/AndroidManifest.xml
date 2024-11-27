@@ -13,7 +13,7 @@
         android:theme="@style/Theme.WasteGone"
         tools:targetApi="31" >
 <activity
-            android:name=".gestioneProfiloUtente.application.LoginActivity"
+            android:name=".gestioneProfiloUtente.application.activity.LoginActivity"
             android:exported="true"
             android:label="@string/title_activity_login" />
         <activity
