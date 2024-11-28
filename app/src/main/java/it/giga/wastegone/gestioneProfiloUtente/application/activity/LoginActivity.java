@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.login_layout);
+        setContentView(R.layout.activity_login);
 
         etMail = findViewById(R.id.textemail);
         etPassword = findViewById(R.id.textpassword);
