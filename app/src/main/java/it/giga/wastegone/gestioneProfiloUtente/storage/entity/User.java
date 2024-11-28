@@ -2,8 +2,11 @@ package it.giga.wastegone.gestioneProfiloUtente.storage.entity;
 
 import java.util.Date;
 
-public class User
-{
+/**
+ * Questa classe rappresenta un utente che utilizza l'applicazione.
+ * Un utente è caratterizzato da un nome. cognome, email, data di nascita e indirizzo.
+ */
+public class User {
     private String nome;
     private String cognome;
     private String email;
@@ -14,8 +17,7 @@ public class User
     /**
      * Costruttore vuoto
      */
-    public User()
-    {
+    public User() {
 
     }
 
@@ -28,8 +30,7 @@ public class User
      * @param dataNascita, data di nascita  dell'utente.
      * @param indirizzo, indirizzo  dell'utente.
      */
-    public User(String nome, String cognome, String email, Date dataNascita, String indirizzo)
-    {
+    public User(String nome, String cognome, String email, Date dataNascita, String indirizzo) {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
@@ -126,5 +127,21 @@ public class User
      */
     public void setIndirizzo(String indirizzo) {
         this.indirizzo = indirizzo;
+    }
+
+    /**
+     * Restituisce la stringa che mostra tutti i dati dell'istanza della classe Utente.
+     *
+     * @return String, la stringa con tutti i dati.
+     */
+    @Override
+    public String toString() {
+        return "Utente{\n" +
+                "nome = " + nome + "\n" +
+                "cognome = " + cognome + "\n" +
+                "email = " + email + "\n" +
+                "data di nascita = " + dataNascita + "\n" +
+                "indirizzo = " + indirizzo + "\n" +
+                "}";
     }
 }

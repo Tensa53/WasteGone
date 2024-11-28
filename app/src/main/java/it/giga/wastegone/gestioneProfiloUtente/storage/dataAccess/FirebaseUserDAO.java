@@ -10,8 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
  * Questa classe rappresenta un oggetto per l'interazione con i dati degli utenti memorizzati
  * nel database Firebase Firestore.
  */
-public class FirebaseUserDAO
-{
+public class FirebaseUserDAO {
     //PLACEHOLDER IN USE
     private static final String TABLE_NAME = "utenti";
 
@@ -21,8 +20,7 @@ public class FirebaseUserDAO
      * Costruttore della classe.
      * Inizializza l'istanza del database.
      */
-    public FirebaseUserDAO()
-    {
+    public FirebaseUserDAO() {
         db = FirebaseFirestore.getInstance();
     }
 
@@ -32,8 +30,7 @@ public class FirebaseUserDAO
      * @param id, id del documento desiderato.
      * @return Task<DocumentSnapshot> rappresenta il risultato dell'operazione.
      */
-    public Task<DocumentSnapshot> doRetrieveUserById(String id)
-    {
+    public Task<DocumentSnapshot> doRetrieveUserById(String id) {
         return db.collection(TABLE_NAME).document(id).get();
     }
 
@@ -44,8 +41,7 @@ public class FirebaseUserDAO
      * @param id, id del documento in cui salvare l'utente.
      * @return Task<Void> rappresenta il risultato dell'operazione.
      */
-    public Task<Void> doSaveUser(User user, String id)
-    {
+    public Task<Void> doSaveUser(User user, String id) {
         return db.collection(TABLE_NAME).document(id).set(user);
     }
 
@@ -55,8 +51,7 @@ public class FirebaseUserDAO
      * @param id, id del documento desiderato.
      * @return Task<Void> rappresenta il risultato dell'operazione.
      */
-    public Task<Void> doDeleteUser(String id)
-    {
+    public Task<Void> doDeleteUser(String id) {
         return db.collection(TABLE_NAME).document(id).delete();
     }
 
@@ -67,8 +62,7 @@ public class FirebaseUserDAO
      * @param id, id del documento da modificare.
      * @return Task<Void> rappresenta il risultato dell'operazione.
      */
-    public Task<Void> doUpdateUser(User user, String id)
-    {
+    public Task<Void> doUpdateUser(User user, String id) {
         DocumentReference doc = db.collection(TABLE_NAME).document(id);
 
         return doc.set(user);
