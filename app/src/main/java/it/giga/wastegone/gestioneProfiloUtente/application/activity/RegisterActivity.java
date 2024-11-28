@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,13 +21,8 @@ import it.giga.wastegone.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText etNome;
-    private EditText etCognome;
-    private EditText etDataNascita;
-    private EditText etEmail;
-    private EditText etIndirizzo;
-    private EditText etPassword;
-    private EditText etConfermaPassword;
+    private EditText etNome, etCognome, etDataNascita, etEmail, etIndirizzo,
+            etPassword, etConfermaPassword;
     private Button btnRegistrati;
     private TextView tvLogin;
 
@@ -67,13 +63,16 @@ public class RegisterActivity extends AppCompatActivity {
                 String confermaPassword = etConfermaPassword.getText().toString();
 
 
-                // Metodo da implementare onRegisterClicked
-                // Metodo da implemetare CheckPass (vedere se password è uguale a confermaPassword)
-                
-                if(checkPass(password,confermaPassword)){
+                if (nome.isEmpty() || cognome.isEmpty() || dataNascita.isEmpty()
+                        || indirizzo.isEmpty()|| email.isEmpty() || password.isEmpty()
+                        || confermaPassword.isEmpty()) {
+
+                    Toast.makeText(RegisterActivity.this, "Compila tutti i campi!",
+                            Toast.LENGTH_SHORT).show();
+
+                } else {
+                    // Metodo da implementare
                     onRegisterClicked(nome, cognome, dataNascita, indirizzo, email, password);
-                }else{
-                    //errore nella compilazione della password
                 }
 
             }
@@ -119,12 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
     
     
-    //vede se le password sono uguali
-    private boolean checkPass(String password, String confermaPassword){
-        boolean passUguale=true;
-        //cambiare passUguale (ho dovuto mettere una variabile  se no mi dava errore nel return)
-        return passUguale;
-    }
+
 
 
 }
