@@ -9,7 +9,7 @@
 
     <!-- Immagine sopra la registrazione -->
     <ImageView
-        android:id="@+id/imageLogo"
+        android:id="@+id/imaLogo"
         android:layout_width="170dp"
         android:layout_height="116dp"
         android:layout_marginStart="120dp"
@@ -22,7 +22,7 @@
 
     <!-- Testo Registrazione -->
     <TextView
-        android:id="@+id/textRegistrazione"
+        android:id="@+id/tvRegistrazione"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -31,11 +31,11 @@
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/imaLogo" />
 
     <!-- Campo Nome -->
     <EditText
-        android:id="@+id/editTextNome"
+        android:id="@+id/etNome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -45,11 +45,11 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textRegistrazione" />
+        app:layout_constraintTop_toBottomOf="@+id/tvRegistrazione" />
 
     <!-- Campo Cognome -->
     <EditText
-        android:id="@+id/editTextCognome"
+        android:id="@+id/etCognome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -59,11 +59,11 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNome" />
+        app:layout_constraintTop_toBottomOf="@+id/etNome" />
 
     <!-- Campo Email -->
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/etEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -73,11 +73,11 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCognome" />
+        app:layout_constraintTop_toBottomOf="@+id/etCognome" />
 
     <!-- Campo Indirizzo -->
     <EditText
-        android:id="@+id/editTextIndirizzo"
+        android:id="@+id/etIndirizzo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -87,11 +87,11 @@
         android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
     <!-- Campo Password -->
     <EditText
-        android:id="@+id/editTextPassword"
+        android:id="@+id/etPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -101,11 +101,11 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextIndirizzo" />
+        app:layout_constraintTop_toBottomOf="@+id/etIndirizzo" />
 
     <!-- Campo Conferma Password -->
     <EditText
-        android:id="@+id/editTextConfermaPassword"
+        android:id="@+id/etConfermaPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -115,11 +115,11 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <!-- Bottone Registrati -->
     <Button
-        android:id="@+id/buttonRegistrati"
+        android:id="@+id/btnRegistrati"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -130,11 +130,11 @@
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextConfermaPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etConfermaPassword" />
 
     <!-- Link Accedi -->
     <TextView
-        android:id="@+id/textViewLogin"
+        android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -142,7 +142,7 @@
         android:textColor="#25D22D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRegistrati" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrati" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

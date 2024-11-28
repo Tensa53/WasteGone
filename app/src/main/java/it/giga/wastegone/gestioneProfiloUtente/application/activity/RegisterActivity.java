@@ -17,9 +17,14 @@ import it.giga.wastegone.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText ET_Nome,ET_Cognome,ET_Email,ET_Indirizzo,ET_Password,ET_ConfermaPassword;
-    Button B_Registrati;
-    private TextView TVLogin;
+    private EditText etNome;
+    private EditText etCognome;
+    private EditText etEmail;
+    private EditText etIndirizzo;
+    private EditText etPassword;
+    private EditText etConfermaPassword;
+    private Button btnRegistrati;
+    private TextView tvLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,31 +39,31 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-        ET_Nome=findViewById(R.id.editTextNome);
-        ET_Cognome=findViewById(R.id.editTextCognome);
-        ET_Email=findViewById(R.id.editTextEmail);
-        ET_Indirizzo=findViewById(R.id.editTextIndirizzo);
-        ET_Password=findViewById(R.id.editTextPassword);
-        ET_ConfermaPassword=findViewById(R.id.editTextConfermaPassword);
-        B_Registrati=findViewById(R.id.buttonRegistrati);
-        TVLogin=findViewById(R.id.textViewLogin);
+        etNome = findViewById(R.id.etNome);
+        etCognome = findViewById(R.id.etCognome);
+        etEmail = findViewById(R.id.etEmail);
+        etIndirizzo = findViewById(R.id.etIndirizzo);
+        etPassword = findViewById(R.id.etPassword);
+        etConfermaPassword = findViewById(R.id.etConfermaPassword);
+        btnRegistrati = findViewById(R.id.btnRegistrati);
+        tvLogin = findViewById(R.id.tvLogin);
 
         //fa onclick e manda le informazioni del form al metodo che permette la registrazione 
-        B_Registrati.setOnClickListener(new View.OnClickListener() {
+        btnRegistrati.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                String nome=ET_Nome.getText().toString();
-                String cognome=ET_Cognome.getText().toString();
-                String indirizzo=ET_Indirizzo.getText().toString();
-                String email = ET_Email.getText().toString();
-                String password = ET_Password.getText().toString();
-                String confermaPassword=ET_ConfermaPassword.getText().toString();
+                String nome = etNome.getText().toString();
+                String cognome = etCognome.getText().toString();
+                String indirizzo = etIndirizzo.getText().toString();
+                String email = etEmail.getText().toString();
+                String password = etPassword.getText().toString();
+                String confermaPassword = etConfermaPassword.getText().toString();
 
                 // Metodo da implementare onRegisterClicked
                 // Metodo da implemetare CheckPass (vedere se password è uguale a confermaPassword)
                 
-                if(CheckPass(password,confermaPassword)){
-                    onRegisterClicked(nome,cognome,indirizzo, email, password);
+                if(checkPass(password,confermaPassword)){
+                    onRegisterClicked(nome, cognome, indirizzo, email, password);
                 }else{
                     //errore nella compilazione della password
                 }
@@ -66,30 +71,30 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        TVLogin.setOnClickListener(new View.OnClickListener() {
+        tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Metodo da implementare
-                ToLoginClicked();
+                toLoginClicked();
             }
         });
 
 
 
     }
-    //manda alla pagina Login
-    private void ToLoginClicked(){
+    //manda alla pagina Login, il nome dell'activity di Login va cambiata secondo le  Naming Convention
+    private void toLoginClicked(){
         Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
         startActivity(intent);
     }
 
     //fa la registrazione 
-    private void onRegisterClicked (String nome,String cognome,String indirizzo,String email, String password){
+    private void onRegisterClicked (String nome, String cognome, String indirizzo, String email, String password){
     }
     
     
     //vede se le password sono uguali
-    private boolean CheckPass(String password, String confermaPassword){
+    private boolean checkPass(String password, String confermaPassword){
         boolean passUguale=true;
         //cambiare passUguale (ho dovuto mettere una variabile  se no mi dava errore nel return)
         return passUguale;
