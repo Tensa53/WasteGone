@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import it.giga.wastegone.R;
 
+//Classe che permette all'utente di loggarsi nell'applicazione
 public class LoginActivity extends AppCompatActivity {
     private EditText etMail, etPassword;
     private Button btnLogin;
@@ -38,7 +39,9 @@ public class LoginActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        //Quando viene premuto il bottone accedi vengono inviate  le informazioni del form al metodo che permette il login
+
+        //Quando viene premuto il bottone accedi vengono inviate  le informazioni del form al metodo
+        // che permette il login
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,9 +49,10 @@ public class LoginActivity extends AppCompatActivity {
                 String password = etPassword.getText().toString();
 
                 if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "Devi compilare entrambi i campi!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Compila entrambi i campi!",
+                    Toast.LENGTH_SHORT).show();
                 } else {
-                    // Metodo da implementare se i campi sono validi
+                    // Metodo da implementare
                     onLoginClicked(email, password);
                 }
 
@@ -56,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 onLoginClicked(email, password);
             }
         });
+
         // Quando viene premuto il testo "Registrati" viene aperta la schermata di registrazione
         tvRegistrati.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //Metodo usato per effettuare il login
-    private void onLoginClicked (String email, String password){
+    private void onLoginClicked (String email, String password) {
 
         }
 
