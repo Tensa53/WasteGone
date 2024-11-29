@@ -61,6 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNome" />
 
+    <!--
     <EditText
         android:id="@+id/etDataNascita"
         android:layout_width="0dp"
@@ -75,11 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etCognome" />
-
-
-
-
-
+-->
 
     <!-- Campo Email -->
     <EditText
@@ -93,7 +90,7 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDataNascita" />
+        app:layout_constraintTop_toBottomOf="@+id/etCognome" />
 
     <!-- Campo Indirizzo -->
     <EditText

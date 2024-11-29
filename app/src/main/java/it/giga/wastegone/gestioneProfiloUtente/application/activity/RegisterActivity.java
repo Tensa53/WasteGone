@@ -41,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         etNome = findViewById(R.id.etNome);
         etCognome = findViewById(R.id.etCognome);
-        etDataNascita=findViewById(R.id.etDataNascita);
+       // etDataNascita=findViewById(R.id.etDataNascita);
         etEmail = findViewById(R.id.etEmail);
         etIndirizzo = findViewById(R.id.etIndirizzo);
         etPassword = findViewById(R.id.etPassword);
@@ -56,14 +56,14 @@ public class RegisterActivity extends AppCompatActivity {
 
                 String nome = etNome.getText().toString();
                 String cognome = etCognome.getText().toString();
-                String dataNascita = etDataNascita.getText().toString();
+               // String dataNascita = etDataNascita.getText().toString();
                 String indirizzo = etIndirizzo.getText().toString();
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
                 String confermaPassword = etConfermaPassword.getText().toString();
 
 
-                if (nome.isEmpty() || cognome.isEmpty() || dataNascita.isEmpty()
+                if (nome.isEmpty() || cognome.isEmpty()  /*||  dataNascita.isEmpty()*/
                         || indirizzo.isEmpty()|| email.isEmpty() || password.isEmpty()
                         || confermaPassword.isEmpty()) {
 
@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 } else {
                     // Metodo da implementare
-                    onRegisterClicked(nome, cognome, dataNascita, indirizzo, email, password);
+                    onRegisterClicked(nome, cognome,/* dataNascita,*/ indirizzo, email, password);
                 }
 
             }
@@ -89,6 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         //apre il calendario e fa decidere la data
+        /*
         etDataNascita.setOnClickListener(v -> {
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
@@ -105,7 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
             );
             datePickerDialog.show();
         });
-
+        */
     }
     //manda alla pagina Login, il nome dell'activity di Login va cambiata secondo le  Naming Convention
     private void toLoginClicked(){
@@ -114,7 +115,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     //fa la registrazione 
-    private void onRegisterClicked (String nome, String cognome, String dataNascita, String indirizzo, String email, String password){
+    private void onRegisterClicked (String nome, String cognome, /* String dataNascita,*/ String indirizzo, String email, String password){
     }
     
     
