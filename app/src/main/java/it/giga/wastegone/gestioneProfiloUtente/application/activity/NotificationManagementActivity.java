@@ -3,8 +3,6 @@ package it.giga.wastegone.gestioneProfiloUtente.application.activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -20,12 +18,11 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.view.ViewCompat;
 
 import java.util.Calendar;
 
 import it.giga.wastegone.R;
-import it.giga.wastegone.gestioneProfiloUtente.application.logic.NotificationReceiver;
+import it.giga.wastegone.gestioneProfiloUtente.application.logic.NotificationLogic;
 
 public class NotificationManagementActivity extends AppCompatActivity {
 
@@ -114,7 +111,7 @@ public class NotificationManagementActivity extends AppCompatActivity {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
         }
 
-        Intent intent = new Intent(this, NotificationReceiver.class);
+        Intent intent = new Intent(this, NotificationLogic.class);
         intent.putExtra("message", message);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
