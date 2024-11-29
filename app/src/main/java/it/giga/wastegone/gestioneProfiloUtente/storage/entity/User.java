@@ -10,7 +10,6 @@ public class User {
     private String nome;
     private String cognome;
     private String email;
-    private Date dataNascita;
     private String indirizzo;
 
 
@@ -27,14 +26,12 @@ public class User {
      * @param nome, nome dell'utente.
      * @param cognome, cognome  dell'utente.
      * @param email, email  dell'utente.
-     * @param dataNascita, data di nascita  dell'utente.
      * @param indirizzo, indirizzo  dell'utente.
      */
-    public User(String nome, String cognome, String email, Date dataNascita, String indirizzo) {
+    public User(String nome, String cognome, String email, String indirizzo) {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
-        this.dataNascita = dataNascita;
         this.indirizzo = indirizzo;
     }
 
@@ -93,23 +90,6 @@ public class User {
         this.email = email;
     }
 
-    /**
-     * Restituisce la data di nascita dell'utente.
-     *
-     * @return Date, rappresenta la data di nascita dell'utente.
-     */
-    public Date getDataNascita() {
-        return dataNascita;
-    }
-
-    /**
-     * Imposta la data di nascita dell'utente.
-     *
-     * @param dataNascita, la data di nascita che si vuole impostare.
-     */
-    public void setDataNascita(Date dataNascita) {
-        this.dataNascita = dataNascita;
-    }
 
     /**
      * Restituisce l'indirizzo dell'utente.
@@ -140,7 +120,6 @@ public class User {
                 "nome = " + nome + "\n" +
                 "cognome = " + cognome + "\n" +
                 "email = " + email + "\n" +
-                "data di nascita = " + dataNascita + "\n" +
                 "indirizzo = " + indirizzo + "\n" +
                 "}";
     }
