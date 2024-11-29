@@ -5,48 +5,56 @@
     android:id="@+id/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/wgreen"
     tools:context=".gestioneProfiloUtente.application.activity.LoginActivity">
+
+    <!-- Qui inserisci il NavbarFragment -->
+    <fragment
+        android:id="@+id/navbarFragment"
+        android:name="it.giga.wastegone.gestioneProfiloUtente.application.activity.NavbarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/testo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="163dp"
-        android:layout_marginTop="182dp"
+        android:layout_marginTop="199dp"
         android:layout_marginEnd="164dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="487dp"
         android:text="Login"
         android:textColor="#379F25"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/textemail"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/textemail"
-        android:layout_width="224dp"
-        android:layout_height="63dp"
+        android:layout_width="225dp"
+        android:layout_height="65dp"
         android:layout_marginStart="93dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="94dp"
-        android:layout_marginBottom="422dp"
+        android:layout_marginTop="271dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginBottom="395dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/textpassword"
         android:layout_width="225dp"
         android:layout_height="65dp"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="332dp"
+        android:layout_marginTop="345dp"
         android:layout_marginEnd="94dp"
-        android:layout_marginBottom="334dp"
+        android:layout_marginBottom="321dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -63,7 +71,7 @@
         android:layout_marginTop="425dp"
         android:layout_marginEnd="159dp"
         android:layout_marginBottom="258dp"
-        android:backgroundTint="#D4A576"
+        android:backgroundTint="@color/dgreen"
         android:foregroundTint="#067612"
         android:text="Accedi"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -106,12 +114,13 @@
         android:layout_width="170dp"
         android:layout_height="116dp"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="51dp"
         android:layout_marginEnd="121dp"
-        android:src="@drawable/logodark"
+        android:layout_marginBottom="11dp"
+        android:src="@drawable/login"
         app:layout_constraintBottom_toTopOf="@+id/testo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/navbarFragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
