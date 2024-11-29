@@ -1,13 +1,17 @@
 package it.giga.wastegone.gestioneProfiloUtente.application.activity;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
+import android.provider.Settings;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TimePicker;
@@ -15,14 +19,13 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.graphics.Insets;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.Calendar;
 
 import it.giga.wastegone.R;
+import it.giga.wastegone.gestioneProfiloUtente.application.logic.NotificationReceiver;
 
 public class NotificationManagementActivity extends AppCompatActivity {
 
@@ -36,12 +39,16 @@ public class NotificationManagementActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_notification);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        // Richiedi permessi per notifiche (Android 13+)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
+            }
+        }
 
+        // Collegamento dei componenti grafici
         swEventi = findViewById(R.id.swEventi);
         swTasse = findViewById(R.id.swTasse);
         swRifiuti = findViewById(R.id.swRifiuti);
@@ -49,24 +56,25 @@ public class NotificationManagementActivity extends AppCompatActivity {
         btnIndietro = findViewById(R.id.btnIndietro);
         tpRifiutiDaConferire = findViewById(R.id.tpRifiutiDaConferire);
 
+        // Torna indietro al clic sul pulsante
         btnIndietro.setOnClickListener(v -> finish());
 
         // Configura notifiche per altri switch con orario statico
         swEventi.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                scheduleNotification("Eventi di sensibilizzazione", 10, 0); // Orario statico
+                scheduleNotification("C'è un evento di sensibilizzazione", 10, 0); // Orario statico
             }
         });
 
         swTasse.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                scheduleNotification("Tasse in scadenza", 12, 0); // Orario statico
+                scheduleNotification("Ci sono delle tasse in scadenza", 14, 37); // Orario statico
             }
         });
 
         swPunti.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                scheduleNotification("Nuovo punto di ritiro", 15, 0); // Orario statico
+                scheduleNotification("C'è un nuovo punto di ritiro", 15, 0); // Orario statico
             }
         });
 
@@ -78,66 +86,54 @@ public class NotificationManagementActivity extends AppCompatActivity {
                 int minute = tpRifiutiDaConferire.getMinute();
 
                 // Programma la notifica con l'orario selezionato
-                scheduleNotification("Rifiuti da conferire", hour, minute);
+                scheduleNotification("Ci sono rifiuti da conferire", hour, minute);
             }
         });
     }
 
+    @SuppressLint("ScheduleExactAlarm")
     private void scheduleNotification(String message, int hour, int minute) {
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        // Verifica se l'app ha il permesso per impostare allarmi esatti (Android 12+)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (!alarmManager.canScheduleExactAlarms()) {
+                Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+                startActivity(intent);
+                return;
+            }
+        }
+
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, 0);
 
-        // Controlla se l'orario è nel passato e aggiusta per il giorno successivo
         if (calendar.getTimeInMillis() < System.currentTimeMillis()) {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
         }
 
-        // Usa un Handler per ritardare la notifica fino all'orario specificato
-        long delay = calendar.getTimeInMillis() - System.currentTimeMillis();
+        Intent intent = new Intent(this, NotificationReceiver.class);
+        intent.putExtra("message", message);
 
-        new android.os.Handler().postDelayed(() -> {
-            showNotification(message);
-        }, delay);
-
-        Toast.makeText(this, "Notifica programmata: " + message, Toast.LENGTH_SHORT).show();
-    }
-
-    private void showNotification(String message) {
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        String channelId = "notifications_channel";
-
-        // Crea il canale per Android Oreo e versioni successive
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(
-                    channelId,
-                    "Notifiche",
-                    NotificationManager.IMPORTANCE_HIGH
-            );
-            notificationManager.createNotificationChannel(channel);
-        }
-
-        // Configura l'intent per quando l'utente clicca sulla notifica (può riaprire l'app)
-        Intent notificationIntent = new Intent(this, NotificationManagementActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
                 this,
-                0,
-                notificationIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+                message.hashCode(),
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
         );
 
-        // Crea la notifica
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId)
-                .setSmallIcon(R.drawable.logodark) // Icona della notifica
-                .setContentTitle("Notifica WasteGone")
-                .setContentText(message)
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setContentIntent(contentIntent)
-                .setAutoCancel(true);
+        if (alarmManager != null) {
+            alarmManager.setExactAndAllowWhileIdle(
+                    AlarmManager.RTC_WAKEUP,
+                    calendar.getTimeInMillis(),
+                    pendingIntent
+            );
+        }
 
-        // Mostra la notifica
-        notificationManager.notify(message.hashCode(), builder.build());
+        Toast.makeText(this, "Notifica programmata ", Toast.LENGTH_SHORT).show();
     }
+
 
 }
