@@ -8,12 +8,12 @@
     android:background="@color/white"
     tools:context=".gestioneProfiloUtente.application.activity.NotificationManagementActivity">
 
-    <!-- Icona -->
+
 
     <!-- Contenitore principale -->
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgView"
         android:layout_width="132dp"
         android:layout_height="123dp"
         android:layout_marginStart="139dp"
@@ -36,7 +36,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView2">
+        app:layout_constraintTop_toBottomOf="@id/imgView">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_eventi"
+                    android:id="@+id/tveventi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -63,7 +63,7 @@
                     android:textSize="16sp" />
 
                 <TimePicker
-                    android:id="@+id/timePickerEventi"
+                    android:id="@+id/tpRifiutiDaConferire"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -71,10 +71,11 @@
                     android:timePickerMode="spinner" />
 
                 <Switch
-                    android:id="@+id/switchEventi"
+                    android:id="@+id/swRifiuti"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="false" />
+                    android:checked="false"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
             </LinearLayout>
 
             <!-- Seconda riga -->
@@ -96,10 +97,11 @@
                     android:textSize="16sp" />
 
                 <Switch
-                    android:id="@+id/switchTasse"
+                    android:id="@+id/swTasse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="false" />
+                    android:checked="false"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
             </LinearLayout>
 
             <!-- Terza riga -->
@@ -111,7 +113,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_rifiuti"
+                    android:id="@+id/tvEventi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -121,10 +123,11 @@
                     android:textSize="16sp" />
 
                 <Switch
-                    android:id="@+id/switchRifiuti"
+                    android:id="@+id/swEventi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="false" />
+                    android:checked="false"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
             </LinearLayout>
 
             <!-- Quarta riga -->
@@ -135,7 +138,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_punti"
+                    android:id="@+id/tvpunti"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -145,17 +148,18 @@
                     android:textSize="16sp" />
 
                 <Switch
-                    android:id="@+id/switchPunti"
+                    android:id="@+id/swPunti"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="false" />
+                    android:checked="false"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
             </LinearLayout>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvGestioneNotifiche"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="107dp"
@@ -168,10 +172,10 @@
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imgView" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnIndietro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
