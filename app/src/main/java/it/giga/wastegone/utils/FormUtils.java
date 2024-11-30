@@ -50,11 +50,11 @@ public class FormUtils {
      *
      * @param email L'email da controllare.
      * @param password La password da controllare.
-     * @param ripetiPassword La password ripetuta per conferma.
+     * @param confermaPassword La password ripetuta per conferma.
      * @throws RegistrazioneException Se uno dei controlli fallisce.
      */
 
-public void controllaRegistrazione(String email, String password, String ripetiPassword) throws RegistrazioneException {
+public void controllaRegistrazione(String email, String password, String confermaPassword) throws RegistrazioneException {
     if (email.length() == 0)
         throw new RegistrazioneException("Il campo email è obbligatorio e non può essere vuoto");
 
@@ -73,8 +73,8 @@ public void controllaRegistrazione(String email, String password, String ripetiP
     if (password.length() > 14)
         throw new RegistrazioneException("La password non deve superare i 14 caratteri");
 
-    if (ripetiPassword != null){
-        if (password.compareTo(ripetiPassword) != 0)
+    if (confermaPassword != null){
+        if (password.compareTo(confermaPassword) != 0)
             throw new RegistrazioneException("etPassword_Le password non corrispondono");
     }
 
@@ -90,11 +90,10 @@ public void controllaRegistrazione(String email, String password, String ripetiP
      *
      * @param nome, il nome dell'utente
      * @param cognome, il cognome dell'utente
-     * @param dataDiNascita, la data di nascita dell'utente
-     * @param selectedRadio, l'id del radio button selezionato
+     * @param indirizzo, l'indirizzo dell'utente
      * @throws CampiException
      */
-    public void controllaAltriCampi(String nome,String cognome,String dataDiNascita,int selectedRadio) throws CampiException {
+    public void controllaAltriCampi(String nome,String cognome, String indirizzo) throws CampiException {
         if (nome.length() == 0)
             throw new CampiException("Inserire un nome.");
 
@@ -106,6 +105,12 @@ public void controllaRegistrazione(String email, String password, String ripetiP
 
         if (cognome.length() > 20)
             throw new CampiException("Il cognome non deve superare i 20 caratteri.");
+
+        if (indirizzo.length() == 0)
+            throw new CampiException("Inserire un indirizzo.");
+
+        if (indirizzo.length() > 20)
+            throw new CampiException("L'indirizzo non deve superare 50 caratteri.");
 
     }
 }
