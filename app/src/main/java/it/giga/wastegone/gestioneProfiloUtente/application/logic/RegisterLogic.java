@@ -21,7 +21,7 @@ public class RegisterLogic {
     }
 
     /**
-     * Crea un nuovo utente con l'email e la password fornite.
+     * Crea un utente nuovo con l'email e la password fornite.
      *
      * @param email l'email dell'utente
      * @param password la password dell'utente
