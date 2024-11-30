@@ -1,5 +1,6 @@
 package it.giga.wastegone.gestioneProfiloUtente.application.activity;
 
+import it.giga.wastegone.gestioneProfiloUtente.application.logic.LoginLogic;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import it.giga.wastegone.R;
+import it.giga.wastegone.gestioneProfiloUtente.application.exception.LoginException;
+import it.giga.wastegone.utils.FormUtils;
+
 
 //Classe che permette all'utente di loggarsi nell'applicazione
 public class LoginActivity extends AppCompatActivity {
@@ -50,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(LoginActivity.this, "Compila entrambi i campi!",
-                    Toast.LENGTH_SHORT).show();
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     // Metodo da implementare
                     onLoginClicked(email, password);
@@ -78,12 +82,23 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //Metodo usato per effettuare il login
-    private void onLoginClicked (String email, String password) {
+    private void onLoginClicked(String email, String password) {
+        try {
+            FormUtils formUtils = new FormUtils();
+            formUtils.controllaLogin(email, password);
 
+            LoginLogic loginLogic = new LoginLogic();
+
+            if (!loginLogic.isEmailInDatabase(email)) {
+                Toast.makeText(LoginActivity.this, "Email non registrata. Per favore registrati.", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(LoginActivity.this, "Login effettuato con successo!", Toast.LENGTH_SHORT).show();
+                // Placeholder action after successful login
+                // For example, you can log a message or perform another action
+                // Log.d("LoginActivity", "Login successful");
+            }
+        } catch (LoginException e) {
+            Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
-
-
-
-
+    }
 }
