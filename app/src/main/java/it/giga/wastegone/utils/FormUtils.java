@@ -19,7 +19,7 @@ public class FormUtils {
      * @param password La password da controllare.
      * @throws LoginException Se uno dei controlli fallisce.
      */
-    public void controllaEmail(String email, String password) throws LoginException {
+    public void controllaLogin(String email, String password) throws LoginException {
         if (email.length() == 0)
             throw new LoginException("Il campo email è obbligatorio e non può essere vuoto");
 
