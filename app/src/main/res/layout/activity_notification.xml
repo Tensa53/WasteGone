@@ -5,10 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/wgreen"
+    android:fitsSystemWindows="true"
     tools:context=".gestioneProfiloUtente.application.activity.NotificationManagementActivity">
 
-
+    <fragment
+        android:id="@+id/navbarFragment"
+        android:name="it.giga.wastegone.gestioneProfiloUtente.application.activity.NavbarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"/>
 
     <!-- Contenitore principale -->
 
@@ -17,13 +23,13 @@
         android:layout_width="132dp"
         android:layout_height="123dp"
         android:layout_marginStart="139dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="140dp"
-        android:layout_marginBottom="564dp"
+        android:layout_marginBottom="563dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navbarFragment"
         app:srcCompat="@drawable/notifications" />
 
     <androidx.cardview.widget.CardView
@@ -163,7 +169,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="107dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="107dp"
         android:layout_marginBottom="45dp"
         android:text="Gestione Notifiche"
@@ -182,7 +188,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="154dp"
         android:layout_marginBottom="39dp"
-        android:backgroundTint="#D4A576"
+        android:backgroundTint="@color/dgreen"
         android:text="Indietro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

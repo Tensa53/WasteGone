@@ -36,7 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".gestioneProfiloUtente.application.logic.NotificationReceiver" />
+        <receiver android:name=".gestioneProfiloUtente.application.logic.NotificationLogic" />
     </application>
 
 </manifest>

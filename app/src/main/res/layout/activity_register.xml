@@ -5,35 +5,52 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/wgreen"
     tools:context=".gestioneProfiloUtente.application.activity.RegisterActivity">
 
+    <fragment
+        android:id="@+id/navbarFragment"
+        android:name="it.giga.wastegone.gestioneProfiloUtente.application.activity.NavbarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
     <!-- Immagine sopra la registrazione -->
+
+    <!-- Testo Registrazione -->
+
+    <!-- Campo Nome -->
+
     <ImageView
         android:id="@+id/imaLogo"
         android:layout_width="170dp"
         android:layout_height="116dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="120dp"
-        android:src="@drawable/logodark"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginBottom="603dp"
+        android:src="@drawable/register"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Testo Registrazione -->
     <TextView
         android:id="@+id/tvRegistrazione"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="196dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginBottom="543dp"
         android:text="Registrazione"
         android:textColor="#379F25"
         android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imaLogo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Campo Nome -->
     <EditText
         android:id="@+id/etNome"
         android:layout_width="0dp"
@@ -142,7 +159,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="#D4A576"
+        android:backgroundTint="@color/dgreen"
         android:text="Registrati"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
