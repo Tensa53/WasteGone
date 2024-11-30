@@ -11,7 +11,7 @@ import it.giga.wastegone.gestioneProfiloUtente.application.exception.LoginExcept
 public class FormUtils {
 
     /**
-     * Controlla la validità dell'email e della password.
+     * Controlla che l'email e la password rispettino i requisiti di lunghezza e formato.
      *
      * @param email L'email da controllare.
      * @param password La password da controllare.
