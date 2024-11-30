@@ -18,6 +18,8 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.Calendar;
 
 import it.giga.wastegone.R;
+import it.giga.wastegone.gestioneProfiloUtente.application.exception.RegistrazioneException;
+import it.giga.wastegone.utils.FormUtils;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -37,11 +39,9 @@ public class RegisterActivity extends AppCompatActivity {
             return insets;
         });
 
-
-
         etNome = findViewById(R.id.etNome);
         etCognome = findViewById(R.id.etCognome);
-       // etDataNascita=findViewById(R.id.etDataNascita);
+        // etDataNascita = findViewById(R.id.etDataNascita);
         etEmail = findViewById(R.id.etEmail);
         etIndirizzo = findViewById(R.id.etIndirizzo);
         etPassword = findViewById(R.id.etPassword);
@@ -49,46 +49,34 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegistrati = findViewById(R.id.btnRegistrati);
         tvLogin = findViewById(R.id.tvLogin);
 
-
-        //fa onclick e manda le informazioni del form al metodo che permette la registrazione 
         btnRegistrati.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                 String nome = etNome.getText().toString();
                 String cognome = etCognome.getText().toString();
-               // String dataNascita = etDataNascita.getText().toString();
+                // String dataNascita = etDataNascita.getText().toString();
                 String indirizzo = etIndirizzo.getText().toString();
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
                 String confermaPassword = etConfermaPassword.getText().toString();
 
-
-                if (nome.isEmpty() || cognome.isEmpty()  /*||  dataNascita.isEmpty()*/
-                        || indirizzo.isEmpty()|| email.isEmpty() || password.isEmpty()
+                if (nome.isEmpty() || cognome.isEmpty() /* || dataNascita.isEmpty() */
+                        || indirizzo.isEmpty() || email.isEmpty() || password.isEmpty()
                         || confermaPassword.isEmpty()) {
-
-                    Toast.makeText(RegisterActivity.this, "Compila tutti i campi!",
-                            Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(RegisterActivity.this, "Compila tutti i campi!", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Metodo da implementare
-                    onRegisterClicked(nome, cognome,/* dataNascita,*/ indirizzo, email, password);
+                    onRegisterClicked(nome, cognome, indirizzo, email, password, confermaPassword);
                 }
-
             }
         });
-
-
 
         tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Metodo da implementare
                 toLoginClicked();
             }
         });
 
-        //apre il calendario e fa decidere la data
+        // apre il calendario e fa decidere la data
         /*
         etDataNascita.setOnClickListener(v -> {
             Calendar calendar = Calendar.getInstance();
@@ -108,18 +96,24 @@ public class RegisterActivity extends AppCompatActivity {
         });
         */
     }
-    //manda alla pagina Login, il nome dell'activity di Login va cambiata secondo le  Naming Convention
-    private void toLoginClicked(){
-        Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+
+    private void toLoginClicked() {
+        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 
-    //fa la registrazione 
-    private void onRegisterClicked (String nome, String cognome, /* String dataNascita,*/ String indirizzo, String email, String password){
+    private void onRegisterClicked(String nome, String cognome, String indirizzo, String email, String password, String confermaPassword) {
+        try {
+            FormUtils formUtils = new FormUtils();
+            formUtils.controllaRegistrazione(email, password, confermaPassword);
+
+            // Logica di registrazione (es. salva i dati dell'utente, naviga a un'altra activity)
+            Toast.makeText(RegisterActivity.this, "Registrazione effettuata con successo!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish(); // Chiudi l'activity corrente
+        } catch (RegistrazioneException e) {
+            Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
-    
-    
-
-
-
 }
