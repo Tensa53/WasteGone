@@ -94,6 +94,11 @@ public class NotificationManagementActivity extends AppCompatActivity {
                 scheduleNotification("Ci sono rifiuti da conferire", hour, minute);
             }
         });
+
+        // Aggiungi un listener per il TimePicker
+        tpRifiutiDaConferire.setOnTimeChangedListener((view, hourOfDay, minute) -> {
+            swRifiuti.setChecked(false);
+        });
     }
 
     /**
