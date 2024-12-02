@@ -3,6 +3,10 @@ package it.giga.wastegone.gestioneProfiloUtente.application.logic;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * Classe che gestisce la logica di login degli utenti.
+ */
 public class LoginLogic {
 
 
