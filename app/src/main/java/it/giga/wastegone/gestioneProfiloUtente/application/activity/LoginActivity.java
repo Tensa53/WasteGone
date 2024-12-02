@@ -19,16 +19,21 @@ import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneProfiloUtente.application.exception.LoginException;
 import it.giga.wastegone.utils.FormUtils;
 
-
-//Classe che permette all'utente di loggarsi nell'applicazione
+/**
+ * Classe che permette all'utente di loggarsi nell'applicazione.
+ */
 public class LoginActivity extends AppCompatActivity {
     private EditText etMail, etPassword;
     private Button btnLogin;
     private TextView tvRegistrati;
 
+    /**
+     * Metodo chiamato alla creazione dell'activity.
+     *
+     * @param savedInstanceState stato precedentemente salvato dell'activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
@@ -44,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
 
-        //Quando viene premuto il bottone accedi vengono inviate  le informazioni del form al metodo
+        // Quando viene premuto il bottone accedi vengono inviate le informazioni del form al metodo
         // che permette il login
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,9 +64,6 @@ public class LoginActivity extends AppCompatActivity {
                     // Metodo da implementare
                     onLoginClicked(email, password);
                 }
-
-                // Metodo da implementare
-                onLoginClicked(email, password);
             }
         });
 
@@ -72,16 +74,22 @@ public class LoginActivity extends AppCompatActivity {
                 ontvRegistratiClicked();
             }
         });
-
     }
 
-    //Metodo usato per aprire la schermata di registrazione
+    /**
+     * Metodo usato per aprire la schermata di registrazione.
+     */
     private void ontvRegistratiClicked() {
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
 
-    //Metodo usato per effettuare il login
+    /**
+     * Metodo usato per effettuare il login.
+     *
+     * @param email l'email inserita dall'utente
+     * @param password la password inserita dall'utente
+     */
     private void onLoginClicked(String email, String password) {
         try {
             FormUtils formUtils = new FormUtils();
@@ -93,8 +101,8 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Email non registrata. Per favore registrati.", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(LoginActivity.this, "Login effettuato con successo!", Toast.LENGTH_SHORT).show();
-                // Placeholder action after successful login
-                // For example, you can log a message or perform another action
+                // Azione placeholder dopo il login avvenuto con successo
+                // Ad esempio, puoi loggare un messaggio o eseguire un'altra azione
                 // Log.d("LoginActivity", "Login successful");
             }
         } catch (LoginException e) {

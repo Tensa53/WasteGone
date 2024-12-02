@@ -24,12 +24,20 @@ import java.util.Calendar;
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneProfiloUtente.application.logic.NotificationLogic;
 
+/**
+ * Activity per la gestione delle notifiche.
+ */
 public class NotificationManagementActivity extends AppCompatActivity {
 
     private TimePicker tpRifiutiDaConferire;
     private Switch swEventi, swTasse, swRifiuti, swPunti;
     private Button btnIndietro;
 
+    /**
+     * Metodo chiamato alla creazione dell'activity.
+     *
+     * @param savedInstanceState stato precedentemente salvato dell'activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +96,13 @@ public class NotificationManagementActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Programma una notifica con il messaggio e l'orario specificati.
+     *
+     * @param message il messaggio della notifica
+     * @param hour l'ora della notifica
+     * @param minute i minuti della notifica
+     */
     @SuppressLint("ScheduleExactAlarm")
     private void scheduleNotification(String message, int hour, int minute) {
 
@@ -131,6 +146,4 @@ public class NotificationManagementActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Notifica programmata ", Toast.LENGTH_SHORT).show();
     }
-
-
 }

@@ -14,12 +14,24 @@ import androidx.fragment.app.Fragment;
 
 import it.giga.wastegone.R;
 
+/**
+ * Fragment per la gestione della navbar.
+ */
 public class NavbarFragment extends Fragment {
 
+    /**
+     * Costruttore del fragment che utilizza il layout della navbar.
+     */
     public NavbarFragment() {
         super(R.layout.navbar); // Usa il layout della navbar
     }
 
+    /**
+     * Metodo chiamato quando la view del fragment è stata creata.
+     *
+     * @param view la view del fragment
+     * @param savedInstanceState lo stato precedentemente salvato del fragment
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

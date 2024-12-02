@@ -1,6 +1,5 @@
 package it.giga.wastegone.gestioneProfiloUtente.application.activity;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,19 +14,24 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.Calendar;
-
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneProfiloUtente.application.exception.RegistrazioneException;
 import it.giga.wastegone.utils.FormUtils;
 
+/**
+ * Activity per la registrazione di un nuovo utente.
+ */
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText etNome, etCognome, etDataNascita, etEmail, etIndirizzo,
-            etPassword, etConfermaPassword;
+    private EditText etNome, etCognome, etEmail, etIndirizzo, etPassword, etConfermaPassword;
     private Button btnRegistrati;
     private TextView tvLogin;
 
+    /**
+     * Metodo chiamato alla creazione dell'activity.
+     *
+     * @param savedInstanceState stato precedentemente salvato dell'activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +45,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         etNome = findViewById(R.id.etNome);
         etCognome = findViewById(R.id.etCognome);
-        // etDataNascita = findViewById(R.id.etDataNascita);
         etEmail = findViewById(R.id.etEmail);
         etIndirizzo = findViewById(R.id.etIndirizzo);
         etPassword = findViewById(R.id.etPassword);
@@ -53,15 +56,12 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String nome = etNome.getText().toString();
                 String cognome = etCognome.getText().toString();
-                // String dataNascita = etDataNascita.getText().toString();
                 String indirizzo = etIndirizzo.getText().toString();
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
                 String confermaPassword = etConfermaPassword.getText().toString();
 
-                if (nome.isEmpty() || cognome.isEmpty() /* || dataNascita.isEmpty() */
-                        || indirizzo.isEmpty() || email.isEmpty() || password.isEmpty()
-                        || confermaPassword.isEmpty()) {
+                if (nome.isEmpty() || cognome.isEmpty() || indirizzo.isEmpty() || email.isEmpty() || password.isEmpty() || confermaPassword.isEmpty()) {
                     Toast.makeText(RegisterActivity.this, "Compila tutti i campi!", Toast.LENGTH_SHORT).show();
                 } else {
                     onRegisterClicked(nome, cognome, indirizzo, email, password, confermaPassword);
@@ -75,33 +75,26 @@ public class RegisterActivity extends AppCompatActivity {
                 toLoginClicked();
             }
         });
-
-        // apre il calendario e fa decidere la data
-        /*
-        etDataNascita.setOnClickListener(v -> {
-            Calendar calendar = Calendar.getInstance();
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    this,
-                    (view, selectedYear, selectedMonth, selectedDay) -> {
-                        String selectedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
-                        etDataNascita.setText(selectedDate);
-                    },
-                    year, month, day
-            );
-            datePickerDialog.show();
-        });
-        */
     }
 
+    /**
+     * Metodo usato per aprire la schermata di login.
+     */
     private void toLoginClicked() {
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Metodo usato per gestire il click sul bottone di registrazione.
+     *
+     * @param nome il nome dell'utente
+     * @param cognome il cognome dell'utente
+     * @param indirizzo l'indirizzo dell'utente
+     * @param email l'email dell'utente
+     * @param password la password dell'utente
+     * @param confermaPassword la password confermata dell'utente
+     */
     private void onRegisterClicked(String nome, String cognome, String indirizzo, String email, String password, String confermaPassword) {
         try {
             FormUtils formUtils = new FormUtils();
