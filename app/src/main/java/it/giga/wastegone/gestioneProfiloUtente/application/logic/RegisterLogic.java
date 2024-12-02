@@ -25,22 +25,20 @@ public class RegisterLogic {
      *
      * @param email l'email dell'utente
      * @param password la password dell'utente
-     * @param repeatPassword la password ripetuta per conferma
      * @return un Task che rappresenta l'operazione asincrona di creazione dell'utente
-     * @throws IllegalArgumentException se le password non corrispondono
      */
-    public Task<AuthResult> createUser(String email, String password, String repeatPassword) {
-        if (!password.equals(repeatPassword)) {
-            throw new IllegalArgumentException("Le password non corrispondono");
-        }
+    public Task<AuthResult> createUser(String email, String password) {
+        return auth.createUserWithEmailAndPassword(email, password);
+    }
 
-        return auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                String userId = auth.getCurrentUser().getUid();
-                String nome = "", cognome = "", indirizzo = "";
-                User user = new User(nome, cognome, email, indirizzo);
-                userDAO.doSaveUser(user, userId);
-            }
-        });
+    /**
+     * Salva l'utente nel database.
+     *
+     * @param user l'utente da salvare
+     * @param userId l'id dell'utente
+     * @return un Task che rappresenta l'operazione asincrona di salvataggio dell'utente
+     */
+    public Task<Void> saveUser(User user, String userId) {
+        return userDAO.doSaveUser(user, userId);
     }
 }
