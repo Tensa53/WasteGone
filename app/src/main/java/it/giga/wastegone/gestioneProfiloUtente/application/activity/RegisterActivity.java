@@ -9,13 +9,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneProfiloUtente.application.exception.RegistrazioneException;
+import it.giga.wastegone.gestioneProfiloUtente.application.logic.RegisterLogic;
+import it.giga.wastegone.gestioneProfiloUtente.storage.dataAccess.FirebaseUserDAO;
+import it.giga.wastegone.gestioneProfiloUtente.storage.entity.User;
 import it.giga.wastegone.utils.FormUtils;
 
 /**
@@ -26,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText etNome, etCognome, etEmail, etIndirizzo, etPassword, etConfermaPassword;
     private Button btnRegistrati;
     private TextView tvLogin;
+    private RegisterLogic registerLogic;
 
     /**
      * Metodo chiamato alla creazione dell'activity.
@@ -35,6 +47,8 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -75,6 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                 toLoginClicked();
             }
         });
+
     }
 
     /**
@@ -100,11 +115,31 @@ public class RegisterActivity extends AppCompatActivity {
             FormUtils formUtils = new FormUtils();
             formUtils.controllaRegistrazione(email, password, confermaPassword);
 
-            // Logica di registrazione (es. salva i dati dell'utente, naviga a un'altra activity)
-            Toast.makeText(RegisterActivity.this, "Registrazione effettuata con successo!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish(); // Chiudi l'activity corrente
+            RegisterLogic registerLogic = new RegisterLogic();
+
+            registerLogic.createUser(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        User user = new User(nome, cognome, email, indirizzo);
+                        registerLogic.saveUser(user, userId).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(RegisterActivity.this, "Registrazione avvenuta con successo", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(RegisterActivity.this, "Errore nel salvataggio dei dati utente", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    } else {
+                        etEmail.setError("Indirizzo email già in uso");
+                    }
+                }
+            });
         } catch (RegistrazioneException e) {
             Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
