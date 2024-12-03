@@ -16,14 +16,15 @@
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />
 
+
     <TextView
         android:id="@+id/testo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="163dp"
-        android:layout_marginTop="199dp"
+        android:layout_marginTop="183dp"
         android:layout_marginEnd="164dp"
-        android:layout_marginBottom="487dp"
+        android:layout_marginBottom="503dp"
         android:text="Login"
         android:textColor="#379F25"
         android:textSize="34sp"
@@ -32,14 +33,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="372dp"
+        android:layout_height="205dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="249dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="296dp"
+        app:cardBackgroundColor="@color/beige"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></androidx.cardview.widget.CardView>
+
     <EditText
         android:id="@+id/textemail"
-        android:layout_width="225dp"
-        android:layout_height="65dp"
+        android:layout_width="270dp"
+        android:layout_height="68dp"
         android:layout_marginStart="93dp"
         android:layout_marginTop="271dp"
         android:layout_marginEnd="93dp"
         android:layout_marginBottom="395dp"
+        android:elevation="6dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
@@ -50,15 +68,31 @@
 
     <EditText
         android:id="@+id/textpassword"
-        android:layout_width="225dp"
-        android:layout_height="65dp"
+        android:layout_width="270dp"
+        android:layout_height="68dp"
         android:layout_marginStart="92dp"
         android:layout_marginTop="345dp"
         android:layout_marginEnd="94dp"
         android:layout_marginBottom="321dp"
+        android:elevation="6dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="538dp"
+        android:layout_marginEnd="143dp"
+        android:layout_marginBottom="174dp"
+        android:text="Non hai un account?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,10 +102,10 @@
         android:id="@+id/loginbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="425dp"
-        android:layout_marginEnd="159dp"
-        android:layout_marginBottom="258dp"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="466dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="217dp"
         android:backgroundTint="@color/dgreen"
         android:foregroundTint="#067612"
         android:text="Accedi"
@@ -81,47 +115,32 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="142dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="143dp"
-        android:layout_marginBottom="16dp"
-        android:text="Non hai un account?"
-        app:layout_constraintBottom_toTopOf="@+id/registrati"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginbutton" />
-
-    <TextView
         android:id="@+id/registrati"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="175dp"
-        android:layout_marginBottom="182dp"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="574dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginBottom="138dp"
         android:text="Registrati"
         android:textColor="#25D22D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="170dp"
         android:layout_height="116dp"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="121dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginBottom="559dp"
         android:src="@drawable/login"
-        app:layout_constraintBottom_toTopOf="@+id/testo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/navbarFragment" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
