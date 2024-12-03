@@ -1,6 +1,7 @@
 package it.giga.wastegone.gestioneProfiloUtente.application.activity;
 
-import it.giga.wastegone.gestioneProfiloUtente.application.logic.LoginLogic;
+import it.giga.wastegone.MainActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,13 +11,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneProfiloUtente.application.exception.LoginException;
+import it.giga.wastegone.gestioneProfiloUtente.application.logic.LoginRegisterLogic;
 import it.giga.wastegone.utils.FormUtils;
 
 /**
@@ -87,26 +96,27 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * Metodo usato per effettuare il login.
      *
-     * @param email l'email inserita dall'utente
+     * @param email    l'email inserita dall'utente
      * @param password la password inserita dall'utente
      */
     private void onLoginClicked(String email, String password) {
-        try {
-            FormUtils formUtils = new FormUtils();
-            formUtils.controllaLogin(email, password);
+        LoginRegisterLogic loginRegisterLogic = new LoginRegisterLogic();
+        loginRegisterLogic.loginUser(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
 
-            LoginLogic loginLogic = new LoginLogic();
+                            Toast.makeText(LoginActivity.this, "Login avvenuto con successo", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
 
-            if (!loginLogic.isEmailInDatabase(email)) {
-                Toast.makeText(LoginActivity.this, "Email non registrata. Per favore registrati.", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(LoginActivity.this, "Login effettuato con successo!", Toast.LENGTH_SHORT).show();
-                // Azione placeholder dopo il login avvenuto con successo
-                // Ad esempio, puoi loggare un messaggio o eseguire un'altra azione
-                // Log.d("LoginActivity", "Login successful");
-            }
-        } catch (LoginException e) {
-            Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+
+
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Errore nel login dell' utente", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }
