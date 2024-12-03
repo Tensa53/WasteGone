@@ -20,12 +20,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneProfiloUtente.application.exception.RegistrazioneException;
-import it.giga.wastegone.gestioneProfiloUtente.application.logic.RegisterLogic;
-import it.giga.wastegone.gestioneProfiloUtente.storage.dataAccess.FirebaseUserDAO;
+import it.giga.wastegone.gestioneProfiloUtente.application.logic.LoginRegisterLogic;
 import it.giga.wastegone.gestioneProfiloUtente.storage.entity.User;
 import it.giga.wastegone.utils.FormUtils;
 
@@ -37,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText etNome, etCognome, etEmail, etIndirizzo, etPassword, etConfermaPassword;
     private Button btnRegistrati;
     private TextView tvLogin;
-    private RegisterLogic registerLogic;
+    private LoginRegisterLogic loginRegisterLogic;
 
     /**
      * Metodo chiamato alla creazione dell'activity.
@@ -115,15 +113,15 @@ public class RegisterActivity extends AppCompatActivity {
             FormUtils formUtils = new FormUtils();
             formUtils.controllaRegistrazione(email, password, confermaPassword);
 
-            RegisterLogic registerLogic = new RegisterLogic();
+            LoginRegisterLogic loginRegisterLogic = new LoginRegisterLogic();
 
-            registerLogic.createUser(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            loginRegisterLogic.createUser(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                         User user = new User(nome, cognome, email, indirizzo);
-                        registerLogic.saveUser(user, userId).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        loginRegisterLogic.saveUser(user, userId).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
