@@ -12,7 +12,7 @@
         android:id="@+id/navbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/lgreen"
+        android:background="@android:color/holo_green_dark"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -21,12 +21,13 @@
         <!-- Logo -->
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_gravity="start"
             android:layout_marginEnd="16dp"
             android:contentDescription="Logo"
-            app:srcCompat="@drawable/logodark" />
+            app:srcCompat="@drawable/logodark"
+            tools:ignore="HardcodedText" />
 
         <!-- Title -->
         <TextView
@@ -36,19 +37,19 @@
             android:layout_gravity="center"
             android:text="WasteGone"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textColor="@color/wgreen"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
         <!-- Dropdown Menu -->
         <ImageButton
             android:id="@+id/menu_dropdown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="end"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Menu"
-            android:src="@android:drawable/ic_menu_sort_by_size" />
+            android:src="@drawable/menu_icon" />
 
     </androidx.appcompat.widget.Toolbar>
 </com.google.android.material.appbar.AppBarLayout>

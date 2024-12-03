@@ -11,8 +11,13 @@
     <fragment
         android:id="@+id/navbarFragment"
         android:name="it.giga.wastegone.gestioneProfiloUtente.application.activity.NavbarFragment"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="598dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistrati"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <!-- Immagine sopra la registrazione -->
@@ -35,14 +40,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/tvRegistrazione"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="196dp"
-        android:layout_marginEnd="93dp"
-        android:layout_marginBottom="543dp"
+        android:layout_marginTop="155dp"
+        android:layout_marginBottom="531dp"
         android:text="Registrazione"
         android:textColor="#379F25"
         android:textSize="34sp"
@@ -51,6 +55,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="377dp"
+        android:layout_height="385dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="5dp"
+        app:cardBackgroundColor="@color/beige"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistrati"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRegistrazione"></androidx.cardview.widget.CardView>
+
     <EditText
         android:id="@+id/etNome"
         android:layout_width="0dp"
@@ -58,6 +79,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:elevation="6dp"
         android:hint="Nome"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,6 +94,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:elevation="6dp"
         android:hint="Cognome"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,6 +126,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:elevation="6dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
@@ -117,6 +141,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:elevation="6dp"
         android:hint="Indirizzo"
         android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,6 +156,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:elevation="6dp"
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -145,6 +171,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:elevation="6dp"
         android:hint="Conferma Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -152,31 +179,39 @@
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <!-- Bottone Registrati -->
+
+    <!-- Link Accedi -->
+
     <Button
         android:id="@+id/btnRegistrati"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="198dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="106dp"
+        android:layout_marginBottom="15dp"
         android:backgroundTint="@color/dgreen"
         android:text="Registrati"
         android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/tvLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etConfermaPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-    <!-- Link Accedi -->
     <TextView
         android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="679dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginBottom="33dp"
         android:text="Hai già un account? Accedi"
         android:textColor="#25D22D"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistrati" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
