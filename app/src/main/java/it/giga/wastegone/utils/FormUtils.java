@@ -110,7 +110,7 @@ public void controllaRegistrazione(String email, String password, String conferm
             throw new CampiException("Inserire un indirizzo.");
 
         if (indirizzo.length() > 20)
-            throw new CampiException("L'indirizzo non deve superare 50 caratteri.");
+            throw new CampiException("L'indirizzo non deve superare 20 caratteri.");
 
     }
 }
