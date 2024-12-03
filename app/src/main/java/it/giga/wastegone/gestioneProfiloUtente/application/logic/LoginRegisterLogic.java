@@ -7,7 +7,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import it.giga.wastegone.gestioneProfiloUtente.storage.dataAccess.FirebaseUserDAO;
 import it.giga.wastegone.gestioneProfiloUtente.storage.entity.User;
 
-public class RegisterLogic {
+public class LoginRegisterLogic {
     private FirebaseAuth auth;
     private FirebaseUserDAO userDAO;
 
@@ -15,7 +15,7 @@ public class RegisterLogic {
      * Costruttore di RegisterLogic.
      * Inizializza le istanze di FirebaseAuth e FirebaseUserDAO.
      */
-    public RegisterLogic() {
+    public LoginRegisterLogic() {
         auth = FirebaseAuth.getInstance();
         userDAO = new FirebaseUserDAO();
     }
@@ -41,4 +41,9 @@ public class RegisterLogic {
     public Task<Void> saveUser(User user, String userId) {
         return userDAO.doSaveUser(user, userId);
     }
+
+    public Task<AuthResult> loginUser(String email, String password) {
+        return auth.signInWithEmailAndPassword(email, password);
+    }
 }
+
