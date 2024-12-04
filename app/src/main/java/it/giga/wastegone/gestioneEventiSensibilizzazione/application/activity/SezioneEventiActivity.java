@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.giga.wastegone.R;
-import it.giga.wastegone.gestioneEventiSensibilizzazione.application.logic.EventAdapter;
-import it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity.Event;
-import it.giga.wastegone.gestioneProfiloUtente.application.activity.LoginActivity;
+//import it.giga.wastegone.gestioneEventiSensibilizzazione.application.logic.EventAdapter;
+//import it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity.Event;
+
 
 //Activity che gestisce la sezione eventi contenente la lista degli eventi
 
@@ -47,7 +47,7 @@ public class SezioneEventiActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false));
 
-        List<Event> events = new ArrayList<>();
+        /*List<Event> events = new ArrayList<>();
         events.add(new Event("Recycling Basics", "Click here for more info",
          R.drawable.event_placeholder));
         events.add(new Event("Composting", "Click here for more info",
@@ -56,7 +56,7 @@ public class SezioneEventiActivity extends AppCompatActivity {
         R.drawable.event_placeholder));
 
         EventAdapter adapter = new EventAdapter(events);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);*/
 
         //Listener per tornare indietro quando viene premuto il bottone Indietro
             btnIndietro.setOnClickListener(v -> finish());
