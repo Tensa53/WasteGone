@@ -1,19 +1,17 @@
 package it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity;
 
-import java.sql.Timestamp;
+import com.google.firebase.Timestamp;
 
 public class Prenotazione {
     private String userID;
     private String descrizione;
     private Timestamp data;
-    private int ora;
 
 
-    public Prenotazione(String userID, String descrizione, Timestamp data, int ora) {
+    public Prenotazione(String userID, String descrizione, Timestamp data) {
         this.userID = userID;
         this.descrizione = descrizione;
         this.data = data;
-        this.ora = ora;
     }
 
 
@@ -42,11 +40,7 @@ public class Prenotazione {
     }
 
     public int getOra() {
-        return ora;
-    }
-
-    public void setOra(int ora) {
-        this.ora = ora;
+        return data.toDate().getHours();
     }
 
 
@@ -55,7 +49,6 @@ public class Prenotazione {
         return "Prenotazione{\n" +
                 "Descrizione = " + descrizione + "\n" +
                 "Data = " + data + "\n" +
-                "Ora: " + ora + "\n" +
                 "}";
     }
 }
