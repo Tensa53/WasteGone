@@ -16,9 +16,9 @@
 
         <ImageView
             android:id="@+id/ivImmagine"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal" />
+            android:layout_width="326dp"
+            android:layout_height="119dp"
+            app:srcCompat="@drawable/event_placeholder" />
 
         <TextView
             android:id="@+id/tvTitolo"
@@ -26,16 +26,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Event Title"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textColor="@color/lgreen"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/tvDescrizione"
-            android:layout_width="wrap_content"
+            android:layout_width="239dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Click here for more info"
-            android:textColor="@android:color/holo_red_light"
+            android:text="Clicca qui per maggiori informazioni"
+            android:textColor="#88C7D4"
             android:textSize="14sp" />
 
     </LinearLayout>
