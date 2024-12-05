@@ -4,6 +4,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity.Prenotazione;
 
@@ -37,5 +38,9 @@ public class FirebasePrenotazioneDAO {
         DocumentReference doc = db.collection(TABLE_NAME).document(id);
 
         return doc.set(prenotazione);
+    }
+
+    public Task<QuerySnapshot> doRetrieveAllPrenotazioniByUserId(String userID){
+        return db.collection(TABLE_NAME).whereEqualTo("userId", userID).get();
     }
 }
