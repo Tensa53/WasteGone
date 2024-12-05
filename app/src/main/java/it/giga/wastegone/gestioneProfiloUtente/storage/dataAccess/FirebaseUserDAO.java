@@ -11,8 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
  * nel database Firebase Firestore.
  */
 public class FirebaseUserDAO {
-    //PLACEHOLDER IN USE
-    private static final String TABLE_NAME = "utenti";
+    private static final String TABLE_NAME = "Utenti";
 
     FirebaseFirestore db;
 
