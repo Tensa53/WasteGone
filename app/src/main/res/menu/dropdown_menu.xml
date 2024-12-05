@@ -8,5 +8,9 @@
         android:title="Impostazioni" />
     <item
         android:id="@+id/menu_option3"
+        android:title="Prenotazione" />
+    <item
+        android:id="@+id/menu_option4"
         android:title="Logout" />
+
 </menu>

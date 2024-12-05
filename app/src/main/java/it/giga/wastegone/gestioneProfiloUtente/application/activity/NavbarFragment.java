@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import it.giga.wastegone.R;
+import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.PrenotazioneActivity;
+import it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity.Prenotazione;
 
 /**
  * Fragment per la gestione della navbar.
@@ -46,12 +48,16 @@ public class NavbarFragment extends Fragment {
                 if (item.getItemId() == R.id.menu_option1) {
                     Toast.makeText(requireContext(), "Opzione 1 selezionata", Toast.LENGTH_SHORT).show();
                     return true;
-                } else if (item.getItemId() == R.id.menu_option2) {
+                }  else if (item.getItemId() == R.id.menu_option2) {
                     Intent intent = new Intent(requireContext(), NotificationManagementActivity.class);
                     startActivity(intent);
                     return true;
-                } else if (item.getItemId() == R.id.menu_option3) {
-                    Toast.makeText(requireContext(), "Opzione 3 selezionata", Toast.LENGTH_SHORT).show();
+                }else if (item.getItemId() == R.id.menu_option3) {
+                    Intent intent = new Intent(requireContext(), PrenotazioneActivity.class);
+                    startActivity(intent);
+                    return true;
+                }else if (item.getItemId() == R.id.menu_option4) {
+                    Toast.makeText(requireContext(), "Opzione 4 selezionata", Toast.LENGTH_SHORT).show();
                     return true;
                 } else {
                     return false;
