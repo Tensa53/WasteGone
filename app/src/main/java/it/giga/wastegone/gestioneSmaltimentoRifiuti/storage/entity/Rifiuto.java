@@ -11,8 +11,8 @@ public class Rifiuto {
     private String descrizione;
 
     //Attributi rifiuti normali
-    private DayOfWeek giornoConferimento;
-    private int orarioConferimento;
+    private DayOfWeek giornoconferimento;
+    private int orarioconferimento;
     private String colore;
 
     //Attributi rifiuti speciali
@@ -31,13 +31,13 @@ public class Rifiuto {
     }
 
     public Rifiuto(Categoria categoria, String istruzioni, String descrizione,
-                   DayOfWeek giornoConferimento, int orarioConferimento, String colore) {
+                   DayOfWeek giornoconferimento, int orarioconferimento, String colore) {
         this.categoria = categoria;
         this.istruzioni = istruzioni;
         this.descrizione = descrizione;
 
-        this.giornoConferimento = giornoConferimento;
-        this.orarioConferimento = orarioConferimento;
+        this.giornoconferimento = giornoconferimento;
+        this.orarioconferimento = orarioconferimento;
         this.colore = colore;
     }
 
@@ -76,20 +76,20 @@ public class Rifiuto {
         this.descrizione = descrizione;
     }
 
-    public DayOfWeek getGiornoConferimento() {
-        return giornoConferimento;
+    public DayOfWeek getGiornoconferimento() {
+        return giornoconferimento;
     }
 
-    public void setGiornoConferimento(DayOfWeek giornoConferimento) {
-        this.giornoConferimento = giornoConferimento;
+    public void setGiornoconferimento(DayOfWeek giornoconferimento) {
+        this.giornoconferimento = giornoconferimento;
     }
 
-    public int getOrarioConferimento() {
-        return orarioConferimento;
+    public int getOrarioconferimento() {
+        return orarioconferimento;
     }
 
-    public void setOrarioConferimento(int orarioConferimento) {
-        this.orarioConferimento = orarioConferimento;
+    public void setOrarioconferimento(int orarioconferimento) {
+        this.orarioconferimento = orarioconferimento;
     }
 
     public String getColore() {
@@ -123,8 +123,8 @@ public class Rifiuto {
             case NORMALE: return "Rifiuto (Normale){\n" +
                     "Istruzioni = " + istruzioni + "\n" +
                     "Descrizione = " + descrizione + "\n" +
-                    "Giorno conferimento = " + giornoConferimento.toString() + "\n" +
-                    "Orario conferimento = " + orarioConferimento + "\n" +
+                    "Giorno conferimento = " + giornoconferimento.toString() + "\n" +
+                    "Orario conferimento = " + orarioconferimento + "\n" +
                     "Colore = " + colore + "\n" +
                     "}";
             case SPECIALE: return "Rifiuto (Normale){\n" +
