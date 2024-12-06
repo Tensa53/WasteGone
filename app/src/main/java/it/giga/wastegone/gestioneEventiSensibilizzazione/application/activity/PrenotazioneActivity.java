@@ -22,6 +22,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import it.giga.wastegone.R;
+import it.giga.wastegone.gestioneEventiSensibilizzazione.application.logic.PrenotazioneLogic;
 
 /**
  * Attività per gestire la prenotazione di eventi di sensibilizzazione.
@@ -86,6 +87,7 @@ public class PrenotazioneActivity extends AppCompatActivity {
 
                     // Ottieni userID dall'entità e invia i dati tramite handleSubmit
                     String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
                     handleSubmit(userID, description, firebaseTimestamp);
                 } catch (ParseException e) {
                     Toast.makeText(PrenotazioneActivity.this, "Errore nella formattazione della data/ora", Toast.LENGTH_SHORT).show();
@@ -122,7 +124,21 @@ public class PrenotazioneActivity extends AppCompatActivity {
     private void handleSubmit(String userID, String description, com.google.firebase.Timestamp timestamp) {
         // Logica per inviare i dati
         System.out.println("Dati inviati: userID = " + userID + ", Descrizione = " + description + ", Timestamp = " + timestamp);
-        Toast.makeText(this, "Prenotazione inviata:\nUserID: " + userID + "\nDescrizione: " + description + "\nTimestamp: " + timestamp, Toast.LENGTH_SHORT).show();
+
+        // Chiamata a PrenotazioneLogic
+        PrenotazioneLogic prenotazioneLogic = new PrenotazioneLogic();
+        prenotazioneLogic.handleSubmit(userID, description, timestamp)
+                .addOnSuccessListener(aVoid -> {
+                    // Mostra un messaggio di successo
+                    Toast.makeText(this, "Prenotazione salvata con successo", Toast.LENGTH_SHORT).show();
+                    // Naviga indietro alla pagina precedente
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    // Mostra un messaggio di errore
+                    Toast.makeText(this, "Errore durante il salvataggio: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                });
     }
 }
 
