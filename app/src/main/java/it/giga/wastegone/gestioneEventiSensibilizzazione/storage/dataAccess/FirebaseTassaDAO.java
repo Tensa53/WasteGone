@@ -28,6 +28,9 @@ public class FirebaseTassaDAO {
         return db.collection(TABLE_NAME).document(id).set(tassa);
     }
 
+    public Task<DocumentReference> doSaveTassa(Tassa tassa) {
+        return  db.collection(TABLE_NAME).add(tassa);
+    }
 
     public Task<Void> doDeleteTassa(String id) {
         return db.collection(TABLE_NAME).document(id).delete();

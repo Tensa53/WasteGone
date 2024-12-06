@@ -28,6 +28,9 @@ public class FirebasePrenotazioneDAO {
         return db.collection(TABLE_NAME).document(id).set(prenotazione);
     }
 
+    public Task<DocumentReference> doSavePrenotazione(Prenotazione prenotazione) {
+        return  db.collection(TABLE_NAME).add(prenotazione);
+    }
 
     public Task<Void> doDeletePrenotazione(String id) {
         return db.collection(TABLE_NAME).document(id).delete();

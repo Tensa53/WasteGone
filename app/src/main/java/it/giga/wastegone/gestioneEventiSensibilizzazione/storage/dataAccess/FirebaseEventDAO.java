@@ -29,6 +29,10 @@ public class FirebaseEventDAO {
         return db.collection(TABLE_NAME).document(id).set(event);
     }
 
+    public Task<DocumentReference> doSaveEvent(Event event) {
+        return  db.collection(TABLE_NAME).add(event);
+    }
+
 
     public Task<Void> doDeleteEvent(String id) {
         return db.collection(TABLE_NAME).document(id).delete();

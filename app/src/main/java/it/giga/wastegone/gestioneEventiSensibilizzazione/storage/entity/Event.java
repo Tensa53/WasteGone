@@ -1,13 +1,13 @@
 package it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity;
 
-import com.google.firebase.Timestamp;
 
 public class Event {
     public enum Stato {IN_CORSO, SOSPESO, TERMINATO, IN_PROGRAMMA};
 
     private String nome;
     private String luogo;
-    private Timestamp data;
+    private String data;
+    private String ora;
     private String informazioni;
     private Stato stato;
 
@@ -16,11 +16,12 @@ public class Event {
 
     }
 
-    public Event(String nome, String luogo, Timestamp data, String informazioni,
+    public Event(String nome, String luogo, String data, String ora, String informazioni,
                  Stato stato) {
         this.nome = nome;
         this.luogo = luogo;
         this.data = data;
+        this.ora = ora;
         this.informazioni = informazioni;
         this.stato = stato;
     }
@@ -42,16 +43,20 @@ public class Event {
         this.luogo = luogo;
     }
 
-    public Timestamp getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Timestamp data) {
+    public void setData(String data) {
         this.data = data;
     }
 
-    public int getOra() {
-        return data.toDate().getHours();
+    public String getOra() {
+        return ora;
+    }
+
+    public void setOra(String ora){
+        this.ora = ora;
     }
 
     public String getInformazioni() {
@@ -77,6 +82,7 @@ public class Event {
                 "nome = " + nome + "\n" +
                 "luogo = " + luogo + "\n" +
                 "Data = " + data + "\n" +
+                "Ora = " + ora + "\n" +
                 "Info = " + informazioni + "\n" +
                 "Stato = " + stato + "\n" +
                 "}";

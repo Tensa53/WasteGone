@@ -1,15 +1,14 @@
 package it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity;
 
-import com.google.firebase.Timestamp;
 
 public class Tassa {
     private String userID;
     private float importo;
-    private Timestamp dataScadenza;
+    private String dataScadenza;
     private boolean isPagato;
 
 
-    public Tassa(String userID, float importo, Timestamp dataScadenza, boolean isPagato) {
+    public Tassa(String userID, float importo, String dataScadenza, boolean isPagato) {
         this.userID = userID;
         this.importo = importo;
         this.dataScadenza = dataScadenza;
@@ -33,11 +32,11 @@ public class Tassa {
         this.importo = importo;
     }
 
-    public Timestamp getDataScadenza() {
+    public String getDataScadenza() {
         return dataScadenza;
     }
 
-    public void setDataScadenza(Timestamp dataScadenza) {
+    public void setDataScadenza(String dataScadenza) {
         this.dataScadenza = dataScadenza;
     }
 
