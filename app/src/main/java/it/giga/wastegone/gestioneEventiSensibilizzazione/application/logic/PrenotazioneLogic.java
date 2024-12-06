@@ -23,7 +23,7 @@ public class PrenotazioneLogic {
 
      * @return un Task che rappresenta l'operazione asincrona di salvataggio della prenotazione
      */
-    public Task<Void> handleSubmit(String userID, String description, Timestamp date) {
+    /*public Task<Void> handleSubmit(String userID, String description, Timestamp date) {
 
         // Crea un'istanza della prenotazione
         Prenotazione prenotazione = new Prenotazione(userID, description, date);
@@ -41,5 +41,5 @@ public class PrenotazioneLogic {
                 throw task.getException();
             }
         });
-    }
+    }*/
 }

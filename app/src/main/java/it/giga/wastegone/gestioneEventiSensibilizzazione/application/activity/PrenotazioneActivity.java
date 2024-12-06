@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,8 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.sql.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -76,22 +75,11 @@ public class PrenotazioneActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Conversione dell'ora
-                try {
-                    String dateTimeString = date + " " + hour + ":00";
-                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
-                    Timestamp timestamp = new Timestamp(format.parse(dateTimeString).getTime());
+                // Ottieni userID dall'entità e invia i dati tramite handleSubmit
+                String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                    // Conversione in Firebase Timestamp
-                    com.google.firebase.Timestamp firebaseTimestamp = new com.google.firebase.Timestamp(timestamp.getTime() / 1000, 0);
-
-                    // Ottieni userID dall'entità e invia i dati tramite handleSubmit
-                    String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                    handleSubmit(userID, description, firebaseTimestamp);
-                } catch (ParseException e) {
-                    Toast.makeText(PrenotazioneActivity.this, "Errore nella formattazione della data/ora", Toast.LENGTH_SHORT).show();
-                }
+                // Invio dei dati con handleSubmit
+                handleSubmit(userID, description, date, hour);
             }
         });
     }
@@ -119,15 +107,21 @@ public class PrenotazioneActivity extends AppCompatActivity {
      *
      * @param userID      ID dell'utente che effettua la prenotazione.
      * @param description descrizione fornita dall'utente.
-     * @param timestamp   timestamp dell'evento prenotato.
+     * @param date        data dell'evento.
+     * @param hour        ora dell'evento.
      */
-    private void handleSubmit(String userID, String description, com.google.firebase.Timestamp timestamp) {
+    private void handleSubmit(String userID, String description, String date, String hour) {
         // Logica per inviare i dati
-        System.out.println("Dati inviati: userID = " + userID + ", Descrizione = " + description + ", Timestamp = " + timestamp);
+
+
+        Log.d("PrenotazioneActivity", "Dati inviati: userID = " + userID + ", Descrizione = " + description + ", Data = " + date + ", Ora = " + hour);
+
+        // Logica per inviare i dati
+        Log.e("PrenotazioneActivity", "Dati inviati: userID = " + userID + ", Descrizione = " + description + ", Data = " + date + ", Ora = " + hour);
 
         // Chiamata a PrenotazioneLogic
-        PrenotazioneLogic prenotazioneLogic = new PrenotazioneLogic();
-        prenotazioneLogic.handleSubmit(userID, description, timestamp)
+        /*PrenotazioneLogic prenotazioneLogic = new PrenotazioneLogic();
+        prenotazioneLogic.handleSubmit(userID, description, date, hour)
                 .addOnSuccessListener(aVoid -> {
                     // Mostra un messaggio di successo
                     Toast.makeText(this, "Prenotazione salvata con successo", Toast.LENGTH_SHORT).show();
@@ -138,7 +132,6 @@ public class PrenotazioneActivity extends AppCompatActivity {
                     // Mostra un messaggio di errore
                     Toast.makeText(this, "Errore durante il salvataggio: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
-                });
+                });*/
     }
 }
-
