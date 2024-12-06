@@ -13,7 +13,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import it.giga.wastegone.R;
+import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.PagamentoTassaActivity;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.PrenotazioneActivity;
+import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.SezioneEventiActivity;
+import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.TasseActivity;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity.Prenotazione;
 
 /**
@@ -57,7 +60,19 @@ public class NavbarFragment extends Fragment {
                     startActivity(intent);
                     return true;
                 }else if (item.getItemId() == R.id.menu_option4) {
-                    Toast.makeText(requireContext(), "Opzione 4 selezionata", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(requireContext(), TasseActivity.class);
+                    startActivity(intent);
+                    return true;
+                }else if (item.getItemId() == R.id.menu_option5) {
+                    Intent intent = new Intent(requireContext(), PagamentoTassaActivity.class);
+                    startActivity(intent);
+                    return true;
+                }else if (item.getItemId() == R.id.menu_option6) {
+                    Intent intent = new Intent(requireContext(), SezioneEventiActivity.class);
+                    startActivity(intent);
+                    return true;
+                }else if (item.getItemId() == R.id.menu_option7) {
+                    Toast.makeText(requireContext(), "Opzione 6 selezionata", Toast.LENGTH_SHORT).show();
                     return true;
                 } else {
                     return false;

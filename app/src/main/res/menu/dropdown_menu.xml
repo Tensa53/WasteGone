@@ -11,6 +11,15 @@
         android:title="Prenotazione" />
     <item
         android:id="@+id/menu_option4"
+        android:title="Gestione Tasse" />
+    <item
+        android:id="@+id/menu_option5"
+        android:title="Pagamento Tasse" />
+    <item
+        android:id="@+id/menu_option6"
+        android:title="Eventi" />
+    <item
+        android:id="@+id/menu_option7"
         android:title="Logout" />
 
 </menu>
