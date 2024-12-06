@@ -1,6 +1,6 @@
 package it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity;
 
-import java.sql.Timestamp;
+import com.google.firebase.Timestamp;
 
 public class Tassa {
     private String userID;
