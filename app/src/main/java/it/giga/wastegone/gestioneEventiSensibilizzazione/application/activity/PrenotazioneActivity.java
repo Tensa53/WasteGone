@@ -76,8 +76,8 @@ public class PrenotazioneActivity extends AppCompatActivity {
                 }
 
                 // Ottieni userID dall'entità e invia i dati tramite handleSubmit
-                String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
+                //String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                String userID= "userID1";
                 // Invio dei dati con handleSubmit
                 handleSubmit(userID, description, date, hour);
             }
@@ -120,7 +120,7 @@ public class PrenotazioneActivity extends AppCompatActivity {
         Log.e("PrenotazioneActivity", "Dati inviati: userID = " + userID + ", Descrizione = " + description + ", Data = " + date + ", Ora = " + hour);
 
         // Chiamata a PrenotazioneLogic
-        /*PrenotazioneLogic prenotazioneLogic = new PrenotazioneLogic();
+        PrenotazioneLogic prenotazioneLogic = new PrenotazioneLogic();
         prenotazioneLogic.handleSubmit(userID, description, date, hour)
                 .addOnSuccessListener(aVoid -> {
                     // Mostra un messaggio di successo
@@ -132,6 +132,6 @@ public class PrenotazioneActivity extends AppCompatActivity {
                     // Mostra un messaggio di errore
                     Toast.makeText(this, "Errore durante il salvataggio: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
-                });*/
+                });
     }
 }
