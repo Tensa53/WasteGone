@@ -76,8 +76,8 @@ public class PrenotazioneActivity extends AppCompatActivity {
                 }
 
                 // Ottieni userID dall'entità e invia i dati tramite handleSubmit
-                //String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                String userID= "userID1";
+                String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
                 // Invio dei dati con handleSubmit
                 handleSubmit(userID, description, date, hour);
             }
