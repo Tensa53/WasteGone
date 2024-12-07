@@ -12,6 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import it.giga.wastegone.MainActivity;
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.PagamentoTassaActivity;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.PrenotazioneActivity;
@@ -46,10 +50,28 @@ public class NavbarFragment extends Fragment {
         dropdownMenu.setOnClickListener(anchor -> {
             PopupMenu popupMenu = new PopupMenu(requireContext(), anchor);
             popupMenu.getMenuInflater().inflate(R.menu.dropdown_menu, popupMenu.getMenu());
+
+
+            // Ottieni l'utente corrente
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            MenuItem loginItem = popupMenu.getMenu().findItem(R.id.menu_option7);
+            MenuItem logoutItem = popupMenu.getMenu().findItem(R.id.menu_option6);
+
+            if (currentUser != null) {
+                // User loggato
+                loginItem.setVisible(false);
+                logoutItem.setVisible(true);
+            } else {
+                // User non loggato
+                loginItem.setVisible(true);
+                logoutItem.setVisible(false);
+            }
+
+            // Usa una struttura condizionale per gestire la selezione delle voci
             popupMenu.setOnMenuItemClickListener(item -> {
-                // Usa una struttura condizionale per gestire la selezione delle voci
                 if (item.getItemId() == R.id.menu_option1) {
-                    Toast.makeText(requireContext(), "Opzione 1 selezionata", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(requireContext(), MainActivity.class);
+                    startActivity(intent);
                     return true;
                 }  else if (item.getItemId() == R.id.menu_option2) {
                     Intent intent = new Intent(requireContext(), NotificationManagementActivity.class);
@@ -64,17 +86,21 @@ public class NavbarFragment extends Fragment {
                     startActivity(intent);
                     return true;
                 }else if (item.getItemId() == R.id.menu_option5) {
-                    Intent intent = new Intent(requireContext(), PagamentoTassaActivity.class);
-                    startActivity(intent);
-                    return true;
-                }else if (item.getItemId() == R.id.menu_option6) {
                     Intent intent = new Intent(requireContext(), SezioneEventiActivity.class);
                     startActivity(intent);
                     return true;
-                }else if (item.getItemId() == R.id.menu_option7) {
-                    Toast.makeText(requireContext(), "Opzione 6 selezionata", Toast.LENGTH_SHORT).show();
-                    return true;
-                } else {
+                }else if (item.getItemId() == R.id.menu_option6) {
+                    FirebaseAuth.getInstance().signOut();
+                    Intent intent = new Intent(requireContext(), MainActivity.class);
+                    startActivity(intent);
+                    requireActivity().finish();
+                    Toast.makeText(requireContext(), "Logout effettuato", Toast.LENGTH_SHORT).show();
+                    return true;}
+                else if (item.getItemId() == R.id.menu_option7) {
+                Intent intent = new Intent(requireContext(), LoginActivity.class);
+                startActivity(intent);
+                return true;}
+                 else {
                     return false;
                 }
             });
