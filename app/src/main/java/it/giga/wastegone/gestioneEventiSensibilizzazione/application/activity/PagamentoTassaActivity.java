@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import it.giga.wastegone.R;
+import it.giga.wastegone.utils.FormUtils;
+import it.giga.wastegone.utils.FormUtils.PagamentoException;
 
 // Activity per il pagamento delle tasse
 public class PagamentoTassaActivity extends AppCompatActivity {
@@ -49,10 +52,45 @@ public class PagamentoTassaActivity extends AppCompatActivity {
 
     // Metodo chiamato al clic sul pulsante di conferma pagamento
     private void onConfermaPagamentoClicked(View view) {
+        // Raccogli i dati inseriti dall'utente
+        String nome = etNome.getText().toString().trim();
+        String cognome = etCognome.getText().toString().trim();
+        String numeroCarta = etNumeroCarta.getText().toString().trim();
+        String dataScadenza = etDataScadenza.getText().toString().trim();
+        String cvv = etCVV.getText().toString().trim();
 
+        // Verifica che tutti i campi siano stati compilati
+        if (nome.isEmpty() || cognome.isEmpty() || numeroCarta.isEmpty() || dataScadenza.isEmpty() || cvv.isEmpty()) {
+            // Mostra un messaggio di errore se uno dei campi è vuoto
+            Toast.makeText(this, "Per favore, compila tutti i campi", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Verifica i dati della carta di credito
+        FormUtils formUtils = new FormUtils();
+        try {
+            formUtils.controllaPagamento(nome, cognome, numeroCarta, dataScadenza, cvv);
+        } catch (PagamentoException e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Esegui l'operazione di pagamento (questo è solo un esempio, dovresti implementare la logica di pagamento reale)
+        boolean pagamentoRiuscito = eseguiPagamento(nome, cognome, numeroCarta, dataScadenza, cvv);
+
+        // Mostra un messaggio di conferma o errore in base all'esito del pagamento
+        if (pagamentoRiuscito) {
+            Toast.makeText(this, "Pagamento effettuato con successo", Toast.LENGTH_SHORT).show();
+            finish(); // Chiudi l'activity
+        } else {
+            Toast.makeText(this, "Errore durante il pagamento", Toast.LENGTH_SHORT).show();
+        }
     }
 
-
-
-
+    // Metodo di esempio per eseguire il pagamento (da implementare con la logica reale)
+    private boolean eseguiPagamento(String nome, String cognome, String numeroCarta, String dataScadenza, String cvv) {
+        // Implementa qui la logica di pagamento
+        // Restituisci true se il pagamento è riuscito, altrimenti false
+        return true; // Questo è solo un esempio, dovresti implementare la logica reale
+    }
 }
