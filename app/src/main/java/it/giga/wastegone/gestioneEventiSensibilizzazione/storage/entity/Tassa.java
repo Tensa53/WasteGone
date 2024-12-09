@@ -8,6 +8,10 @@ public class Tassa {
     private boolean isPagato;
 
 
+    public Tassa() {
+
+    }
+
     public Tassa(String userID, float importo, String dataScadenza, boolean isPagato) {
         this.userID = userID;
         this.importo = importo;
