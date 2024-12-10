@@ -5,6 +5,9 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 
 import java.time.DayOfWeek;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class Rifiuto {
     public enum Tipo {SPECIALE, URBANO};
@@ -136,7 +139,12 @@ public class Rifiuto {
         this.dimensioni = dimensioni;
     }
 
-
+    /**
+     * Restituisce una descrizione testuale associata a una determinata categoria di rifiuti.
+     *
+     * @param categoria categoria del rifiuto per la quale si desidera ottenere una descrizione.
+     * @return String stringa contenente la descrizione della categoria di rifiuto.
+     */
     public static String getDescrizioneByCategoria(Categoria categoria) {
         switch (categoria) {
             case RIFIUTI_ORGANICI:
@@ -190,21 +198,30 @@ public class Rifiuto {
         }
     }
 
+    /**
+     * Restituisce i giorni della settimana in cui i rifiuti di una
+     * determinata categoria devono essere conferiti.
+     * Se una categoria ha più giorni di conferimento, restituisce una lista con più giorni.
+     *
+     * @param categoria, categoria del rifiuto.
+     * @return List<DayOfWeek> lista di giorni della settimana in cui il rifiuto
+     * della categoria deve essere conferito.
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public static DayOfWeek getDayOfWeekByCategoria(Categoria categoria){
+    public static List<DayOfWeek> getDayOfWeekByCategoria(Categoria categoria){
         switch (categoria) {
             case RIFIUTI_ORGANICI:
-                return DayOfWeek.MONDAY;
+                return Arrays.asList(DayOfWeek.MONDAY, DayOfWeek.FRIDAY);
             case CARTA_CARTONE:
-                return DayOfWeek.WEDNESDAY;
+                return Arrays.asList(DayOfWeek.WEDNESDAY);
             case PLASTICA:
-                return DayOfWeek.FRIDAY;
+                return Arrays.asList(DayOfWeek.FRIDAY);
             case VETRO:
-                return DayOfWeek.WEDNESDAY;
+                return Arrays.asList(DayOfWeek.WEDNESDAY);
             case INDIFFERENZIATI:
-                return DayOfWeek.MONDAY;
+                return Arrays.asList(DayOfWeek.MONDAY, DayOfWeek.FRIDAY);
             default:
-                return DayOfWeek.MONDAY;
+                return Arrays.asList(DayOfWeek.MONDAY);
         }
     }
 
