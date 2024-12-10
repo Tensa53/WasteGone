@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="31dp"
         android:layout_marginBottom="12dp"
-        android:text="Metodo di Pagamento"
+        android:text="Sezione Pagamento"
         android:textColor="#379F25"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/cardView"

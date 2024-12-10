@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.widget.Button;
 
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.logic.TassaAdapter;
@@ -26,6 +27,7 @@ public class TasseActivity extends AppCompatActivity {
     private RecyclerView recyclerViewTasse;
     private TassaAdapter tassaAdapter;
     private List<Tassa> tasseList;
+    private Button btnIndietro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class TasseActivity extends AppCompatActivity {
             return insets;
         });
 
+        btnIndietro = findViewById(R.id.btnIndietro);
+
         // Configura il RecyclerView
         recyclerViewTasse = findViewById(R.id.recyclerViewTasse);
         recyclerViewTasse.setLayoutManager(new LinearLayoutManager(this));
@@ -49,6 +53,9 @@ public class TasseActivity extends AppCompatActivity {
         FirebaseTassaDAO firebaseTassaDAO = new FirebaseTassaDAO();
         tassaAdapter = new TassaAdapter(this, tasseList, firebaseTassaDAO);
         recyclerViewTasse.setAdapter(tassaAdapter);
+
+        //Listener per tornare indietro quando viene premuto il bottone Indietro
+        btnIndietro.setOnClickListener(v -> finish());
 
         // Carica i dati dal database
         loadTasseFromDatabase();
