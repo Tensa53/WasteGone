@@ -26,7 +26,7 @@ public class EventoActivity extends AppCompatActivity {
         tvAddetti = findViewById(R.id.tvAddetti);
         tvData = findViewById(R.id.tvData);
         tvOra = findViewById(R.id.tvOra);
-        tvTitolo = findViewById(R.id.tvNome);
+        tvTitolo = findViewById(R.id.tvTitolo);
         tvStato = findViewById(R.id.tvStato);
         tvLuogo = findViewById(R.id.tvLuogo);
         btnIndietro = findViewById(R.id.btnIndietro);
