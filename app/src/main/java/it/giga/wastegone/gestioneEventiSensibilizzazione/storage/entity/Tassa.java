@@ -2,6 +2,7 @@ package it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity;
 
 
 public class Tassa {
+    private String documentId;
     private String userID;
     private float importo;
     private String dataScadenza;
@@ -18,6 +19,16 @@ public class Tassa {
         this.dataScadenza = dataScadenza;
         this.isPagato = isPagato;
     }
+
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
+
 
 
     public String getUserID() {

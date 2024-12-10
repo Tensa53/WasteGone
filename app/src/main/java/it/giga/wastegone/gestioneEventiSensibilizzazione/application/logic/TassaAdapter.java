@@ -54,6 +54,7 @@ public class TassaAdapter extends RecyclerView.Adapter<TassaAdapter.TassaViewHol
             holder.btnPaga.setVisibility(View.VISIBLE);
             holder.btnPaga.setOnClickListener(v -> {
                 Intent intent = new Intent(context, PagamentoTassaActivity.class);
+                intent.putExtra("tassaId", tassa.getDocumentId());
                 context.startActivity(intent);
             });
         } else {
@@ -75,6 +76,9 @@ public class TassaAdapter extends RecyclerView.Adapter<TassaAdapter.TassaViewHol
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             try {
                                 Tassa tassa = document.toObject(Tassa.class);
+
+                                tassa.setDocumentId(document.getId());
+
                                 tasseList.add(tassa);
                             } catch (Exception e) {
                                 Log.e("TassaAdapter", "Errore nel parsing del documento: ", e);
