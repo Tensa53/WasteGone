@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,18 +20,35 @@ import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.storage.dataAccess.FirebaseEventDAO;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity.Event;
 
+/**
+ * Adapter per visualizzare una lista di eventi in un RecyclerView.
+ */
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
 
     private List<Event> eventList;
     private Context context;
     private FirebaseEventDAO eventDAO;
 
+    /**
+     * Costruttore per EventAdapter.
+     *
+     * @param context   il contesto in cui viene utilizzato l'adapter
+     * @param eventList la lista degli eventi da visualizzare
+     * @param eventDAO  l'oggetto di accesso ai dati per gli eventi
+     */
     public EventAdapter(Context context, List<Event> eventList, FirebaseEventDAO eventDAO) {
         this.context = context;
         this.eventList = eventList;
         this.eventDAO = eventDAO;
     }
 
+    /**
+     * Crea un nuovo ViewHolder per un elemento evento.
+     *
+     * @param parent   il ViewGroup genitore
+     * @param viewType il tipo di vista del nuovo View
+     * @return un nuovo EventViewHolder
+     */
     @NonNull
     @Override
     public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,17 +56,32 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         return new EventViewHolder(view);
     }
 
+    /**
+     * Associa un evento a un ViewHolder.
+     *
+     * @param holder   il ViewHolder a cui associare l'evento
+     * @param position la posizione dell'evento nella lista
+     */
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
         Event event = eventList.get(position);
         holder.tvNome.setText(event.getNome());
+        holder.tvDescrizione.setText(event.getInformazioni());
     }
 
+    /**
+     * Restituisce il numero totale di eventi nella lista.
+     *
+     * @return il numero di eventi
+     */
     @Override
     public int getItemCount() {
         return eventList.size();
     }
 
+    /**
+     * Carica gli eventi dal database e aggiorna l'adapter.
+     */
     public void loadEventsFromDatabase() {
         Log.d("EventAdapter", "Caricamento eventi dal database...");
         eventDAO.doRetrieveAllEvent()
@@ -73,32 +104,22 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                 });
     }
 
+    /**
+     * ViewHolder per un elemento evento.
+     */
     public static class EventViewHolder extends RecyclerView.ViewHolder {
         TextView tvNome;
+        TextView tvDescrizione;
 
+        /**
+         * Costruttore per EventViewHolder.
+         *
+         * @param itemView la vista dell'elemento evento
+         */
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNome = itemView.findViewById(R.id.tvTitolo);
-
-        }
-    }
-
-    public void onClickedListener(String title) {
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra("title", title);
-        context.startActivity(intent);
-    }
-
-    public class DescrizioneViewHolder extends RecyclerView.ViewHolder {
-        TextView tvDescrizione;
-
-
-        public DescrizioneViewHolder(@NonNull View itemView) {
-            super(itemView);
             tvDescrizione = itemView.findViewById(R.id.tvDescrizione);
-
         }
     }
-
-
 }
