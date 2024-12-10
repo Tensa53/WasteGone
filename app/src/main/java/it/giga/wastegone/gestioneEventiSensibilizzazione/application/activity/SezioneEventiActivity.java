@@ -104,7 +104,7 @@ public class SezioneEventiActivity extends AppCompatActivity {
 
 
     private void ontvDescrizioneClicked(String title) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, SezioneEventiActivity.class);
         intent.putExtra("title", title);
         startActivity(intent);
     }
