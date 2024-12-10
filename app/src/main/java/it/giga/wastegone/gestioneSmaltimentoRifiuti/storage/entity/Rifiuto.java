@@ -3,14 +3,18 @@ package it.giga.wastegone.gestioneSmaltimentoRifiuti.storage.entity;
 import java.time.DayOfWeek;
 
 public class Rifiuto {
-    public enum Categoria {SPECIALE, NORMALE};
+    public enum Tipo {SPECIALE, URBANO};
+    public enum Categoria {RIFIUTI_ORGANICI, CARTA_CARTONE, PLASTICA, LEGNO, METALLO,
+                           IMBALLAGGI_COMPOSITI, MULTIMATERIALE, VETRO, TESSILE, TONER,
+                           INGOMBRANTI, VERNICI, DETERGENTI, ALTRI_RIFIUTI, INDIFFERENZIATI};
 
     //Attributi comuni
-    private Categoria categoria;
+    private Tipo tipo;
     private String istruzioni;
     private String descrizione;
 
     //Attributi rifiuti normali
+    private Categoria categoria;
     private DayOfWeek giornoconferimento;
     private int orarioconferimento;
     private String colore;
@@ -24,26 +28,27 @@ public class Rifiuto {
 
     }
 
-    public Rifiuto(Categoria categoria, String istruzioni, String descrizione) {
-        this.categoria = categoria;
+    public Rifiuto(Tipo tipo, String istruzioni, String descrizione) {
+        this.tipo = tipo;
         this.istruzioni = istruzioni;
         this.descrizione = descrizione;
     }
 
-    public Rifiuto(Categoria categoria, String istruzioni, String descrizione,
+    public Rifiuto(Tipo tipo, String istruzioni, String descrizione, Categoria categoria,
                    DayOfWeek giornoconferimento, int orarioconferimento, String colore) {
-        this.categoria = categoria;
+        this.tipo = tipo;
         this.istruzioni = istruzioni;
         this.descrizione = descrizione;
 
+        this.categoria = categoria;
         this.giornoconferimento = giornoconferimento;
         this.orarioconferimento = orarioconferimento;
         this.colore = colore;
     }
 
-    public Rifiuto(Categoria categoria, String istruzioni, String descrizione,
+    public Rifiuto(Tipo tipo, String istruzioni, String descrizione,
                    String materiale, int dimensioni) {
-        this.categoria = categoria;
+        this.tipo = tipo;
         this.istruzioni = istruzioni;
         this.descrizione = descrizione;
 
@@ -52,12 +57,12 @@ public class Rifiuto {
     }
 
 
-    public Categoria getCategoria() {
-        return categoria;
+    public Tipo getTipo() {
+        return tipo;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
     }
 
     public String getIstruzioni() {
@@ -76,6 +81,15 @@ public class Rifiuto {
         this.descrizione = descrizione;
     }
 
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
     public DayOfWeek getGiornoconferimento() {
         return giornoconferimento;
     }
@@ -91,6 +105,7 @@ public class Rifiuto {
     public void setOrarioconferimento(int orarioconferimento) {
         this.orarioconferimento = orarioconferimento;
     }
+
 
     public String getColore() {
         return colore;
@@ -117,12 +132,67 @@ public class Rifiuto {
     }
 
 
+    public static String getDescrizioneByCategoria(Categoria categoria) {
+        switch (categoria) {
+            case RIFIUTI_ORGANICI:
+                return "Materiali biodegradabili derivanti da alimenti, " +
+                    "scarti di cucina e rifiuti vegetali che possono essere compostati.";
+            case CARTA_CARTONE:
+                return "Carta e cartone usati, come giornali, scatole e imballaggi, " +
+                        "che possono essere riciclati per produrre nuova carta.";
+            case PLASTICA:
+                return "Oggetti e imballaggi in plastica, come bottiglie, " +
+                        "contenitori e sacchetti, che possono essere riutilizzati e riciclati.";
+            case LEGNO:
+                return " Rifiuti di legno, come mobili, pallet e imballaggi, " +
+                        "che possono essere riutilizzati o riciclati " +
+                        "per produrre nuovi prodotti in legno.";
+            case METALLO:
+                return "Rifiuti metallici, tra cui lattine, scatole e oggetti " +
+                        "in acciaio o alluminio, che possono essere riciclati e riutilizzati.";
+            case IMBALLAGGI_COMPOSITI:
+                return "Imballaggi costituiti da più materiali, come tetrapak, " +
+                        "che non possono essere facilmente separati per il riciclo.";
+            case MULTIMATERIALE:
+                return "Rifiuti che combinano vari materiali, come imballaggi misti, " +
+                        "che richiedono un trattamento specifico per il riciclo.";
+            case VETRO:
+                return "Bottiglie, contenitori e altri oggetti in vetro che possono " +
+                        "essere riutilizzati o riciclati senza perdere qualità.";
+            case TESSILE:
+                return "Rifiuti derivanti da abbigliamento, tessuti e altri materiali " +
+                        "simili che possono essere riutilizzati o riciclati in nuovi prodotti.";
+            case TONER:
+                return "Cartucce e toner usati, spesso provenienti da stampanti, " +
+                        "che possono essere riciclati o rigenerati.";
+            case INGOMBRANTI:
+                return "Oggetti voluminosi come mobili, elettrodomestici e materassi " +
+                        "che non possono essere smaltiti tramite i normali canali di raccolta.";
+            case VERNICI:
+                return "Rifiuti di vernici, solventi e smalti, " +
+                        "che richiedono un trattamento speciale per evitarne " +
+                        "la contaminazione ambientale.";
+            case DETERGENTI:
+                return "Bottiglie vuote di detergenti e prodotti per la pulizia " +
+                        "che possono essere riciclati se correttamente separati.";
+            case ALTRI_RIFIUTI:
+                return "Rifiuti che non rientrano in altre categorie.";
+            case INDIFFERENZIATI:
+                return "Rifiuti che non possono essere riciclati e " +
+                        "devono essere smaltiti in discarica o inceneriti.";
+            default:
+                return "Categoria rifiuto non valida";
+        }
+    }
+
+
     @Override
     public String toString() {
-        switch (categoria) {
-            case NORMALE: return "Rifiuto (Normale){\n" +
+        switch (tipo) {
+            case URBANO: return "Rifiuto (Normale){\n" +
                     "Istruzioni = " + istruzioni + "\n" +
                     "Descrizione = " + descrizione + "\n" +
+                    "Categoria = " + categoria + "\n" +
                     "Giorno conferimento = " + giornoconferimento.toString() + "\n" +
                     "Orario conferimento = " + orarioconferimento + "\n" +
                     "Colore = " + colore + "\n" +

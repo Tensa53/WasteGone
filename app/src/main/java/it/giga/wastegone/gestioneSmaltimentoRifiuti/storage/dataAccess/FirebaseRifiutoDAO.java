@@ -50,13 +50,13 @@ public class FirebaseRifiutoDAO {
 
     public Task<QuerySnapshot> doRetrieveAllRifiutiSpeciali() {
         return db.collection(TABLE_NAME).
-               whereEqualTo("categoria", Rifiuto.Categoria.SPECIALE).get();
+               whereEqualTo("categoria", Rifiuto.Tipo.SPECIALE).get();
     }
 
 
-    public Task<QuerySnapshot> doRetrieveAllRifiutiNormali() {
+    public Task<QuerySnapshot> doRetrieveAllRifiutiUrbani() {
         return db.collection(TABLE_NAME).
-                whereEqualTo("categoria", Rifiuto.Categoria.NORMALE).get();
+                whereEqualTo("categoria", Rifiuto.Tipo.URBANO).get();
     }
 
 
@@ -69,5 +69,10 @@ public class FirebaseRifiutoDAO {
     public Task<QuerySnapshot> doRetrieveAllRifiutiByMateriale(String materiale) {
         return db.collection(TABLE_NAME).
                 whereEqualTo("materiale", materiale).get();
+    }
+
+    public Task<QuerySnapshot> doRetrieveAllRifiutiByCategoria(Rifiuto.Categoria categoria) {
+        return db.collection(TABLE_NAME).
+                whereEqualTo("categoria", categoria).get();
     }
 }
