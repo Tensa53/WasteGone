@@ -8,7 +8,7 @@ import it.giga.wastegone.gestioneProfiloUtente.application.exception.LoginExcept
 import it.giga.wastegone.gestioneProfiloUtente.application.exception.RegistrazioneException;
 
 /**
- * Classe di utilità per la gestione dei form di login e registrazione.
+ * Classe di utilità per la gestione dei form di login, registrazione e pagamento.
  */
 public class FormUtils {
 
@@ -112,6 +112,55 @@ public void controllaRegistrazione(String email, String password, String conferm
         if (indirizzo.length() > 20)
             throw new CampiException("L'indirizzo non deve superare 50 caratteri.");
 
+    }
+    /**
+     * Controlla che i dati della carta di credito siano validi.
+     *
+     * @param nome Il nome del titolare della carta.
+     * @param cognome Il cognome del titolare della carta.
+     * @param numeroCarta Il numero della carta di credito.
+     * @param dataScadenza La data di scadenza della carta (MM/YY).
+     * @param cvv Il codice CVV della carta.
+     * @throws PagamentoException Se uno dei controlli fallisce.
+     */
+    public void controllaPagamento(String nome, String cognome, String numeroCarta, String dataScadenza, String cvv) throws PagamentoException {
+        if (nome.length() == 0)
+            throw new PagamentoException("Il campo nome è obbligatorio e non può essere vuoto");
+
+        if (cognome.length() == 0)
+            throw new PagamentoException("Il campo cognome è obbligatorio e non può essere vuoto");
+
+        if (!isValidCardNumber(numeroCarta))
+            throw new PagamentoException("Numero di carta non valido");
+
+        if (!isValidExpiryDate(dataScadenza))
+            throw new PagamentoException("Data di scadenza non valida");
+
+        if (!isValidCVV(cvv))
+            throw new PagamentoException("CVV non valido");
+    }
+
+    // Metodo per verificare la validità del numero della carta
+    private boolean isValidCardNumber(String cardNumber) {
+        return cardNumber.length() == 16 && cardNumber.matches("\\d+");
+    }
+
+    // Metodo per verificare la validità della data di scadenza
+    private boolean isValidExpiryDate(String expiryDate) {
+        return Pattern.matches("(0[1-9]|1[0-2])/\\d{2}", expiryDate);
+    }
+
+    // Metodo per verificare la validità del CVV
+    private boolean isValidCVV(String cvv) {
+        return cvv.length() == 3 && cvv.matches("\\d+");
+    }
+    /**
+     * Eccezione lanciata quando i dati del pagamento non sono validi.
+     */
+    public class PagamentoException extends Exception {
+        public PagamentoException(String message) {
+            super(message);
+        }
     }
 }
 

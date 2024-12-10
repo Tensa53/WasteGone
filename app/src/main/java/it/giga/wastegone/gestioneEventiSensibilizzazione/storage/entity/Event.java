@@ -10,6 +10,8 @@ public class Event {
     private String ora;
     private String informazioni;
     private Stato stato;
+    private String programmazione;
+    private String nomiAddetti;
 
 
     public Event() {
@@ -17,13 +19,15 @@ public class Event {
     }
 
     public Event(String nome, String luogo, String data, String ora, String informazioni,
-                 Stato stato) {
+                 Stato stato, String programmazione, String nomiAddetti) {
         this.nome = nome;
         this.luogo = luogo;
         this.data = data;
         this.ora = ora;
         this.informazioni = informazioni;
         this.stato = stato;
+        this.programmazione = programmazione;
+        this.nomiAddetti = nomiAddetti;
     }
 
 
@@ -75,6 +79,22 @@ public class Event {
         this.stato = stato;
     }
 
+    public String getProgrammazione() {
+        return programmazione;
+    }
+
+    public void setProgrammazione(String programmazione) {
+        this.programmazione = programmazione;
+    }
+
+    public String getNomiAddetti() {
+        return nomiAddetti;
+    }
+
+    public void setNomiAddetti(String nomiAddetti) {
+        this.nomiAddetti = nomiAddetti;
+    }
+
 
     @Override
     public String toString() {
@@ -85,6 +105,8 @@ public class Event {
                 "Ora = " + ora + "\n" +
                 "Info = " + informazioni + "\n" +
                 "Stato = " + stato + "\n" +
+                "Programmazione = " + programmazione + "\n" +
+                "Addetti = " + nomiAddetti + "\n" +
                 "}";
     }
 }

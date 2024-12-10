@@ -7,6 +7,10 @@ public class Prenotazione {
     private String ora;
 
 
+    public Prenotazione() {
+
+    }
+
     public Prenotazione(String userID, String descrizione, String data, String ora) {
         this.userID = userID;
         this.descrizione = descrizione;
