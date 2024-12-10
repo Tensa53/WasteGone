@@ -53,14 +53,29 @@ public class NavbarFragment extends Fragment {
             // Ottieni l'utente corrente
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
             MenuItem loginItem = popupMenu.getMenu().findItem(R.id.menu_option7);
-            MenuItem logoutItem = popupMenu.getMenu().findItem(R.id.menu_option6);
+            MenuItem logoutItem = popupMenu.getMenu().findItem(R.id.menu_option9);
+            MenuItem tasseItem = popupMenu.getMenu().findItem(R.id.menu_option4);
+            MenuItem prenotazioneItem = popupMenu.getMenu().findItem(R.id.menu_option3);
+            MenuItem registerItem = popupMenu.getMenu().findItem(R.id.menu_option8);
+            MenuItem notificationItem = popupMenu.getMenu().findItem(R.id.menu_option2);
+            MenuItem calendarioItem = popupMenu.getMenu().findItem(R.id.menu_option6);
 
             if (currentUser != null) {
                 // User loggato
+                calendarioItem.setVisible(true);
+                notificationItem.setVisible(true);
+                registerItem.setVisible(false);
+                prenotazioneItem.setVisible(true);
+                tasseItem.setVisible(true);
                 loginItem.setVisible(false);
                 logoutItem.setVisible(true);
             } else {
                 // User non loggato
+                calendarioItem.setVisible(false);
+                notificationItem.setVisible(false);
+                registerItem.setVisible(true);
+                prenotazioneItem.setVisible(false);
+                tasseItem.setVisible(false);
                 loginItem.setVisible(true);
                 logoutItem.setVisible(false);
             }
@@ -87,17 +102,27 @@ public class NavbarFragment extends Fragment {
                     Intent intent = new Intent(requireContext(), SezioneEventiActivity.class);
                     startActivity(intent);
                     return true;
-                }else if (item.getItemId() == R.id.menu_option6) {
+                }
+                else if (item.getItemId() == R.id.menu_option6) {
+                    Intent intent = new Intent(requireContext(), MainActivity.class);
+                    startActivity(intent);
+                    return true;}
+
+                else if (item.getItemId() == R.id.menu_option7) {
+                Intent intent = new Intent(requireContext(), LoginActivity.class);
+                startActivity(intent);
+                return true;}
+                else if (item.getItemId() == R.id.menu_option8) {
+                    Intent intent = new Intent(requireContext(), RegisterActivity.class);
+                    startActivity(intent);
+                    return true;}
+                else if (item.getItemId() == R.id.menu_option9) {
                     FirebaseAuth.getInstance().signOut();
                     Intent intent = new Intent(requireContext(), MainActivity.class);
                     startActivity(intent);
                     requireActivity().finish();
                     Toast.makeText(requireContext(), "Logout effettuato", Toast.LENGTH_SHORT).show();
                     return true;}
-                else if (item.getItemId() == R.id.menu_option7) {
-                Intent intent = new Intent(requireContext(), LoginActivity.class);
-                startActivity(intent);
-                return true;}
                  else {
                     return false;
                 }
