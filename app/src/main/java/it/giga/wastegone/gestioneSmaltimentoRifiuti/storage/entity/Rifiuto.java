@@ -18,6 +18,7 @@ public class Rifiuto {
 
     //Attributi comuni
     private Tipo tipo;
+    private String nome;
     private String istruzioni;
     private String descrizione;
 
@@ -36,13 +37,14 @@ public class Rifiuto {
 
     }
 
-    public Rifiuto(Tipo tipo, String istruzioni, String descrizione) {
+    public Rifiuto(Tipo tipo, String nome, String istruzioni, String descrizione) {
         this.tipo = tipo;
+        this.nome = nome;
         this.istruzioni = istruzioni;
         this.descrizione = descrizione;
     }
 
-    public Rifiuto(Tipo tipo, String istruzioni, String descrizione, Categoria categoria,
+    public Rifiuto(Tipo tipo, String nome, String istruzioni, String descrizione, Categoria categoria,
                    DayOfWeek giornoConferimento, int orarioConferimento, String colore) {
         this.tipo = tipo;
         this.istruzioni = istruzioni;
@@ -54,7 +56,7 @@ public class Rifiuto {
         this.colore = colore;
     }
 
-    public Rifiuto(Tipo tipo, String istruzioni, String descrizione,
+    public Rifiuto(Tipo tipo, String nome, String istruzioni, String descrizione,
                    String materiale, int dimensioni) {
         this.tipo = tipo;
         this.istruzioni = istruzioni;
@@ -71,6 +73,14 @@ public class Rifiuto {
 
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getIstruzioni() {
@@ -229,6 +239,7 @@ public class Rifiuto {
     public String toString() {
         switch (tipo) {
             case URBANO: return "Rifiuto (Normale){\n" +
+                    "Nome = " + nome + "\n" +
                     "Istruzioni = " + istruzioni + "\n" +
                     "Descrizione = " + descrizione + "\n" +
                     "Categoria = " + categoria + "\n" +
@@ -237,6 +248,7 @@ public class Rifiuto {
                     "Colore = " + colore + "\n" +
                     "}";
             case SPECIALE: return "Rifiuto (Normale){\n" +
+                    "Nome = " + nome + "\n" +
                     "Istruzioni = " + istruzioni + "\n" +
                     "Descrizione = " + descrizione + "\n" +
                     "Materiale = " + materiale + "\n" +
