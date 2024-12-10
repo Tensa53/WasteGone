@@ -106,7 +106,7 @@ public class SezioneEventiActivity extends AppCompatActivity {
     public void ontvDescrizioneClicked(Event event) {
         Intent intent = new Intent(this, EventoActivity.class);
         intent.putExtra("title", event.getNome());
-        intent.putExtra("description", event.getInformazioni());
+        //intent.putExtra("description", event.getInformazioni());
         intent.putExtra("date", event.getData());
         intent.putExtra("time", event.getOra());
         intent.putExtra("staff", event.getNomiAddetti());

@@ -26,7 +26,7 @@ public class EventoActivity extends AppCompatActivity {
         tvAddetti = findViewById(R.id.tvAddetti);
         tvData = findViewById(R.id.tvData);
         tvOra = findViewById(R.id.tvOra);
-        tvTitolo = findViewById(R.id.tvTitolo);
+        tvTitolo = findViewById(R.id.tvNome);
         tvStato = findViewById(R.id.tvStato);
         tvLuogo = findViewById(R.id.tvLuogo);
         btnIndietro = findViewById(R.id.btnIndietro);
@@ -37,7 +37,7 @@ public class EventoActivity extends AppCompatActivity {
         // Imposta i dati dell'evento
         Intent intent = getIntent();
         tvTitolo.setText(intent.getStringExtra("title"));
-        tvDescrizione.setText(intent.getStringExtra("description"));
+        //tvDescrizione.setText(intent.getStringExtra("description"));
         tvData.setText(intent.getStringExtra("date"));
         tvOra.setText(intent.getStringExtra("time"));
         tvAddetti.setText(intent.getStringExtra("staff"));

@@ -8,7 +8,6 @@ public class Event {
     private String luogo;
     private String data;
     private String ora;
-    private String informazioni;
     private Stato stato;
     private String programmazione;
     private String nomiAddetti;
@@ -18,13 +17,12 @@ public class Event {
 
     }
 
-    public Event(String nome, String luogo, String data, String ora, String informazioni,
-                 Stato stato, String programmazione, String nomiAddetti) {
+    public Event(String nome, String luogo, String data, String ora, Stato stato,
+                 String programmazione, String nomiAddetti) {
         this.nome = nome;
         this.luogo = luogo;
         this.data = data;
         this.ora = ora;
-        this.informazioni = informazioni;
         this.stato = stato;
         this.programmazione = programmazione;
         this.nomiAddetti = nomiAddetti;
@@ -63,14 +61,6 @@ public class Event {
         this.ora = ora;
     }
 
-    public String getInformazioni() {
-        return informazioni;
-    }
-
-    public void setInformazioni(String informazioni) {
-        this.informazioni = informazioni;
-    }
-
     public Stato getStato() {
         return stato;
     }
@@ -103,7 +93,6 @@ public class Event {
                 "luogo = " + luogo + "\n" +
                 "Data = " + data + "\n" +
                 "Ora = " + ora + "\n" +
-                "Info = " + informazioni + "\n" +
                 "Stato = " + stato + "\n" +
                 "Programmazione = " + programmazione + "\n" +
                 "Addetti = " + nomiAddetti + "\n" +
