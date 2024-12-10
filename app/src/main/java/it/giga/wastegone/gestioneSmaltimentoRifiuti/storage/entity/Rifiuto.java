@@ -1,5 +1,6 @@
 package it.giga.wastegone.gestioneSmaltimentoRifiuti.storage.entity;
 
+import android.graphics.Color;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
@@ -10,8 +11,16 @@ import java.util.List;
 
 
 public class Rifiuto {
+    public static final int COLOR_NULL = Color.parseColor("#000000");
+    public static final int COLOR_ORGANICI = Color.parseColor("#228B22");
+    public static final int COLOR_CARTA = Color.parseColor("#FFFFFF");
+    public static final int COLOR_PLASTICA = Color.parseColor("#00BFFF");
+    public static final int COLOR_VETRO = Color.parseColor("#00FF00");
+    public static final int COLOR_INDIFFERENZIATI = Color.parseColor("#808080");
+
     public enum Tipo {SPECIALE, URBANO};
-    public enum Categoria {RIFIUTI_ORGANICI, CARTA_CARTONE, PLASTICA, VETRO, INDIFFERENZIATI};
+    public enum Categoria {RIFIUTI_ORGANICI, CARTA_CARTONE, PLASTICA, VETRO,
+                           INDIFFERENZIATI};
 
     //TESSILE, TONER,LEGNO, METALLO, IMBALLAGGI_COMPOSITI, MULTIMATERIALE
     //INGOMBRANTI, VERNICI, DETERGENTI, ALTRI_RIFIUTI,
@@ -232,6 +241,30 @@ public class Rifiuto {
                 return Arrays.asList(DayOfWeek.MONDAY, DayOfWeek.FRIDAY);
             default:
                 return Arrays.asList(DayOfWeek.MONDAY);
+        }
+    }
+
+
+    /**
+     * Restituisce il colore in base alla categoria dei rifiuti.
+     *
+     * @param categoria, categoria del rifiuto.
+     * @return int colore della categoria del rifiuto.
+     */
+    public static int getColorByCategoria(Categoria categoria) {
+        switch (categoria){
+            case RIFIUTI_ORGANICI:
+                return COLOR_ORGANICI;
+            case CARTA_CARTONE:
+                return COLOR_CARTA;
+            case PLASTICA:
+                return COLOR_PLASTICA;
+            case VETRO:
+                return COLOR_VETRO;
+            case INDIFFERENZIATI:
+                return COLOR_INDIFFERENZIATI;
+            default:
+                return COLOR_NULL;
         }
     }
 
