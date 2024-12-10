@@ -91,6 +91,6 @@ public class FirebasePrenotazioneDAO {
      * @return Task<QuerySnapshot> un oggetto Task che contiene i risultati della query.
      */
     public Task<QuerySnapshot> doRetrieveAllPrenotazioniByUserId(String userID){
-        return db.collection(TABLE_NAME).whereEqualTo("userId", userID).get();
+        return db.collection(TABLE_NAME).whereEqualTo("userID", userID).get();
     }
 }

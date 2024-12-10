@@ -92,7 +92,7 @@ public class FirebaseTassaDAO {
      * @return Task<QuerySnapshot> un oggetto Task che contiene i risultati della query.
      */
     public Task<QuerySnapshot> doRetrieveAllTasseByUserId(String userID){
-        return db.collection(TABLE_NAME).whereEqualTo("userId", userID).get();
+        return db.collection(TABLE_NAME).whereEqualTo("userID", userID).get();
     }
 
 
@@ -103,7 +103,7 @@ public class FirebaseTassaDAO {
      * @return Task<QuerySnapshot> un oggetto Task che contiene i risultati della query.
      */
     public Task<QuerySnapshot> doRetrieveAllTasseNonPagateByUserId(String userID){
-        return db.collection(TABLE_NAME).whereEqualTo("userId", userID).
+        return db.collection(TABLE_NAME).whereEqualTo("userID", userID).
                                          whereEqualTo("isPagato", false).get();
     }
 }
