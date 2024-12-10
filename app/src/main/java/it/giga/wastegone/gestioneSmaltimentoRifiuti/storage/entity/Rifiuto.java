@@ -1,12 +1,17 @@
 package it.giga.wastegone.gestioneSmaltimentoRifiuti.storage.entity;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.time.DayOfWeek;
 
 public class Rifiuto {
     public enum Tipo {SPECIALE, URBANO};
-    public enum Categoria {RIFIUTI_ORGANICI, CARTA_CARTONE, PLASTICA, LEGNO, METALLO,
-                           IMBALLAGGI_COMPOSITI, MULTIMATERIALE, VETRO, TESSILE, TONER,
-                           INGOMBRANTI, VERNICI, DETERGENTI, ALTRI_RIFIUTI, INDIFFERENZIATI};
+    public enum Categoria {RIFIUTI_ORGANICI, CARTA_CARTONE, PLASTICA, VETRO, INDIFFERENZIATI};
+
+    //TESSILE, TONER,LEGNO, METALLO, IMBALLAGGI_COMPOSITI, MULTIMATERIALE
+    //INGOMBRANTI, VERNICI, DETERGENTI, ALTRI_RIFIUTI,
 
     //Attributi comuni
     private Tipo tipo;
@@ -15,8 +20,8 @@ public class Rifiuto {
 
     //Attributi rifiuti normali
     private Categoria categoria;
-    private DayOfWeek giornoconferimento;
-    private int orarioconferimento;
+    private DayOfWeek giornoConferimento;
+    private int orarioConferimento;
     private String colore;
 
     //Attributi rifiuti speciali
@@ -35,14 +40,14 @@ public class Rifiuto {
     }
 
     public Rifiuto(Tipo tipo, String istruzioni, String descrizione, Categoria categoria,
-                   DayOfWeek giornoconferimento, int orarioconferimento, String colore) {
+                   DayOfWeek giornoConferimento, int orarioConferimento, String colore) {
         this.tipo = tipo;
         this.istruzioni = istruzioni;
         this.descrizione = descrizione;
 
         this.categoria = categoria;
-        this.giornoconferimento = giornoconferimento;
-        this.orarioconferimento = orarioconferimento;
+        this.giornoConferimento = giornoConferimento;
+        this.orarioConferimento = orarioConferimento;
         this.colore = colore;
     }
 
@@ -90,20 +95,20 @@ public class Rifiuto {
         this.categoria = categoria;
     }
 
-    public DayOfWeek getGiornoconferimento() {
-        return giornoconferimento;
+    public DayOfWeek getGiornoConferimento() {
+        return giornoConferimento;
     }
 
-    public void setGiornoconferimento(DayOfWeek giornoconferimento) {
-        this.giornoconferimento = giornoconferimento;
+    public void setGiornoConferimento(DayOfWeek giornoConferimento) {
+        this.giornoConferimento = giornoConferimento;
     }
 
-    public int getOrarioconferimento() {
-        return orarioconferimento;
+    public int getOrarioConferimento() {
+        return orarioConferimento;
     }
 
-    public void setOrarioconferimento(int orarioconferimento) {
-        this.orarioconferimento = orarioconferimento;
+    public void setOrarioConferimento(int orarioConferimento) {
+        this.orarioConferimento = orarioConferimento;
     }
 
 
@@ -143,7 +148,7 @@ public class Rifiuto {
             case PLASTICA:
                 return "Oggetti e imballaggi in plastica, come bottiglie, " +
                         "contenitori e sacchetti, che possono essere riutilizzati e riciclati.";
-            case LEGNO:
+            /*case LEGNO:
                 return " Rifiuti di legno, come mobili, pallet e imballaggi, " +
                         "che possono essere riutilizzati o riciclati " +
                         "per produrre nuovi prodotti in legno.";
@@ -155,11 +160,11 @@ public class Rifiuto {
                         "che non possono essere facilmente separati per il riciclo.";
             case MULTIMATERIALE:
                 return "Rifiuti che combinano vari materiali, come imballaggi misti, " +
-                        "che richiedono un trattamento specifico per il riciclo.";
+                        "che richiedono un trattamento specifico per il riciclo.";*/
             case VETRO:
                 return "Bottiglie, contenitori e altri oggetti in vetro che possono " +
                         "essere riutilizzati o riciclati senza perdere qualità.";
-            case TESSILE:
+            /*case TESSILE:
                 return "Rifiuti derivanti da abbigliamento, tessuti e altri materiali " +
                         "simili che possono essere riutilizzati o riciclati in nuovi prodotti.";
             case TONER:
@@ -176,7 +181,7 @@ public class Rifiuto {
                 return "Bottiglie vuote di detergenti e prodotti per la pulizia " +
                         "che possono essere riciclati se correttamente separati.";
             case ALTRI_RIFIUTI:
-                return "Rifiuti che non rientrano in altre categorie.";
+                return "Rifiuti che non rientrano in altre categorie.";*/
             case INDIFFERENZIATI:
                 return "Rifiuti che non possono essere riciclati e " +
                         "devono essere smaltiti in discarica o inceneriti.";
@@ -185,6 +190,23 @@ public class Rifiuto {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static DayOfWeek getDayOfWeekByCategoria(Categoria categoria){
+        switch (categoria) {
+            case RIFIUTI_ORGANICI:
+                return DayOfWeek.MONDAY;
+            case CARTA_CARTONE:
+                return DayOfWeek.WEDNESDAY;
+            case PLASTICA:
+                return DayOfWeek.FRIDAY;
+            case VETRO:
+                return DayOfWeek.WEDNESDAY;
+            case INDIFFERENZIATI:
+                return DayOfWeek.MONDAY;
+            default:
+                return DayOfWeek.MONDAY;
+        }
+    }
 
     @Override
     public String toString() {
@@ -193,8 +215,8 @@ public class Rifiuto {
                     "Istruzioni = " + istruzioni + "\n" +
                     "Descrizione = " + descrizione + "\n" +
                     "Categoria = " + categoria + "\n" +
-                    "Giorno conferimento = " + giornoconferimento.toString() + "\n" +
-                    "Orario conferimento = " + orarioconferimento + "\n" +
+                    "Giorno conferimento = " + giornoConferimento.toString() + "\n" +
+                    "Orario conferimento = " + orarioConferimento + "\n" +
                     "Colore = " + colore + "\n" +
                     "}";
             case SPECIALE: return "Rifiuto (Normale){\n" +

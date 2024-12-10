@@ -50,13 +50,13 @@ public class FirebaseRifiutoDAO {
 
     public Task<QuerySnapshot> doRetrieveAllRifiutiSpeciali() {
         return db.collection(TABLE_NAME).
-               whereEqualTo("categoria", Rifiuto.Tipo.SPECIALE).get();
+               whereEqualTo("tipo", Rifiuto.Tipo.SPECIALE).get();
     }
 
 
     public Task<QuerySnapshot> doRetrieveAllRifiutiUrbani() {
         return db.collection(TABLE_NAME).
-                whereEqualTo("categoria", Rifiuto.Tipo.URBANO).get();
+                whereEqualTo("tipo", Rifiuto.Tipo.URBANO).get();
     }
 
 
