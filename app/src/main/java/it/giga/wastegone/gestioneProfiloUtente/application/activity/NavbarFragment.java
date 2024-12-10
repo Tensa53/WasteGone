@@ -17,11 +17,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 import it.giga.wastegone.MainActivity;
 import it.giga.wastegone.R;
-import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.PagamentoTassaActivity;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.PrenotazioneActivity;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.SezioneEventiActivity;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.TasseActivity;
-import it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity.Prenotazione;
 
 /**
  * Fragment per la gestione della navbar.
