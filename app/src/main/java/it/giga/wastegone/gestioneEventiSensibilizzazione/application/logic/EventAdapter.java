@@ -15,8 +15,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.List;
 
-import it.giga.wastegone.MainActivity;
 import it.giga.wastegone.R;
+import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.EventoActivity;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.storage.dataAccess.FirebaseEventDAO;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity.Event;
 
@@ -65,8 +65,20 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
         Event event = eventList.get(position);
-        holder.tvNome.setText(event.getNome());
-        holder.tvDescrizione.setText(event.getInformazioni());
+        holder.tvTitolo.setText(event.getNome());
+        holder.tvDescrizione.setText("Clicca qui per maggiori informazioni");
+
+        holder.tvDescrizione.setOnClickListener(v -> {
+            Intent intent = new Intent(context, EventoActivity.class);
+            intent.putExtra("title", event.getNome());
+            intent.putExtra("description", event.getInformazioni());
+            intent.putExtra("date", event.getData());
+            intent.putExtra("time", event.getOra());
+            intent.putExtra("staff", event.getNomiAddetti());
+            intent.putExtra("status", event.getStato());
+            intent.putExtra("location", event.getLuogo());
+            context.startActivity(intent);
+        });
     }
 
     /**
@@ -108,17 +120,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
      * ViewHolder per un elemento evento.
      */
     public static class EventViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNome;
+        TextView tvTitolo;
         TextView tvDescrizione;
 
-        /**
-         * Costruttore per EventViewHolder.
-         *
-         * @param itemView la vista dell'elemento evento
-         */
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvNome = itemView.findViewById(R.id.tvTitolo);
+            tvTitolo = itemView.findViewById(R.id.tvTitolo);
             tvDescrizione = itemView.findViewById(R.id.tvDescrizione);
         }
     }
