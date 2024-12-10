@@ -18,6 +18,9 @@
         android:theme="@style/Theme.WasteGone"
         tools:targetApi="31">
         <activity
+            android:name=".gestioneEventiSensibilizzazione.application.activity.EventoActivity"
+            android:exported="true" />
+        <activity
             android:name=".gestioneEventiSensibilizzazione.application.activity.TasseActivity"
             android:exported="true" />
         <activity

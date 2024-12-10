@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/wgreen"
+    tools:context=".gestioneEventiSensibilizzazione.application.activity.EventoActivity">
+
+
+    <fragment
+        android:id="@+id/navbarFragment"
+        android:name="it.giga.wastegone.gestioneProfiloUtente.application.activity.NavbarFragment"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:id="@+id/tvTesto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="537dp"
+        android:text="Dettagli Evento"
+        android:textColor="#379F25"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivImmagine" />
+
+    <ImageView
+        android:id="@+id/ivImmagine"
+        android:layout_width="130dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="592dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/evento_icon" />
+
+
+    <TextView
+        android:id="@+id/tvTitolo"
+        android:layout_width="116dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="253dp"
+        android:layout_marginBottom="459dp"
+        android:text="Titolo"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLuogo"
+        android:layout_width="116dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="459dp"
+        android:text="Luogo"
+        android:textSize="30sp"
+        app:cardElevation="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvData"
+        android:layout_width="80dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="190dp"
+        android:layout_marginEnd="103dp"
+        android:layout_marginBottom="416dp"
+        android:text="12/22/1980"
+        android:textSize="15sp"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.927" />
+
+    <TextView
+        android:id="@+id/tvOra"
+        android:layout_width="65dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="416dp"
+        android:text="10:00"
+        android:textSize="15sp"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.933" />
+
+    <TextView
+        android:id="@+id/tvStato"
+        android:layout_width="176dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="200dp"
+        android:layout_marginBottom="14dp"
+        android:text="STATO: In Programma"
+        android:textSize="15sp"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvDescrizione"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDescrizione"
+        android:layout_width="341dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="17dp"
+        android:text="descrizione"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvAddetti"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvData" />
+
+    <TextView
+        android:id="@+id/tvAddetti"
+        android:layout_width="175dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="197dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="81dp"
+        android:text="Addetti"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.538" />
+
+    <Button
+        android:id="@+id/btnIndietro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="163dp"
+        android:backgroundTint="@color/dgreen"
+        android:text="Indietro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddetti" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
