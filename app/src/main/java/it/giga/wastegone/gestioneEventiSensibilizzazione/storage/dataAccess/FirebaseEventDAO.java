@@ -45,6 +45,9 @@ public class FirebaseEventDAO {
         return doc.set(event);
     }
 
+    public Task<QuerySnapshot> doRetrieveAllEvent() {
+        return db.collection(TABLE_NAME).get();
+    }
 
     public Task<QuerySnapshot> doRetrieveAllEventByData(Timestamp data){
         return db.collection(TABLE_NAME).whereEqualTo("data", data).get();
