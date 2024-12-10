@@ -49,7 +49,7 @@
 
 
     <TextView
-        android:id="@+id/tvTitolo"
+        android:id="@+id/tvNome"
         android:layout_width="116dp"
         android:layout_height="40dp"
         android:layout_marginStart="42dp"
