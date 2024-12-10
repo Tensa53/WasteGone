@@ -103,9 +103,15 @@ public class SezioneEventiActivity extends AppCompatActivity {
     }
 
 
-    private void ontvDescrizioneClicked(String title) {
-        Intent intent = new Intent(this, SezioneEventiActivity.class);
-        intent.putExtra("title", title);
+    public void ontvDescrizioneClicked(Event event) {
+        Intent intent = new Intent(this, EventoActivity.class);
+        intent.putExtra("title", event.getNome());
+        intent.putExtra("description", event.getInformazioni());
+        intent.putExtra("date", event.getData());
+        intent.putExtra("time", event.getOra());
+        intent.putExtra("staff", event.getNomiAddetti());
+        intent.putExtra("status", event.getStato());
+        intent.putExtra("location", event.getLuogo());
         startActivity(intent);
     }
 }
