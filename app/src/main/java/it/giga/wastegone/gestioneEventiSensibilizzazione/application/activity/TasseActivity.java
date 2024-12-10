@@ -53,9 +53,17 @@ public class TasseActivity extends AppCompatActivity {
         // Carica i dati dal database
         loadTasseFromDatabase();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadTasseFromDatabase();
+    }
+
     private void loadTasseFromDatabase() {
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Log.d("TasseActivity", "Caricamento dati dal database per l'utente: " + userID);
         tassaAdapter.loadTasseFromDatabase(userID);
     }
 }
+
