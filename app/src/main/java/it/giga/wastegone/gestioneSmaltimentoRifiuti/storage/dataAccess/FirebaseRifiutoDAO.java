@@ -87,27 +87,6 @@ public class FirebaseRifiutoDAO {
     }
 
 
-    /**
-     * Recupera tutti i documenti dei rifiuti speciali memorizzati nel database.
-     *
-     * @return Task<QuerySnapshot> un oggetto Task che contiene i risultati della query.
-     */
-    public Task<QuerySnapshot> doRetrieveAllRifiutiSpeciali() {
-        return db.collection(TABLE_NAME).
-               whereEqualTo("tipo", Rifiuto.Tipo.SPECIALE).get();
-    }
-
-
-    /**
-     * Recupera tutti i documenti dei rifiuti urbani memorizzati nel database.
-     *
-     * @return Task<QuerySnapshot> un oggetto Task che contiene i risultati della query.
-     */
-    public Task<QuerySnapshot> doRetrieveAllRifiutiUrbani() {
-        return db.collection(TABLE_NAME).
-                whereEqualTo("tipo", Rifiuto.Tipo.URBANO).get();
-    }
-
 
     /**
      * Recupera tutti i documenti dei rifiuti che si conferiscono al giorno specificato.
@@ -120,17 +99,6 @@ public class FirebaseRifiutoDAO {
                 whereEqualTo("giornoConferimento", dayOfWeek).get();
     }
 
-
-    /**
-     * Recupera tutti i documenti dei rifiuti costituiti dal materiale specificato.
-     *
-     * @param materiale materiale desiderato.
-     * @return Task<QuerySnapshot> un oggetto Task che contiene i risultati della query.
-     */
-    public Task<QuerySnapshot> doRetrieveAllRifiutiByMateriale(String materiale) {
-        return db.collection(TABLE_NAME).
-                whereEqualTo("materiale", materiale).get();
-    }
 
     /**
      * Recupera tutti i documenti dei rifiuti appartenenti alla categoria specificata.
