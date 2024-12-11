@@ -18,6 +18,9 @@
         android:theme="@style/Theme.WasteGone"
         tools:targetApi="31">
         <activity
+            android:name=".gestioneSmaltimentoRifiuti.application.activity.CalendarioActivity"
+            android:exported="true" />
+        <activity
             android:name=".gestioneProfiloUtente.application.activity.NotificationManagementActivity"
             android:exported="true" />
         <activity
@@ -36,6 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <receiver android:name=".gestioneProfiloUtente.application.logic.NotificationLogic" />
     </application>
 
