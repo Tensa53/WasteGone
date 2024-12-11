@@ -80,6 +80,14 @@ public class Rifiuto {
         this.colore = colore;
     }
 
+    public String getCodiceColore() {
+        return codiceColore;
+    }
+
+    public void setCodiceColoreColore(String codiceColore) {
+        this.codiceColore = codiceColore;
+    }
+
 
     @Override
     public String toString() {
