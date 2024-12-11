@@ -1,19 +1,9 @@
 package it.giga.wastegone.gestioneSmaltimentoRifiuti.storage.entity;
 
-import android.graphics.Color;
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import java.time.DayOfWeek;
-import java.util.Arrays;
-import java.util.List;
-
-import it.giga.wastegone.gestioneSmaltimentoRifiuti.storage.dataAccess.FirebaseRifiutoDAO;
-
 
 public class Rifiuto {
-    public enum Categoria {PLASTICA, CARTA, INDIFFERENZIATA, UMIDO, ALLUMINIO, VETRO, TESSILI};
+    public enum Categoria {PLASTICA, CARTA, INDIFFERENZIATA, UMIDO, ALLUMINIO, VETRO, TESSILI}
 
     private Categoria categoria;
     private DayOfWeek giornoConferimento;
@@ -22,9 +12,7 @@ public class Rifiuto {
     private String codiceColore;
     private String colore;
 
-
     public Rifiuto() {
-
     }
 
     public Rifiuto(Categoria categoria, String istruzioni,
@@ -37,7 +25,6 @@ public class Rifiuto {
         this.colore = colore;
         this.codiceColore = codiceColore;
     }
-
 
     public String getIstruzioni() {
         return istruzioni;
@@ -71,7 +58,6 @@ public class Rifiuto {
         this.orarioConferimento = orarioConferimento;
     }
 
-
     public String getColore() {
         return colore;
     }
@@ -84,20 +70,19 @@ public class Rifiuto {
         return codiceColore;
     }
 
-    public void setCodiceColoreColore(String codiceColore) {
+    public void setCodiceColore(String codiceColore) {
         this.codiceColore = codiceColore;
     }
 
-
     @Override
     public String toString() {
-        return "Rifiuto{\n" +
-                "Categoria = " + categoria + "\n" +
-                "Istruzioni = " + istruzioni + "\n" +
-                "Giorno conferimento = " + giornoConferimento.toString() + "\n" +
-                "Orario conferimento = " + orarioConferimento + "\n" +
-                "Colore = " + colore + "\n" +
-                "#Colore = " + codiceColore + "\n" +
-                "}";
-        }
+        return "Rifiuto{" +
+                "Categoria=" + categoria +
+                ", Istruzioni='" + istruzioni + '\'' +
+                ", Giorno conferimento=" + (giornoConferimento != null ? giornoConferimento.toString() : "null") +
+                ", Orario conferimento='" + orarioConferimento + '\'' +
+                ", Colore='" + colore + '\'' +
+                ", CodiceColore='" + codiceColore + '\'' +
+                '}';
     }
+}
