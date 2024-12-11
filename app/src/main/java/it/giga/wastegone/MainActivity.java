@@ -23,7 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.SezioneEventiActivity;
 import it.giga.wastegone.gestioneProfiloUtente.application.activity.LoginActivity;
 import it.giga.wastegone.gestioneProfiloUtente.application.activity.RegisterActivity;
-import it.giga.wastegone.gestioneSmaltimentoRifiuti.application.activity.MapsActivity;
+//import it.giga.wastegone.gestioneSmaltimentoRifiuti.application.activity.MapsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,25 +66,12 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        // Imposta l'effetto di pressione sui card
+        // Imposta l'effetto di pressione sui card e passa all'activity corrispondente
         setCardEffect(findViewById(R.id.cardEvents), SezioneEventiActivity.class);
         setCardEffect(findViewById(R.id.cardReports), LoginActivity.class);
-        setCardEffect(findViewById(R.id.cardPickupPoints), MapsActivity.class);
+        //setCardEffect(findViewById(R.id.cardPickupPoints), MapsActivity.class);
 
-            findViewById(R.id.cardEvents).setOnClickListener(v -> {
-                // Naviga all'activity eventi
-                startActivity(new Intent(MainActivity.this, SezioneEventiActivity.class));
-            });
 
-            findViewById(R.id.cardReports).setOnClickListener(v -> {
-                // Naviga all'activity segnalazioni
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            });
-
-            findViewById(R.id.cardPickupPoints).setOnClickListener(v -> {
-                // Naviga all'activity punti di ritiro (Google Maps)
-                startActivity(new Intent(MainActivity.this, MapsActivity.class));
-            });
 
     }
 
