@@ -18,7 +18,7 @@
         android:theme="@style/Theme.WasteGone"
         tools:targetApi="31">
         <activity
-            android:name=".gestioneSmaltimentoRifiuti.application.activity.CalendarioActivity"
+            android:name=".gestioneSmaltimentoRifiuti.application.activity.SegnalzioneActivity"
             android:exported="true" />
         <activity
             android:name=".gestioneProfiloUtente.application.activity.NotificationManagementActivity"
