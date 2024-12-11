@@ -11,6 +11,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import it.giga.wastegone.R;
 
+
+//classe che mostra i dettagli di un evento
 public class EventoActivity extends AppCompatActivity {
 
     private TextView tvDescrizione, tvData, tvOra, tvAddetti, tvTitolo, tvStato, tvLuogo;
