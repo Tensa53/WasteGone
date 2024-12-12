@@ -5,8 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@drawable/gradiente"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".gestioneSmaltimentoRifiuti.RecuperoRifiutoActivity">
 
 
@@ -15,34 +16,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Value"
-        android:textSize="40dp"/>
+        android:textSize="40dp" />
 
     <Button
         android:id="@+id/btColoreRifiuto1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Test Colore Rifiuto 1"
-        android:textSize="25dp"/>
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/btColoreRifiuto2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Test Colore Rifiuto 2"
-        android:textSize="25dp"/>
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/btGiornoRifiuto1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Test Giorno Rifiuto 1"
-        android:textSize="25dp"/>
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/btGiornoRifiuto2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Test Giorno Rifiuto 2"
-        android:textSize="25dp"/>
+        android:textSize="25dp" />
 
 </LinearLayout>

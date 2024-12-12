@@ -20,6 +20,7 @@ import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.PrenotazioneActivity;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.SezioneEventiActivity;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.TasseActivity;
+import it.giga.wastegone.gestioneSmaltimentoRifiuti.application.activity.CalendarioActivity;
 
 /**
  * Fragment per la gestione della navbar.
@@ -104,7 +105,7 @@ public class NavbarFragment extends Fragment {
                     return true;
                 }
                 else if (item.getItemId() == R.id.menu_option6) {
-                    Intent intent = new Intent(requireContext(), MainActivity.class);
+                    Intent intent = new Intent(requireContext(), CalendarioActivity.class);
                     startActivity(intent);
                     return true;}
 

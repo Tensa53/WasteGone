@@ -5,8 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@drawable/gradiente"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".gestioneEventiSensibilizzazione.RecuperoEventoActivity">
 
 
@@ -15,34 +16,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Value"
-        android:textSize="40dp"/>
+        android:textSize="40dp" />
 
     <Button
         android:id="@+id/btStatoEvento1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Test Stato Evento 1"
-        android:textSize="25dp"/>
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/btStatoEvento2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Test Stato Evento 2"
-        android:textSize="25dp"/>
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/btStatoEvento3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Test Stato Evento 3"
-        android:textSize="25dp"/>
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/btStatoEvento4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Test Stato Evento 4"
-        android:textSize="25dp"/>
+        android:textSize="25dp" />
 
 </LinearLayout>
