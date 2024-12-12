@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".gestioneSmaltimentoRifiuti.RecuperoRifiutoActivity">
+
+
+    <TextView
+        android:id="@+id/tvValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Value"
+        android:textSize="40dp"/>
+
+    <Button
+        android:id="@+id/btColoreRifiuto1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Colore Rifiuto 1"
+        android:textSize="25dp"/>
+
+    <Button
+        android:id="@+id/btColoreRifiuto2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Colore Rifiuto 2"
+        android:textSize="25dp"/>
+
+    <Button
+        android:id="@+id/btGiornoRifiuto1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Giorno Rifiuto 1"
+        android:textSize="25dp"/>
+
+    <Button
+        android:id="@+id/btGiornoRifiuto2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Giorno Rifiuto 2"
+        android:textSize="25dp"/>
+
+</LinearLayout>
