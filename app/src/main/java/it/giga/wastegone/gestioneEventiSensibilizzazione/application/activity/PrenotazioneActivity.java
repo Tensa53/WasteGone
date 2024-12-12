@@ -15,10 +15,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.google.firebase.auth.FirebaseAuth;
-import java.util.Calendar;
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.logic.PrenotazioneLogic;
 import it.giga.wastegone.utils.FormUtils;
+import java.util.Calendar;
+
+
+
 
 /**
  * Activity per gestire le prenotazioni agli eventi di sensibilizzazione.
@@ -95,32 +98,34 @@ public class PrenotazioneActivity extends AppCompatActivity {
     datePickerDialog.show();
   }
 
-    /**
-     * Gestisce l'invio dei dati di prenotazione.
-     *
-     * @param userId      ID dell'utente che effettua la prenotazione.
-     * @param description Descrizione fornita dall'utente.
-     * @param date        Data dell'evento.
-     * @param hour        Ora dell'evento.
-     */
-    private void handleSubmit(String userId, String description, String date, String hour) {
-        try {
-            FormUtils formUtils = new FormUtils();
-            formUtils.controllaPrenotazione(userId, description, date, hour);
-            PrenotazioneLogic prenotazioneLogic = new PrenotazioneLogic();
-            prenotazioneLogic.handleSubmit(userId, description, date, hour)
+  /**
+  * Gestisce l'invio dei dati di prenotazione.
+  *
+  * @param userId      ID dell'utente che effettua la prenotazione.
+  * @param description Descrizione fornita dall'utente.
+  * @param date        Data dell'evento.
+  * @param hour        Ora dell'evento.
+  */
+  private void handleSubmit(String userId, String description, String date, String hour) {
+    try {
+      FormUtils formUtils = new FormUtils();
+      formUtils.controllaPrenotazione(userId, description, date, hour);
+      PrenotazioneLogic prenotazioneLogic = new PrenotazioneLogic();
+      prenotazioneLogic.handleSubmit(userId, description, date, hour)
                     .addOnSuccessListener(success -> {
-                        Toast.makeText(this, "Prenotazione salvata con successo", Toast.LENGTH_SHORT).show();
-                        finish();
+                      Toast.makeText(this, "Prenotazione salvata con successo",
+                              Toast.LENGTH_SHORT).show();
+                      finish();
                     })
                     .addOnFailureListener(error -> {
-                        Toast.makeText(this, "Errore durante il salvataggio: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                        error.printStackTrace();
+                      Toast.makeText(this, "Errore durante il salvataggio: "
+                              + error.getMessage(), Toast.LENGTH_SHORT).show();
+                      error.printStackTrace();
                     });
 
-        } catch (FormUtils.PrenotazioneException e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+    } catch (FormUtils.PrenotazioneException e) {
+      Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
     }
+  }
 
 }
