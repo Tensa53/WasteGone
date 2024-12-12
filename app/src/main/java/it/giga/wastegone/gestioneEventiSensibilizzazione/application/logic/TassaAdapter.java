@@ -107,7 +107,9 @@ public class TassaAdapter extends RecyclerView.Adapter<TassaAdapter.TassaViewHol
      * ViewHolder per visualizzare singoli elementi di tassa.
      */
   public class TassaViewHolder extends RecyclerView.ViewHolder {
-    TextView tvImporto, tvScadenza, tvStato;
+    TextView tvImporto;
+    TextView tvScadenza;
+    TextView tvStato;
     Button btnPaga;
 
     /**
