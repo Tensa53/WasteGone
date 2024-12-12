@@ -24,6 +24,9 @@
             android:name=".gestioneSmaltimentoRifiuti.application.activity.SegnalazioneActivity"
             android:exported="true" />
         <activity
+            android:name=".gestioneSmaltimentoRifiuti.RecuperoRifiutoActivity"
+            android:exported="true" />
+        <activity
             android:name=".gestioneSmaltimentoRifiuti.application.activity.CalendarioActivity"
             android:exported="true" />
         <activity

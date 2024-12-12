@@ -108,4 +108,15 @@ public class FirebaseRifiutoDAO {
     return db.collection(TABLE_NAME)
             .whereEqualTo("categoria", categoria).get();
   }
+
+  /**
+   * Recupera il documento del rifiuto appartenente al colore specificato.
+   *
+   * @param colore categoria desiderata.
+   * @return Task<QuerySnapshot> un oggetto Task che contiene i risultati della query.
+   */
+  public Task<QuerySnapshot> doRetrieveRifiutoByColore(String colore) {
+    return db.collection(TABLE_NAME).
+            whereEqualTo("colore", colore).get();
+  }
 }
