@@ -2,84 +2,99 @@ package it.giga.wastegone.gestioneSmaltimentoRifiuti.application.activity;
 
 import android.os.Bundle;
 import android.util.Log;
-
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.RecyclerView;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneSmaltimentoRifiuti.application.logic.CalendarioAdapter;
+import it.giga.wastegone.gestioneSmaltimentoRifiuti.storage.dataAccess.FirebaseRifiutoDAO;
 import it.giga.wastegone.gestioneSmaltimentoRifiuti.storage.entity.Rifiuto;
 
+/**
+ * Activity per visualizzare il calendario di smaltimento dei rifiuti.
+ * Questa classe recupera i dati dal database Firestore e li visualizza in un RecyclerView.
+ */
 public class CalendarioActivity extends AppCompatActivity {
+  private RecyclerView recyclerView;
+  private CalendarioAdapter adapter;
+  private List<Rifiuto> rifiutiList;
+  private FirebaseRifiutoDAO rifiutoDao;
 
-    private RecyclerView recyclerView;
-    private CalendarioAdapter adapter;
-    private List<Rifiuto> rifiutiList;
-    private FirebaseFirestore db;
+  /**
+   * Metodo chiamato durante la creazione dell'Activity.
+   * Imposta il layout, inizializza il RecyclerView e carica i dati dal database Firestore.
+   *
+   * @param savedInstanceState lo stato salvato dell'Activity.
+   */
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    EdgeToEdge.enable(this);
+    setContentView(R.layout.activity_calendario);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendario);
+    ViewCompat.setOnApplyWindowInsetsListener(
+            findViewById(R.id.main),
+            (v, insets) -> {
+              Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+              v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+              return insets;
+            }
+    );
 
-        recyclerView = findViewById(R.id.recyclerViewCalendario);
-        rifiutiList = new ArrayList<>();
-        adapter = new CalendarioAdapter(this, rifiutiList);
-        recyclerView.setAdapter(adapter);
+    recyclerView = findViewById(R.id.recyclerViewCalendario);
+    rifiutiList = new ArrayList<>();
+    adapter = new CalendarioAdapter(this, rifiutiList);
+    recyclerView.setAdapter(adapter);
 
-        db = FirebaseFirestore.getInstance();
+    rifiutoDao = new FirebaseRifiutoDAO();
 
-        // Carica i dati dal database
-        loadRifiutiFromFirestore();
-    }
+    // Carica i dati dal database
+    loadRifiutiFromFirestore();
+  }
 
-    private void loadRifiutiFromFirestore() {
-        db.collection("Rifiuti") // Nome della tua collezione Firestore
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                try {
-                                    // Converte i dati Firestore in un oggetto Rifiuto
-                                    String categoriaStr = document.getString("categoria");
-                                    String istruzioni = document.getString("istruzioni");
-                                    String giornoConferimentoStr = document.getString("giornoConferimento");
-                                    String orarioConferimento = document.getString("orarioConferimento");
-                                    String colore = document.getString("colore");
-                                    String codiceColore = document.getString("codiceColore");
+  /**
+   * Carica i dati dei rifiuti dalla collezione Firestore e li aggiunge alla lista.
+   * Ordina la lista in base al giorno di conferimento e aggiorna l'adapter.
+   */
+  private void loadRifiutiFromFirestore() {
+    rifiutoDao.doRetrieveAllRifiuti().addOnCompleteListener(task -> {
+      if (task.isSuccessful()) {
+        for (QueryDocumentSnapshot document : task.getResult()) {
+          try {
+            String categoriaStr = document.getString("categoria");
+            String istruzioni = document.getString("istruzioni");
+            String giornoConferimentoStr = document.getString("giornoConferimento");
+            String orarioConferimento = document.getString("orarioConferimento");
+            String colore = document.getString("colore");
+            String codiceColore = document.getString("codiceColore");
 
-                                    Rifiuto.Categoria categoria = Rifiuto.Categoria.valueOf(categoriaStr);
-                                    DayOfWeek giornoConferimento = DayOfWeek.valueOf(giornoConferimentoStr);
+            Rifiuto.Categoria categoria = Rifiuto.Categoria.valueOf(categoriaStr);
+            DayOfWeek giornoConferimento = DayOfWeek.valueOf(giornoConferimentoStr);
 
-                                    rifiutiList.add(new Rifiuto(categoria, istruzioni, giornoConferimento,
-                                            orarioConferimento, colore, codiceColore));
-                                    Collections.sort(rifiutiList, Comparator.comparing(Rifiuto::getGiornoConferimento));
+            rifiutiList.add(
+                    new Rifiuto(categoria, istruzioni, giornoConferimento,
+                            orarioConferimento, colore, codiceColore)
+            );
 
-                                } catch (Exception e) {
-                                    Log.e("FirestoreError", "Errore nel parsing del documento: ", e);
-                                }
-                            }
-                            adapter.notifyDataSetChanged();
-                        } else {
-                            Log.e("FirestoreError", "Errore nel caricamento dei dati: ", task.getException());
-                        }
-                    }
-                });
-    }
+            rifiutiList.sort(
+                    Comparator.comparing(Rifiuto::getGiornoConferimento)
+            );
+          } catch (Exception e) {
+            Log.e("FirestoreError", "Errore nel parsing del documento: ", e);
+          }
+        }
+        adapter.notifyDataSetChanged();
+      } else {
+        Log.e("FirestoreError", "Errore nel caricamento dei dati: ", task.getException());
+      }
+    });
+  }
 }
