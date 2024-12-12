@@ -115,15 +115,6 @@ public class Event {
     }
 
     /**
-     * Ritorna la posizione dell'evento.
-     *
-     * @return String, la posizione dell'evento
-     */
-    public String getLuogo() {
-        return luogo;
-    }
-
-    /**
      * Imposta la posizione dell'evento.
      *
      * @param luogo, la posizione dell'evento
@@ -164,7 +155,7 @@ public class Event {
      *
      * @param ora, l'ora dell'evento
      */
-    public void setOra(String ora){
+    public void setOra(String ora) {
         this.ora = ora;
     }
 
@@ -239,4 +230,5 @@ public class Event {
                 "Addetti = " + nomiAddetti + "\n" +
                 "}";
     }
+}
 
