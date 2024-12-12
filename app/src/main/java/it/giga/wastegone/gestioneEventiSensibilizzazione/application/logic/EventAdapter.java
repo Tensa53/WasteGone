@@ -70,7 +70,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
       intent.putExtra("date", event.getData());
       intent.putExtra("time", event.getOra());
       intent.putExtra("staff", event.getNomiAddetti());
-      intent.putExtra("status", event.getStato());
+      intent.putExtra("status", event.getStato().toString());
       intent.putExtra("location", event.getLuogo());
       context.startActivity(intent);
     });

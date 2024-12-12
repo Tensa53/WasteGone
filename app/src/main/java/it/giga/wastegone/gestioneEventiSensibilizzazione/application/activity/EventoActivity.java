@@ -15,7 +15,7 @@ import it.giga.wastegone.R;
 //classe che mostra i dettagli di un evento
 public class EventoActivity extends AppCompatActivity {
 
-    private TextView tvDescrizione, tvData, tvOra, tvAddetti, tvTitolo, tvStato, tvLuogo;
+    private TextView  tvData, tvOra, tvAddetti, tvTitolo, tvStato, tvLuogo;
     private Button btnIndietro;
 
     @Override
@@ -24,7 +24,6 @@ public class EventoActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_evento);
 
-        tvDescrizione = findViewById(R.id.tvDescrizione);
         tvAddetti = findViewById(R.id.tvAddetti);
         tvData = findViewById(R.id.tvData);
         tvOra = findViewById(R.id.tvOra);
