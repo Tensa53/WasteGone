@@ -176,6 +176,9 @@ public void controllaRegistrazione(String email, String password, String conferm
         if (minute < 0 || minute > 59) {
             throw new OrarioException("I minuti devono essere compresi tra 0 e 59.");
         }
+        if (hour < 5 || hour > 18) {
+            throw new OrarioException("L'orario deve essere compreso tra le 05:00 e le 18:00.");
+        }
     }
 
     /**
