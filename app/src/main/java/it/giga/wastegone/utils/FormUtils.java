@@ -162,5 +162,30 @@ public void controllaRegistrazione(String email, String password, String conferm
             super(message);
         }
     }
+    /**
+     * Controlla che l'orario sia valido.
+     *
+     * @param hour L'ora da controllare.
+     * @param minute I minuti da controllare.
+     * @throws OrarioException Se l'orario non è valido.
+     */
+    public void controllaOrario(int hour, int minute) throws OrarioException {
+        if (hour < 0 || hour > 23) {
+            throw new OrarioException("L'ora deve essere compresa tra 0 e 23.");
+        }
+        if (minute < 0 || minute > 59) {
+            throw new OrarioException("I minuti devono essere compresi tra 0 e 59.");
+        }
+    }
+
+    /**
+     * Eccezione lanciata quando l'orario non è valido.
+     */
+    public class OrarioException extends Exception {
+        public OrarioException(String message) {
+            super(message);
+        }
+    }
 }
+
 

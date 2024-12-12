@@ -23,6 +23,8 @@ import java.util.Calendar;
 
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneProfiloUtente.application.logic.NotificationLogic;
+import it.giga.wastegone.utils.FormUtils;
+import it.giga.wastegone.utils.FormUtils.OrarioException;
 
 /**
  * Activity per la gestione delle notifiche.
@@ -90,8 +92,15 @@ public class NotificationManagementActivity extends AppCompatActivity {
                 int hour = tpRifiutiDaConferire.getHour();
                 int minute = tpRifiutiDaConferire.getMinute();
 
-                // Programma la notifica con l'orario selezionato
-                scheduleNotification("Ci sono rifiuti da conferire", hour, minute);
+                // Controlla l'orario
+                FormUtils formUtils = new FormUtils();
+                try {
+                    formUtils.controllaOrario(hour, minute);
+                    // Programma la notifica con l'orario selezionato
+                    scheduleNotification("Ci sono rifiuti da conferire", hour, minute);
+                } catch (OrarioException e) {
+                    Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
