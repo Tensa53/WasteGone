@@ -99,7 +99,7 @@ public class FirebaseEventDAO {
    * @param data , data dell'evento desiderata.
    * @return Task < QuerySnapshot > un oggetto Task che contiene i risultati della query.
    */
-  public Task<QuerySnapshot> doRetrieveAllEventByData(Timestamp data) {
+  public Task<QuerySnapshot> doRetrieveAllEventByData(String data) {
     return db.collection(TABLE_NAME).whereEqualTo("data", data).get();
   }
 
