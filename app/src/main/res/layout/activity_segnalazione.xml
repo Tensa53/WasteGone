@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gestioneSmaltimentoRifiuti.application.activity.SegnalzioneActivity">
+    android:background="@color/wgreen"
+    tools:context=".gestioneSmaltimentoRifiuti.application.activity.SegnalazioneActivity">
 
     <!-- NavbarFragment -->
     <fragment
@@ -17,18 +18,20 @@
         tools:ignore="MissingConstraints" />
 
     <!-- Immagine in cima -->
+
+    <!-- Testo sotto l'immagine -->
+
     <ImageView
         android:id="@+id/imgHeader"
         android:layout_width="133dp"
         android:layout_height="119dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="48dp"
         android:contentDescription="Immagine decorativa"
         android:src="@drawable/allert_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/navbarFragment" />
 
-    <!-- Testo sotto l'immagine -->
     <TextView
         android:id="@+id/tvSegnalazione"
         android:layout_width="wrap_content"
@@ -37,10 +40,9 @@
         android:text="Segnalazione Discarica"
         android:textColor="#379F25"
         android:textSize="34sp"
-        app:layout_constraintTop_toBottomOf="@id/imgHeader"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@id/imgHeader" />
 
 
     <!-- CardView che contiene i campi -->
@@ -102,6 +104,23 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardDetails" />
+
+    <Button
+        android:id="@+id/btnIndietro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="154dp"
+        android:layout_marginBottom="39dp"
+        android:backgroundTint="@color/dgreen"
+        android:text="Indietro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSubmit"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

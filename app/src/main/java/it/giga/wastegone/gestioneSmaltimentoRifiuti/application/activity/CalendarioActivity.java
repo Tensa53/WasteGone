@@ -2,6 +2,8 @@ package it.giga.wastegone.gestioneSmaltimentoRifiuti.application.activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -27,6 +29,7 @@ public class CalendarioActivity extends AppCompatActivity {
   private CalendarioAdapter adapter;
   private List<Rifiuto> rifiutiList;
   private FirebaseRifiutoDAO rifiutoDao;
+  private Button btnIndietro;
 
   /**
    * Metodo chiamato durante la creazione dell'Activity.
@@ -49,10 +52,13 @@ public class CalendarioActivity extends AppCompatActivity {
             }
     );
 
+    btnIndietro = findViewById(R.id.btnIndietro);
     recyclerView = findViewById(R.id.recyclerViewCalendario);
     rifiutiList = new ArrayList<>();
     adapter = new CalendarioAdapter(this, rifiutiList);
     recyclerView.setAdapter(adapter);
+
+    btnIndietro.setOnClickListener(v -> finish());
 
     rifiutoDao = new FirebaseRifiutoDAO();
 
