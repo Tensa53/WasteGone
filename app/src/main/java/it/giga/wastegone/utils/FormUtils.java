@@ -1,5 +1,8 @@
 package it.giga.wastegone.utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -189,6 +192,77 @@ public void controllaRegistrazione(String email, String password, String conferm
             super(message);
         }
     }
+    /**
+     * Controlla che i campi della prenotazione siano validi.
+     *
+     * @param userId      l'ID dell'utente che effettua la prenotazione.
+     * @param description la descrizione dell'evento.
+     * @param date        la data dell'evento.
+     * @param hour        l'ora dell'evento.
+     * @throws PrenotazioneException se uno dei controlli fallisce.
+     */
+    public void controllaPrenotazione(String userId, String description, String date, String hour) throws PrenotazioneException {
+        if (userId == null || userId.isEmpty()) {
+            throw new PrenotazioneException("Il campo userId è obbligatorio e non può essere vuoto");
+        }
+        if(description.length()<=5 || description.length()>=72){
+            throw new PrenotazioneException("La descrizione deve essere lunga almeno 5 caratteri e non superare i 72 caratteri");
+
+        }
+
+        if (description == null || description.isEmpty()) {
+            throw new PrenotazioneException("Il campo descrizione è obbligatorio e non può essere vuoto");
+        }
+
+        if (date == null || date.isEmpty()) {
+            throw new PrenotazioneException("Il campo data è obbligatorio e non può essere vuoto");
+        }
+
+
+        if (hour == null || hour.isEmpty()) {
+            throw new PrenotazioneException("Il campo ora è obbligatorio e non può essere vuoto");
+        }
+
+        // Controllo formato data (dd/MM/yyyy)
+        if (!date.matches("\\d{2}/\\d{2}/\\d{4}")) {
+            throw new PrenotazioneException("La data deve essere nel formato dd/MM/yyyy");
+        }
+        // Controllo che la data sia maggiore della data corrente
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date prenotazioneDate = sdf.parse(date);
+            Date currentDate = new Date();
+            if (prenotazioneDate.before(currentDate)) {
+                throw new PrenotazioneException("La data della prenotazione deve essere successiva alla data corrente");
+            }
+        }catch (ParseException e){
+            throw new PrenotazioneException("Formato data non valido");
+        }
+
+        // Controllo formato ora (HH:mm)
+        if (!hour.matches("\\d{2}:\\d{2}")) {
+            throw new PrenotazioneException("L'ora deve essere nel formato HH:mm");
+        }
+        try {
+            SimpleDateFormat sdfHour = new SimpleDateFormat("HH:mm");
+            Date prenotazioneHour = sdfHour.parse(hour);
+            Date startHour = sdfHour.parse("10:00");
+            Date endHour = sdfHour.parse("18:00");
+            if (prenotazioneHour.before(startHour) || prenotazioneHour.after(endHour)) {
+                throw new PrenotazioneException("L'ora della prenotazione deve essere compresa tra le 10:00 e le 18:00");
+            }
+        } catch (ParseException e) {
+            throw new PrenotazioneException("Formato ora non valido");
+        }
+    }
+
+/**
+ * Eccezione lanciata quando i dati della prenotazione non sono validi.
+ */
+public class PrenotazioneException extends Exception {
+    public PrenotazioneException(String message) {
+        super(message);
+    }
 }
 
-
+}
