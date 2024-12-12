@@ -2,11 +2,37 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_option1"
-        android:title="Dashboard" />
+        android:title="Homepage" />
+
     <item
         android:id="@+id/menu_option2"
-        android:title="Impostazioni" />
+        android:title="Gestione Notifiche" />
+
     <item
         android:id="@+id/menu_option3"
+        android:title="Prenotazione a Domicilio" />
+
+    <item
+        android:id="@+id/menu_option4"
+        android:title="Gestione Tasse" />
+
+    <item
+        android:id="@+id/menu_option5"
+        android:title="Sezione Eventi" />
+
+    <item
+        android:id="@+id/menu_option6"
+        android:title="Calendario Rifiuti" />
+
+    <item
+        android:id="@+id/menu_option7"
+        android:title="Login" />
+    <item
+        android:id="@+id/menu_option8"
+        android:title="Registrati" />
+
+    <item
+        android:id="@+id/menu_option9"
         android:title="Logout" />
+
 </menu>

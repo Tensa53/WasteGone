@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradiente"
+    tools:context=".gestioneEventiSensibilizzazione.application.activity.SezioneEventiActivity">
+
+    <fragment
+        android:id="@+id/navbarFragment"
+        android:name="it.giga.wastegone.gestioneProfiloUtente.application.activity.NavbarFragment"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    <!-- RecyclerView per i riquadri -->
+
+    <TextView
+        android:id="@+id/tvTesto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="149dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="537dp"
+        android:text="Sezione Eventi"
+        android:textColor="#379F25"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivImmagine"
+        android:layout_width="148dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="592dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/event_icon" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewEventi"
+        android:layout_width="368dp"
+        android:layout_height="478dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="52dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivImmagine"
+        tools:listitem="@layout/item_event_card" />
+
+    <Button
+        android:id="@+id/btnIndietro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="163dp"
+        android:backgroundTint="@color/dgreen"
+        android:text="Indietro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewEventi" />
+</androidx.constraintlayout.widget.ConstraintLayout>

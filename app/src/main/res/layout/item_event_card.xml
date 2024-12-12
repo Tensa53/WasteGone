@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="361dp"
+        android:layout_height="225dp"
+        android:background="@color/beige"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/ivImmagine"
+            android:layout_width="326dp"
+            android:layout_height="119dp"
+            app:srcCompat="@drawable/event_placeholder" />
+
+        <TextView
+            android:id="@+id/tvTitolo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Event Title"
+            android:textColor="@color/lgreen"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvDescrizione"
+            android:layout_width="239dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Clicca qui per maggiori informazioni"
+            android:textColor="#88C7D4"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
