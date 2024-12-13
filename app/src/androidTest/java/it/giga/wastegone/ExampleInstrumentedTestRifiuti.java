@@ -141,6 +141,44 @@ public class ExampleInstrumentedTestRifiuti {
     }
 
     @Test
+    public void checkColoreNonUtilizzato() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.btColoreNonUtilizzato)).perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.tvValue)).check(matches(withText("NESSUN CONFERIMENTO")));
+    }
+
+    @Test
+    public void checkGiornoNonConferimento() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.btGiornoNonConferimento)).perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.tvValue)).check(matches(withText("NESSUN CONFERIMENTO")));
+    }
+
+    @Test
     public void checkGiorno1() {
         try {
             Thread.sleep(1000);
