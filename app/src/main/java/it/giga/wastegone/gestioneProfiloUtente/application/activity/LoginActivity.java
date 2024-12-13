@@ -18,7 +18,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import it.giga.wastegone.MainActivity;
 import it.giga.wastegone.R;
+import it.giga.wastegone.gestioneProfiloUtente.application.exception.LoginException;
 import it.giga.wastegone.gestioneProfiloUtente.application.logic.LoginRegisterLogic;
+import it.giga.wastegone.utils.FormUtils;
 
 
 /**
@@ -29,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
   private EditText etPassword;
   private Button btnLogin;
   private TextView tvRegistrati;
+  private FormUtils formUtils = new FormUtils();
 
   /**
    * Metodo chiamato alla creazione dell'activity.
@@ -60,15 +63,15 @@ public class LoginActivity extends AppCompatActivity {
         String email = etMail.getText().toString();
         String password = etPassword.getText().toString();
 
-        if (email.isEmpty() || password.isEmpty()) {
-          Toast.makeText(LoginActivity.this, "Compila entrambi i campi!",
-                  Toast.LENGTH_SHORT).show();
-        } else {
-          // Metodo da implementare
+        try {
+          formUtils.controllaLogin(email, password);
           onLoginClicked(email, password);
+        } catch (LoginException e) {
+          Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
       }
-    });
+    }
+    );
 
     // Quando viene premuto il testo "Registrati" viene aperta la schermata di registrazione
     tvRegistrati.setOnClickListener(new View.OnClickListener() {

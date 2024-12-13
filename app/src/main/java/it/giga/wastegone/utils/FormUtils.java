@@ -29,6 +29,10 @@ public class FormUtils {
         if (email.length() > 40)
             throw new LoginException("L'indirizzo email deve contenre al massimo 40 caratteri");
 
+        if(email.length()<6)
+            throw new LoginException("L'indirizzo email deve contenere almeno 6 caratteri");
+
+
         Pattern pattern = Pattern.compile("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$");
         Matcher matcher = pattern.matcher(email);
 
@@ -41,11 +45,14 @@ public class FormUtils {
         if (password.length() > 14)
             throw new LoginException("La password non deve superare i 14 caratteri");
 
+        if (password.length() < 8)
+            throw new LoginException("La password deve essere lunga almeno 8 caratteri");
+
         Pattern pattern1 = Pattern.compile("(?=.*[!@#$%^&*])(?=.*\\d)(?=.*[A-Z]).{8,}");
         Matcher matcher1 = pattern1.matcher(password);
 
         if (!matcher1.matches())
-            throw new LoginException("La password deve essere lunga almeno 8 caratteri, con almeno una lettera maiuscola, un numero e un carattere speciale");
+            throw new LoginException("La password deve essere in un formato valido");
     }
 
     /**
@@ -172,8 +179,11 @@ public void controllaRegistrazione(String email, String password, String conferm
      * @param minute I minuti da controllare.
      * @throws OrarioException Se l'orario non è valido.
      */
-    public void controllaOrario(int hour, int minute) throws OrarioException {
-        if (hour < 0 || hour > 23) {
+    public void controllaOrario(int hour, int minute, boolean isChecked) throws OrarioException {
+        if(isChecked == false){
+            throw new OrarioException("Seleziona l'orario per la notifica");
+        }
+        if (hour < 0 || hour > 23 ) {
             throw new OrarioException("L'ora deve essere compresa tra 0 e 23.");
         }
         if (minute < 0 || minute > 59) {

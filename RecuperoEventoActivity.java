@@ -5,30 +5,25 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.storage.dataAccess.FirebaseEventDAO;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity.Event;
 
-/**
- * Activity per il recupero e la visualizzazione degli eventi salvati su Firestore in base al loro stato.
- * Permette agli utenti di filtrare e visualizzare gli eventi con stato "IN_CORSO", "TERMINATO" o "IN_PROGRAMMA".
- * Funzionalità principali:
- * - Recupero dei dati da Firestore tramite il DAO FirebaseEventDAO.
- * - Visualizzazione dei risultati nella TextView associata.
- * - Gestione degli stati degli eventi tramite pulsanti dedicati.
- */
-
 public class RecuperoEventoActivity extends AppCompatActivity {
+
     TextView tvValue;
     Button btStatoEvento1;
     Button btStatoEvento2;
@@ -66,15 +61,14 @@ public class RecuperoEventoActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            if (task.getResult().isEmpty()) {
+                            if (task.getResult().isEmpty()){
                                 tvValue.setText("NESSUN EVENTO");
                             } else {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     try {
                                         tvValue.setText("" + document.get("data"));
                                     } catch (Exception e) {
-                                        Log.e("FirestoreError",
-                                                "Errore nel parsing del documento: ", e);
+                                        Log.e("FirestoreError", "Errore nel parsing del documento: ", e);
                                     }
                                 }
                             }
@@ -95,7 +89,7 @@ public class RecuperoEventoActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            if (task.getResult().isEmpty()) {
+                            if (task.getResult().isEmpty()){
                                 tvValue.setText("NESSUN EVENTO");
                             } else {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
@@ -123,7 +117,7 @@ public class RecuperoEventoActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            if (task.getResult().isEmpty()) {
+                            if (task.getResult().isEmpty()){
                                 tvValue.setText("NESSUN EVENTO");
                             } else {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
