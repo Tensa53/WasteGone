@@ -11,7 +11,6 @@ import org.junit.Test;
 public class VerificaOrarioRifiutiTest6 {
 
 
-
   @Test
 
   public void testOrarioRifiuti() {
