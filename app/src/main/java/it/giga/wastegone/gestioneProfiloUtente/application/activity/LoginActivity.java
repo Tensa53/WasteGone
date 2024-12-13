@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import it.giga.wastegone.MainActivity;
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneProfiloUtente.application.exception.LoginException;
@@ -32,6 +33,10 @@ public class LoginActivity extends AppCompatActivity {
   private Button btnLogin;
   private TextView tvRegistrati;
   private FormUtils formUtils = new FormUtils();
+  private Boolean result;
+  private LoginRegisterLogic loginRegisterLogic;
+  private FirebaseAuth auth;
+
 
   /**
    * Metodo chiamato alla creazione dell'activity.
@@ -96,26 +101,38 @@ public class LoginActivity extends AppCompatActivity {
    * @param email    l'email inserita dall'utente
    * @param password la password inserita dall'utente
    */
-  private void onLoginClicked(String email, String password) {
-    LoginRegisterLogic loginRegisterLogic = new LoginRegisterLogic();
+
+  public void onLoginClicked(String email, String password) {
+    // Usa loginRegisterLogic iniettato
     loginRegisterLogic.loginUser(email, password)
             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
               @Override
               public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-
                   Toast.makeText(LoginActivity.this,
                           "Login avvenuto con successo", Toast.LENGTH_SHORT).show();
+                  result = true;
                   Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                   startActivity(intent);
-
-
-
                 } else {
                   Toast.makeText(LoginActivity.this,
                           "Errore nel login dell' utente", Toast.LENGTH_SHORT).show();
+                  result = false;
                 }
               }
             });
   }
+
+  public boolean getResult() {
+    return result;
+  }
+
+  public void setAuth(FirebaseAuth auth) {
+    this.auth = auth;
+  }
+
+  public void setLoginRegisterLogic(LoginRegisterLogic loginRegisterLogic) {
+    this.loginRegisterLogic = loginRegisterLogic;
+  }
+
 }
