@@ -1,7 +1,7 @@
 package it.giga.wastegone.gestioneSmaltimentoRifiuti.VerificaOrarioRifiuti;
 
 import static org.junit.Assert.assertFalse;
-
+import static org.junit.Assert.assertTrue;
 
 
 import org.junit.Test;
@@ -17,7 +17,7 @@ public class VerificaOrarioRifiutiTest6 {
   public void testOrarioRifiuti() {
     Integer hour = 07;
     Integer minute = 00;
-    boolean isChecked = false;
+    boolean isChecked = true;
 
 
 
@@ -26,7 +26,7 @@ public class VerificaOrarioRifiutiTest6 {
 
 
 
-    assertFalse(verificaOrarioRifiutiMethod.VerificaOrarioRifiuti(hour, minute, isChecked));
+    assertTrue(verificaOrarioRifiutiMethod.VerificaOrarioRifiuti(hour, minute, isChecked));
 
   }
 
