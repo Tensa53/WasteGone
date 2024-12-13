@@ -61,6 +61,20 @@
         android:textSize="25dp" />
 
     <Button
+        android:id="@+id/btColoreNonUtilizzato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Colore Non Utilizzato"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btGiornoNonConferimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Giorno Non conferimento"
+        android:textSize="25dp" />
+
+    <Button
         android:id="@+id/btGiornoRifiuto1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -101,5 +115,6 @@
         android:layout_height="wrap_content"
         android:text="Test Giorno Rifiuto 6"
         android:textSize="25dp" />
+
 
 </LinearLayout>
