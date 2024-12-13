@@ -26,7 +26,7 @@
             android:layout_gravity="start"
             android:layout_marginEnd="16dp"
             android:contentDescription="Logo"
-            app:srcCompat="@drawable/logo_white"
+            app:srcCompat="@drawable/logo_lwhite"
             tools:ignore="HardcodedText" />
 
         <!-- Title -->
