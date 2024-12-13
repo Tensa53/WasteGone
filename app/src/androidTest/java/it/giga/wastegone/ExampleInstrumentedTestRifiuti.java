@@ -5,7 +5,6 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.junit.Assert.assertEquals;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -25,11 +24,10 @@ import it.giga.wastegone.gestioneSmaltimentoRifiuti.RecuperoRifiutoActivity;
 public class ExampleInstrumentedTestRifiuti {
 
     @Rule
-    public ActivityScenarioRule<RecuperoRifiutoActivity> activityScenarioRule = new ActivityScenarioRule<RecuperoRifiutoActivity>(RecuperoRifiutoActivity.class);
+    public ActivityScenarioRule<RecuperoRifiutoActivity> activityScenarioRule = new ActivityScenarioRule<>(RecuperoRifiutoActivity.class);
 
     @Test
     public void checkColore1() {
-
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -45,16 +43,105 @@ public class ExampleInstrumentedTestRifiuti {
         }
 
         onView(withId(R.id.tvValue)).check(matches(withText("PLASTICA")));
-
     }
 
     @Test
     public void checkColore2() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.btColoreRifiuto2)).perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.tvValue)).check(matches(withText("CARTA")));
+    }
+
+    @Test
+    public void checkColore3() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.btColoreRifiuto3)).perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.tvValue)).check(matches(withText("INDIFFERENZIATA")));
+    }
+
+    @Test
+    public void checkColore4() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.btColoreRifiuto4)).perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.tvValue)).check(matches(withText("UMIDO")));
+    }
+
+    @Test
+    public void checkColore5() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.btColoreRifiuto5)).perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.tvValue)).check(matches(withText("ALLUMINIO")));
+    }
+
+    @Test
+    public void checkColore6() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.btColoreRifiuto6)).perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.tvValue)).check(matches(withText("VETRO")));
     }
 
     @Test
     public void checkGiorno1() {
-
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -70,12 +157,100 @@ public class ExampleInstrumentedTestRifiuti {
         }
 
         onView(withId(R.id.tvValue)).check(matches(withText("PLASTICA")));
-
     }
 
     @Test
     public void checkGiorno2() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.btGiornoRifiuto2)).perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.tvValue)).check(matches(withText("CARTA")));
     }
 
+    @Test
+    public void checkGiorno3() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
+        onView(withId(R.id.btGiornoRifiuto3)).perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.tvValue)).check(matches(withText("INDIFFERENZIATA")));
+    }
+
+    @Test
+    public void checkGiorno4() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.btGiornoRifiuto4)).perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.tvValue)).check(matches(withText("UMIDO")));
+    }
+
+    @Test
+    public void checkGiorno5() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.btGiornoRifiuto5)).perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.tvValue)).check(matches(withText("ALLUMINIO")));
+    }
+
+    @Test
+    public void checkGiorno6() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.btGiornoRifiuto6)).perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.tvValue)).check(matches(withText("VETRO")));
+    }
 }
