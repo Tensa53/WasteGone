@@ -15,7 +15,7 @@ import it.giga.wastegone.R;
 //classe che mostra i dettagli di un evento
 public class EventoActivity extends AppCompatActivity {
 
-    private TextView  tvData, tvOra, tvAddetti, tvTitolo, tvStato, tvLuogo;
+    private TextView  tvData, tvOra, tvAddetti, tvTitolo, tvStato, tvLuogo, tvDescrizione;
     private Button btnIndietro;
 
     @Override
@@ -30,6 +30,7 @@ public class EventoActivity extends AppCompatActivity {
         tvTitolo = findViewById(R.id.tvNome);
         tvStato = findViewById(R.id.tvStato);
         tvLuogo = findViewById(R.id.tvLuogo);
+        tvDescrizione = findViewById(R.id.tvDescrizione);
         btnIndietro = findViewById(R.id.btnIndietro);
 
         // Configura il tasto per tornare indietro
@@ -38,7 +39,7 @@ public class EventoActivity extends AppCompatActivity {
         // Imposta i dati dell'evento
         Intent intent = getIntent();
         tvTitolo.setText(intent.getStringExtra("title"));
-        //tvDescrizione.setText(intent.getStringExtra("description"));
+        tvDescrizione.setText(intent.getStringExtra("description"));
         tvData.setText(intent.getStringExtra("date"));
         tvOra.setText(intent.getStringExtra("time"));
         tvAddetti.setText(intent.getStringExtra("staff"));
