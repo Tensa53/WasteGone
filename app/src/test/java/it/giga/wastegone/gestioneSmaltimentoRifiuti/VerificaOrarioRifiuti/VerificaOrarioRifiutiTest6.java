@@ -14,10 +14,10 @@ public class VerificaOrarioRifiutiTest6 {
 
   @Test
 
-  public void testOrarioRfiuti() {
+  public void testOrarioRifiuti() {
     Integer hour = 07;
     Integer minute = 00;
-    boolean isChecked = true;
+    boolean isChecked = false;
 
 
 
