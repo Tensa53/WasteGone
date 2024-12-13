@@ -18,7 +18,7 @@ import it.giga.wastegone.R;
  */
 public class EventoActivity extends AppCompatActivity {
 
-  private TextView  tvData, tvOra, tvAddetti, tvTitolo, tvStato, tvLuogo;
+  private TextView  tvData, tvOra, tvAddetti, tvTitolo, tvStato, tvLuogo, tvDescrizione;
   private Button btnIndietro;
 
   @Override
@@ -34,6 +34,7 @@ public class EventoActivity extends AppCompatActivity {
     tvTitolo = findViewById(R.id.tvNome);
     tvStato = findViewById(R.id.tvStato);
     tvLuogo = findViewById(R.id.tvLuogo);
+    tvDescrizione = findViewById(R.id.tvDescrizione);
     btnIndietro = findViewById(R.id.btnIndietro);
 
     // Configura il tasto per tornare indietro
@@ -47,6 +48,7 @@ public class EventoActivity extends AppCompatActivity {
     tvAddetti.setText(intent.getStringExtra("staff"));
     tvStato.setText(intent.getStringExtra("status"));
     tvLuogo.setText(intent.getStringExtra("location"));
+    tvDescrizione.setText(intent.getStringExtra("description"));
 
     ViewCompat.setOnApplyWindowInsetsListener(
                 findViewById(R.id.main),

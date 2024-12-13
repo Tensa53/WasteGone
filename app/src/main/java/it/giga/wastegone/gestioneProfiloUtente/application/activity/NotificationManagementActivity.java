@@ -6,6 +6,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class NotificationManagementActivity extends AppCompatActivity {
   private TimePicker tpRifiutiDaConferire;
   private Switch swEventi, swTasse, swRifiuti, swPunti;
   private Button btnIndietro;
+  private SharedPreferences sharedPreferences;
 
   /**
    * Metodo chiamato alla creazione dell'activity.
@@ -42,6 +44,9 @@ public class NotificationManagementActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     EdgeToEdge.enable(this);
     setContentView(R.layout.activity_notification);
+
+    sharedPreferences = getSharedPreferences("NotificationPrefs", Context.MODE_PRIVATE);
+
 
     // Richiedi permessi per notifiche (Android 13+)
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -60,23 +65,32 @@ public class NotificationManagementActivity extends AppCompatActivity {
     btnIndietro = findViewById(R.id.btnIndietro);
     tpRifiutiDaConferire = findViewById(R.id.tpRifiutiDaConferire);
 
+    // Restore switch states from SharedPreferences
+    swEventi.setChecked(sharedPreferences.getBoolean("swEventi", false));
+    swTasse.setChecked(sharedPreferences.getBoolean("swTasse", false));
+    swRifiuti.setChecked(sharedPreferences.getBoolean("swRifiuti", false));
+    swPunti.setChecked(sharedPreferences.getBoolean("swPunti", false));
+
     // Torna indietro al clic sul pulsante
     btnIndietro.setOnClickListener(v -> finish());
 
     // Configura notifiche per altri switch con orario statico
     swEventi.setOnCheckedChangeListener((buttonView, isChecked) -> {
+      sharedPreferences.edit().putBoolean("swEventi", isChecked).apply();
       if (isChecked) {
         scheduleNotification("C'è un evento di sensibilizzazione", 10, 0); // Orario statico
       }
     });
 
     swTasse.setOnCheckedChangeListener((buttonView, isChecked) -> {
+      sharedPreferences.edit().putBoolean("swTasse", isChecked).apply();
       if (isChecked) {
         scheduleNotification("Ci sono delle tasse in scadenza", 14, 37); // Orario statico
       }
     });
 
     swPunti.setOnCheckedChangeListener((buttonView, isChecked) -> {
+      sharedPreferences.edit().putBoolean("swPunti", isChecked).apply();
       if (isChecked) {
         scheduleNotification("C'è un nuovo punto di ritiro", 15, 0); // Orario statico
       }
@@ -84,6 +98,7 @@ public class NotificationManagementActivity extends AppCompatActivity {
 
     // Configura la notifica per i rifiuti usando il TimePicker
     swRifiuti.setOnCheckedChangeListener((buttonView, isChecked) -> {
+      sharedPreferences.edit().putBoolean("swRifiuti", isChecked).apply();
       if (isChecked) {
         // Ottieni l'ora e i minuti dal TimePicker
         int hour = tpRifiutiDaConferire.getHour();
