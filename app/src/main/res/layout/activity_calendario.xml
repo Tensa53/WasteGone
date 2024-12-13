@@ -22,8 +22,8 @@
     <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCalendario"
-        android:layout_width="410dp"
-        android:layout_height="471dp"
+        android:layout_width="407dp"
+        android:layout_height="570dp"
         android:padding="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
