@@ -60,6 +60,10 @@ public class LoginActivity extends AppCompatActivity {
       return insets;
     });
 
+
+    // Initialize LoginRegisterLogic
+    loginRegisterLogic = new LoginRegisterLogic();
+
     // Quando viene premuto il bottone accedi vengono inviate le informazioni del form al metodo
     // che permette il login
     btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         try {
           formUtils.controllaLogin(email, password);
           onLoginClicked(email, password);
-        } catch (LoginException e) {
+        } catch (FormUtils.LoginCampiException e) {
           Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
       }
