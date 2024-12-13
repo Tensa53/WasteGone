@@ -15,41 +15,41 @@ import java.util.regex.Pattern;
  */
 public class FormUtils {
 
-    /**
-     * Controlla che l'email rispetti i requisiti di lunghezza e formato.
-     *
-     * @param email L'email da controllare.
-     * @param password La password da controllare.
-     * @throws LoginException Se uno dei controlli fallisce.
-     */
-    public void controllaLogin(String email, String password) throws LoginException {
-        if (email.length() == 0)
-            throw new LoginException("Il campo email è obbligatorio e non può essere vuoto");
+  /**
+   * Controlla che l'email rispetti i requisiti di lunghezza e formato.
+   *
+   * @param email L'email da controllare.
+   * @param password La password da controllare.
+   * @throws LoginException Se uno dei controlli fallisce.
+   */
+  public void controllaLogin(String email, String password) throws LoginException {
+    if (email.length() == 0) {
+      throw new LoginException("Il campo email è obbligatorio e non può essere vuoto");
+    }
+    if (email.length() > 40) {
+      throw new LoginException("L'indirizzo email deve contenre al massimo 40 caratteri");
+    }
+    if (email.length() < 6) {
+      throw new LoginException("L'indirizzo email deve contenere almeno 6 caratteri");
+    }
 
-        if (email.length() > 40)
-            throw new LoginException("L'indirizzo email deve contenre al massimo 40 caratteri");
+    Pattern pattern = Pattern.compile("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$");
+    Matcher matcher = pattern.matcher(email);
 
-        if(email.length()<6)
-            throw new LoginException("L'indirizzo email deve contenere almeno 6 caratteri");
-
-
-        Pattern pattern = Pattern.compile("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$");
-        Matcher matcher = pattern.matcher(email);
-
-        if (!matcher.matches())
-            throw new LoginException("L'indirizzo email deve essere in un formato valido");
-
-        if (password.length() == 0)
-            throw new LoginException("Il campo password è obbligatorio e non può essere vuoto");
-
-        if (password.length() > 14)
-            throw new LoginException("La password non deve superare i 14 caratteri");
-
-        if (password.length() < 8)
-            throw new LoginException("La password deve essere lunga almeno 8 caratteri");
-
-        Pattern pattern1 = Pattern.compile("(?=.*[!@#$%^&*])(?=.*\\d)(?=.*[A-Z]).{8,}");
-        Matcher matcher1 = pattern1.matcher(password);
+    if (!matcher.matches()) {
+      throw new LoginException("L'indirizzo email deve essere in un formato valido");
+    }
+    if (password.length() == 0) {
+      throw new LoginException("Il campo password è obbligatorio e non può essere vuoto");
+    }
+    if (password.length() > 14) {
+      throw new LoginException("La password non deve superare i 14 caratteri");
+    }
+    if (password.length() < 8) {
+      throw new LoginException("La password deve essere lunga almeno 8 caratteri");
+    }
+    Pattern pattern1 = Pattern.compile("(?=.*[!@#$%^&*])(?=.*\\d)(?=.*[A-Z]).{8,}");
+    Matcher matcher1 = pattern1.matcher(password);
 
     if (!matcher1.matches()) {
       throw new LoginException("La password deve essere in un formato valido");
