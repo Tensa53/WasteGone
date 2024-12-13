@@ -45,7 +45,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="339dp"
+            android:layout_height="394dp"
             android:orientation="vertical"
             android:padding="16dp">
 
@@ -60,21 +60,21 @@
             <TextView
                 android:id="@+id/tvLuogo"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="37dp"
                 android:text="Luogo"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tvData"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="12/22/1980"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tvOra"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:text="10:00"
                 android:textSize="16sp" />
 
@@ -86,13 +86,21 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/tvDescrizione"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:text="Programmazione"
+                android:textSize="16sp" />
+
+            <TextView
                 android:id="@+id/tvAddetti"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="85dp"
                 android:text="Addetti"
                 android:textSize="16sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
 
     <Button
         android:id="@+id/btnIndietro"

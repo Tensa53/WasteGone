@@ -1,6 +1,5 @@
 package it.giga.wastegone.gestioneProfiloUtente.application.activity;
 
-import it.giga.wastegone.MainActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import it.giga.wastegone.MainActivity;
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneProfiloUtente.application.logic.LoginRegisterLogic;
 
