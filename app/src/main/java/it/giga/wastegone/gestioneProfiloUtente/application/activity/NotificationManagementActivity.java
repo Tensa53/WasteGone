@@ -107,7 +107,7 @@ public class NotificationManagementActivity extends AppCompatActivity {
         // Controlla l'orario
         FormUtils formUtils = new FormUtils();
         try {
-          formUtils.controllaOrario(hour, minute);
+          formUtils.controllaOrario(hour, minute, isChecked);
           // Programma la notifica con l'orario selezionato
           scheduleNotification("Ci sono rifiuti da conferire", hour, minute);
         } catch (OrarioException e) {
