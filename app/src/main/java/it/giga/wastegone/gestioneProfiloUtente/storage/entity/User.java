@@ -5,9 +5,24 @@ package it.giga.wastegone.gestioneProfiloUtente.storage.entity;
  * Un utente è caratterizzato da un nome. cognome, email, data di nascita e indirizzo.
  */
 public class User {
+  /**
+   * Il nome dell'utente.
+   */
   private String nome;
+
+  /**
+   * Il cognome dell'utente.
+   */
   private String cognome;
+
+  /**
+   * L'email dell'utente.
+   */
   private String email;
+
+  /**
+   * L'indirizzo dell'utente.
+   */
   private String indirizzo;
 
 
