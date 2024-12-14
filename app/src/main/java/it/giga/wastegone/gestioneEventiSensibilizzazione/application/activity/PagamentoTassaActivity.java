@@ -92,7 +92,7 @@ public class PagamentoTassaActivity extends AppCompatActivity {
       firebaseTassaDAO.doRetrieveTassaById(tassaId).addOnSuccessListener(documentSnapshot -> {
         Tassa tassa = documentSnapshot.toObject(Tassa.class);
         if (tassa != null) {
-          tassa.setPagato(true);
+          tassa.setIsPagato(true);
           firebaseTassaDAO.doUpdateTassa(tassa, tassaId)
                   .addOnSuccessListener(a -> {
                     Toast.makeText(this, "Pagamento effettuato con successo",

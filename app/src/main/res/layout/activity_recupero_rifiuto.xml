@@ -33,6 +33,48 @@
         android:textSize="25dp" />
 
     <Button
+        android:id="@+id/btColoreRifiuto3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Colore Rifiuto 3"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btColoreRifiuto4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Colore Rifiuto 4"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btColoreRifiuto5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Colore Rifiuto 5"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btColoreRifiuto6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Colore Rifiuto 6"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btColoreNonUtilizzato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Colore Non Utilizzato"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btGiornoNonConferimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Giorno Non conferimento"
+        android:textSize="25dp" />
+
+    <Button
         android:id="@+id/btGiornoRifiuto1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,5 +87,34 @@
         android:layout_height="wrap_content"
         android:text="Test Giorno Rifiuto 2"
         android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btGiornoRifiuto3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Giorno Rifiuto 3"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btGiornoRifiuto4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Giorno Rifiuto 4"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btGiornoRifiuto5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Giorno Rifiuto 5"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btGiornoRifiuto6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Giorno Rifiuto 6"
+        android:textSize="25dp" />
+
 
 </LinearLayout>

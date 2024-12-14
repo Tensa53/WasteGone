@@ -27,7 +27,7 @@ import it.giga.wastegone.gestioneEventiSensibilizzazione.RecuperoEventoActivity;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTestEvento {
+public class InstrumentedTestEventoTerminato {
 
     @Rule
     public ActivityScenarioRule<RecuperoEventoActivity> activityScenarioRule = new ActivityScenarioRule<RecuperoEventoActivity>(RecuperoEventoActivity.class);
@@ -35,16 +35,9 @@ public class ExampleInstrumentedTestEvento {
     TextView tvValue;
 
     @Test
-    public void checkStato1() {
+    public void checkStato() {
 
         // recupero data odierna invece di utilizzare data fissata
-
-        // prima
-        //String data1 = "11/12/2024";
-        //DateTimeFormatter f = DateTimeFormatter.ofPattern( "dd/MM/yyyy" );
-        //LocalDate ldt1 = LocalDate.parse(data1, f);
-
-        // dopo
         LocalDate data1 = LocalDate.now();
         DateTimeFormatter f = DateTimeFormatter.ofPattern( "dd/MM/yyyy" );
         LocalDate ldt1 = LocalDate.parse(data1.format(f), f);
@@ -55,7 +48,7 @@ public class ExampleInstrumentedTestEvento {
             throw new RuntimeException(e);
         }
 
-        onView(withId(R.id.btStatoEvento1)).perform(click());
+        onView(withId(R.id.btStatoEvento3)).perform(click());
 
         try {
             Thread.sleep(1000);
@@ -72,7 +65,8 @@ public class ExampleInstrumentedTestEvento {
 
         LocalDate ldt2 = LocalDate.parse(data2[0], f);
 
-        assertTrue(ldt2.isAfter(ldt1));
+        // la data deve essere nel passato
+        assertTrue(ldt2.isBefore(ldt1));
 
     }
 }
