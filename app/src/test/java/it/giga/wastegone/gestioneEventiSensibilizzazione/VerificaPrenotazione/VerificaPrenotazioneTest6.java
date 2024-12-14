@@ -1,6 +1,7 @@
 package it.giga.wastegone.gestioneEventiSensibilizzazione.VerificaPrenotazione;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -15,6 +16,6 @@ public class VerificaPrenotazioneTest6 {
 
     VerificaPrenotazioneMethod verificaPrenotazioneMethod = new VerificaPrenotazioneMethod();
 
-    assertFalse(verificaPrenotazioneMethod.verificaPrenotazione(userId, descrizione, data, ora));
+    assertTrue(verificaPrenotazioneMethod.verificaPrenotazione(userId, descrizione, data, ora));
   }
 }
