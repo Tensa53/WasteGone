@@ -126,8 +126,22 @@ public class FormUtils {
       throw new CampiException("Inserire un indirizzo.");
     }
     if (indirizzo.length() > 20) {
-      throw new CampiException("L'indirizzo non deve superare 50 caratteri.");
+      throw new CampiException("L'indirizzo non deve superare 20 caratteri.");
     }
+
+    Pattern pattern
+            = Pattern.compile("^(?=.{1,20}$)[a-zA-Z0-9 ]{1,7}\\s+[a-zA-Z0-9 ]{1,10}\\s+\\d{1,3}$");
+    Matcher matcher = pattern.matcher(indirizzo);
+
+    if (!matcher.matches()) {
+      throw new CampiException("L'indirizzo deve essere in un formato valido, "
+              + "il qualificatore deve avere un massimo di 7 caratteri, "
+              + "il nome della via un massimo di 10 caratteri "
+              + "e il numero civico un massimo di 3 cifre.");
+    }
+
+
+
   }
   /**
    * Controlla che i dati della carta di credito siano validi.
