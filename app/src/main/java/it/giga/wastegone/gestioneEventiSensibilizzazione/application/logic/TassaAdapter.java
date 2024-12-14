@@ -52,12 +52,12 @@ public class TassaAdapter extends RecyclerView.Adapter<TassaAdapter.TassaViewHol
     Tassa tassa = tasseList.get(position);
     holder.tvImporto.setText("Importo: €" + tassa.getImporto());
     holder.tvScadenza.setText("Scadenza: " + tassa.getDataScadenza());
-    holder.tvStato.setText(tassa.isPagato() ? "Pagata" : "Non pagata");
-    holder.tvStato.setTextColor(context.getResources().getColor(tassa.isPagato()
+    holder.tvStato.setText(tassa.getIsPagato() ? "Pagata" : "Non pagata");
+    holder.tvStato.setTextColor(context.getResources().getColor(tassa.getIsPagato()
             ? android.R.color.holo_green_dark
             : android.R.color.holo_red_dark));
 
-    if (!tassa.isPagato()) {
+    if (!tassa.getIsPagato()) {
       holder.btnPaga.setVisibility(View.VISIBLE);
       holder.btnPaga.setOnClickListener(v -> {
         Intent intent = new Intent(context, PagamentoTassaActivity.class);

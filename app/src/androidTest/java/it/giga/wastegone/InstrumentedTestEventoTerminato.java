@@ -48,7 +48,7 @@ public class InstrumentedTestEventoTerminato {
             throw new RuntimeException(e);
         }
 
-        onView(withId(R.id.btStatoEvento1)).perform(click());
+        onView(withId(R.id.btStatoEvento3)).perform(click());
 
         try {
             Thread.sleep(1000);

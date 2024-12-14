@@ -19,6 +19,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import it.giga.wastegone.R;
+import it.giga.wastegone.gestioneProfiloUtente.application.exception.CampiException;
 import it.giga.wastegone.gestioneProfiloUtente.application.exception.RegistrazioneException;
 import it.giga.wastegone.gestioneProfiloUtente.application.logic.LoginRegisterLogic;
 import it.giga.wastegone.gestioneProfiloUtente.storage.entity.User;
@@ -112,7 +113,7 @@ public class RegisterActivity extends AppCompatActivity {
     try {
       FormUtils formUtils = new FormUtils();
       formUtils.controllaRegistrazione(email, password, confermaPassword);
-
+      formUtils.controllaAltriCampi(nome, cognome, indirizzo);
       LoginRegisterLogic loginRegisterLogic = new LoginRegisterLogic();
 
       loginRegisterLogic.createUser(email, password).addOnCompleteListener(new
@@ -144,6 +145,8 @@ public class RegisterActivity extends AppCompatActivity {
         }
       });
     } catch (RegistrazioneException e) {
+      Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+    } catch (CampiException e) {
       Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
     }
   }

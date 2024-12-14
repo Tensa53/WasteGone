@@ -53,7 +53,7 @@
             android:layout_marginTop="4dp"
             android:text="Orario: 08:00 - 10:00"
             android:textSize="16sp"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@android:color/black" />
 
         <!-- Istruzioni -->
         <TextView
@@ -63,6 +63,6 @@
             android:layout_marginTop="4dp"
             android:text="Istruzioni: Deposita nel bidone giallo."
             android:textSize="14sp"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@android:color/black" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

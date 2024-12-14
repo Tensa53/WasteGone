@@ -134,17 +134,17 @@ public class Tassa {
      *
      * @return boolean, True se la tassa è stata pagata, false altrimenti.
      */
-    public boolean isPagato() {
+    public boolean getIsPagato() {
         return isPagato;
     }
 
     /**
      * Imposta l'indicatore se la tassa è stata pagata o meno.
      *
-     * @param pagato, L'indicatore se la tassa è stata pagata o meno.
+     * @param isPagato, L'indicatore se la tassa è stata pagata o meno.
      */
-    public void setPagato(boolean pagato) {
-        isPagato = pagato;
+    public void setIsPagato(boolean isPagato) {
+        this.isPagato = isPagato;
     }
 
     /**
