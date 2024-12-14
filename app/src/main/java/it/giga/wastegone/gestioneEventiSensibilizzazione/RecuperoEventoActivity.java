@@ -33,7 +33,7 @@ public class RecuperoEventoActivity extends AppCompatActivity {
     Button btStatoEvento1;
     Button btStatoEvento2;
     Button btStatoEvento3;
-    Button btStatoEvento4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +51,10 @@ public class RecuperoEventoActivity extends AppCompatActivity {
         tvValue = findViewById(R.id.tvValue);
         // Stato in corso (IN_CORSO)
         btStatoEvento1 = findViewById(R.id.btStatoEvento1);
-        // Stato sospeso (SOSPESO) - Non implementato poiche' non ci sono vincoli di validazione
-        //btStatoEvento2 = findViewById(R.id.btStatoEvento2);
         // Stato terminato (TERMINATO)
-        btStatoEvento3 = findViewById(R.id.btStatoEvento3);
+        btStatoEvento2 = findViewById(R.id.btStatoEvento2);
         // Stato in programma (IN_PROGRAMMA)
-        btStatoEvento4 = findViewById(R.id.btStatoEvento4);
+        btStatoEvento3 = findViewById(R.id.btStatoEvento3);
 
         // recupero data eventi in corso
         btStatoEvento1.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +86,7 @@ public class RecuperoEventoActivity extends AppCompatActivity {
         });
 
         // recupero data eventi terminati
-        btStatoEvento3.setOnClickListener(new View.OnClickListener() {
+        btStatoEvento2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 firebaseEventDAO.doRetrieveAllEventByStato(Event.Stato.TERMINATO).addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -116,7 +114,7 @@ public class RecuperoEventoActivity extends AppCompatActivity {
         });
 
         // recupero data eventi in programma
-        btStatoEvento4.setOnClickListener(new View.OnClickListener() {
+        btStatoEvento3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 firebaseEventDAO.doRetrieveAllEventByStato(Event.Stato.IN_PROGRAMMA).addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

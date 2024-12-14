@@ -471,7 +471,7 @@ public class RecuperoRifiutoActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                           if (task.getResult().isEmpty()) {
-                            tvValue.setText("NON CONFERIMENTO");
+                            tvValue.setText("NESSUN CONFERIMENTO");
                           } else {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                               try {
