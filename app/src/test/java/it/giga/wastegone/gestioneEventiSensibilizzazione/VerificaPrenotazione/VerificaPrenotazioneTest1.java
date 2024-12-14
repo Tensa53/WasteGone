@@ -4,8 +4,6 @@ import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
-import it.giga.wastegone.gestioneEventiSensibilizzazione.VerificaTassa.VerificaTassaMethod;
-
 public class VerificaPrenotazioneTest1 {
 
   @Test
