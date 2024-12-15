@@ -1,6 +1,6 @@
 package it.giga.wastegone.gestioneEventiSensibilizzazione.VerificaTassa;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -10,13 +10,13 @@ public class VerificaTassaTest14 {
     public void testTassa() {
         String nome = "Giovanni";
         String cognome= "Verdi";
-        String numeroCarta = "1111-2222-3333-4444";
+        String numeroCarta = "1111222233334444";
         String scadenza = "04/25";
         String cvv = "123";
 
         VerificaTassaMethod verificaTassaMethod = new VerificaTassaMethod();
 
-        assertFalse(verificaTassaMethod.verificaTassa(nome,cognome,numeroCarta,scadenza,cvv));
+        assertTrue(verificaTassaMethod.verificaTassa(nome,cognome,numeroCarta,scadenza,cvv));
     }
 
 }

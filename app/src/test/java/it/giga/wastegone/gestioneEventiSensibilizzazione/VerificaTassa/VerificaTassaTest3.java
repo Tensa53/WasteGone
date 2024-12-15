@@ -10,7 +10,7 @@ public class VerificaTassaTest3 {
     public void testTassa() {
         String nome = "Giovanni";
         String cognome= "V";
-        String numeroCarta = "1111-2222-3333-4444";
+        String numeroCarta = "1111222233334444";
         String scadenza = "04/25";
         String cvv = "123";
 

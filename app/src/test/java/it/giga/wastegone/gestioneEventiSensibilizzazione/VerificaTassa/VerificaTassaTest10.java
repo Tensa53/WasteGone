@@ -8,9 +8,9 @@ public class VerificaTassaTest10 {
 
     @Test
     public void testTassa() {
-        String nome = "G";
+        String nome = "Giovanni";
         String cognome= "Verdi";
-        String numeroCarta = "1111-2222-3333-4444";
+        String numeroCarta = "1111222233334444";
         String scadenza = "04/2";
         String cvv = "123";
 
