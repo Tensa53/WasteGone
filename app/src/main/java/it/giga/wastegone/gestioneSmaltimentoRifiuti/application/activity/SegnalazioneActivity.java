@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import it.giga.wastegone.MainActivity;
+import it.giga.wastegone.start.MainActivity;
 import it.giga.wastegone.R;
 
 /**
