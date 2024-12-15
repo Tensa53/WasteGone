@@ -1,17 +1,18 @@
 package it.giga.wastegone.gestioneProfiloUtente.VerificaLogin;
 
+import it.giga.wastegone.gestioneProfiloUtente.application.exception.LoginCampiException;
 import it.giga.wastegone.gestioneProfiloUtente.application.exception.LoginException;
 import it.giga.wastegone.utils.FormUtils;
 
 public class VerificaLoginMethod {
 
-  public boolean verificaLogin(String email, String password) throws LoginException {
+  public boolean verificaLogin(String email, String password) throws LoginCampiException {
     FormUtils formUtils = new FormUtils();
 
 
     try {
       formUtils.controllaLogin(email, password);
-    } catch (FormUtils.LoginCampiException e) {
+    } catch (LoginCampiException e) {
       return false;
     }
 

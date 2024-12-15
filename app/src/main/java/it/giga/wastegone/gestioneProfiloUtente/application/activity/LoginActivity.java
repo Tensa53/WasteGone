@@ -19,6 +19,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import it.giga.wastegone.start.MainActivity;
 import it.giga.wastegone.R;
+import it.giga.wastegone.gestioneProfiloUtente.application.exception.LoginCampiException;
+import it.giga.wastegone.gestioneProfiloUtente.application.exception.LoginException;
 import it.giga.wastegone.gestioneProfiloUtente.application.logic.LoginRegisterLogic;
 import it.giga.wastegone.utils.FormUtils;
 
@@ -74,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         try {
           formUtils.controllaLogin(email, password);
           onLoginClicked(email, password);
-        } catch (FormUtils.LoginCampiException e) {
+        } catch (LoginCampiException e) {
           Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
       }
