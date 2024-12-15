@@ -33,11 +33,45 @@ public class InstrumentedTestEvento {
 
     TextView tvValue;
 
+    // Stato Non Valido
+    @Test
+    public void checkStatoNonValido() {
+
+        // recupero data
+        String value1 = "NESSUN EVENTO";
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        onView(withId(R.id.btStatoNonValido)).perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        final String[] value2 = {""};
+
+        activityScenarioRule.getScenario().onActivity(activity -> {
+            tvValue = activity.findViewById(R.id.tvValue);
+            value2[0] = tvValue.getText().toString();
+        });
+
+        // i due valori devono coincidere
+        assertEquals(value1, value2[0]);
+
+    }
+
+    // Stato In Corso
     @Test
     public void checkStato1() {
 
         // recupero data
-        String data1 = "14/12/2024";
+        String data1 = "15/12/2024";
         DateTimeFormatter f = DateTimeFormatter.ofPattern( "dd/MM/yyyy" );
         LocalDate ldt1 = LocalDate.parse(data1, f);
 
@@ -69,12 +103,12 @@ public class InstrumentedTestEvento {
 
     }
 
-
+    // Stato Terminato
     @Test
     public void checkStato2() {
 
         // recupero data
-        String data1 = "14/12/2024";
+        String data1 = "15/12/2024";
         DateTimeFormatter f = DateTimeFormatter.ofPattern( "dd/MM/yyyy" );
         LocalDate ldt1 = LocalDate.parse(data1, f);
 
@@ -106,13 +140,13 @@ public class InstrumentedTestEvento {
 
     }
 
-
+    // Stato In Programma
     @Test
     public void checkStato3() {
 
         // recupero data
-        String data1 = "14/12/2024";
-        DateTimeFormatter f = DateTimeFormatter.ofPattern( "dd/MM/yyyy" );
+        String data1 = "15/12/2024";
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate ldt1 = LocalDate.parse(data1, f);
 
         try {
@@ -142,6 +176,4 @@ public class InstrumentedTestEvento {
         assertTrue(ldt2.isEqual(ldt1) || ldt2.isAfter(ldt1));
 
     }
-
-
 }
