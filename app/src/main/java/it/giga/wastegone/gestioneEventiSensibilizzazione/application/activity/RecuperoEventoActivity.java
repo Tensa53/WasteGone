@@ -1,4 +1,4 @@
-package it.giga.wastegone.gestioneEventiSensibilizzazione;
+package it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity;
 
 import android.os.Bundle;
 import android.util.Log;

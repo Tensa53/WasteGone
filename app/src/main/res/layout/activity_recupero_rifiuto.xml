@@ -8,7 +8,7 @@
     android:background="@drawable/gradiente"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".gestioneSmaltimentoRifiuti.RecuperoRifiutoActivity">
+    tools:context=".gestioneSmaltimentoRifiuti.application.activity.RecuperoRifiutoActivity">
 
 
     <TextView

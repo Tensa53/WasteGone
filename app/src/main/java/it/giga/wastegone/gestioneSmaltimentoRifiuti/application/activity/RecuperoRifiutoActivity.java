@@ -1,4 +1,4 @@
-package it.giga.wastegone.gestioneSmaltimentoRifiuti;
+package it.giga.wastegone.gestioneSmaltimentoRifiuti.application.activity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -17,10 +17,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneSmaltimentoRifiuti.storage.dataAccess.FirebaseRifiutoDAO;
-import it.giga.wastegone.gestioneSmaltimentoRifiuti.storage.entity.Rifiuto;
+
 import java.time.DayOfWeek;
-import java.util.Collections;
-import java.util.Comparator;
 
 
 /**

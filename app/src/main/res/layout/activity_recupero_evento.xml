@@ -8,7 +8,7 @@
     android:background="@drawable/gradiente"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".gestioneEventiSensibilizzazione.RecuperoEventoActivity">
+    tools:context=".gestioneEventiSensibilizzazione.application.activity.RecuperoEventoActivity">
 
 
     <TextView

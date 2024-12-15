@@ -18,7 +18,7 @@
         android:theme="@style/Theme.WasteGone"
         tools:targetApi="31">
         <activity
-            android:name=".gestioneEventiSensibilizzazione.RecuperoEventoActivity"
+            android:name=".gestioneEventiSensibilizzazione.application.activity.RecuperoEventoActivity"
             android:exported="true" />
         <activity
             android:name=".gestioneEventiSensibilizzazione.application.activity.EventoActivity"
@@ -42,7 +42,7 @@
             android:name=".gestioneSmaltimentoRifiuti.application.activity.SegnalazioneActivity"
             android:exported="true" />
         <activity
-            android:name=".gestioneSmaltimentoRifiuti.RecuperoRifiutoActivity"
+            android:name=".gestioneSmaltimentoRifiuti.application.activity.RecuperoRifiutoActivity"
             android:exported="true" />
         <activity
             android:name=".gestioneSmaltimentoRifiuti.application.activity.CalendarioActivity"

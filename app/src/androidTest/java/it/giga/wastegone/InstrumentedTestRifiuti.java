@@ -13,7 +13,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import it.giga.wastegone.gestioneSmaltimentoRifiuti.RecuperoRifiutoActivity;
+import it.giga.wastegone.gestioneSmaltimentoRifiuti.application.activity.RecuperoRifiutoActivity;
 
 /**
  * Instrumented test, which will execute on an Android device.

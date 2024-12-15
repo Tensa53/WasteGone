@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import it.giga.wastegone.gestioneEventiSensibilizzazione.RecuperoEventoActivity;
+import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.RecuperoEventoActivity;
 
 /**
  * Instrumented test, which will execute on an Android device.
