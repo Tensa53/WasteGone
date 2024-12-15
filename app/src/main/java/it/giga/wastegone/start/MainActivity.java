@@ -1,4 +1,4 @@
-package it.giga.wastegone;
+package it.giga.wastegone.start;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
@@ -20,9 +20,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.SezioneEventiActivity;
-import it.giga.wastegone.gestioneProfiloUtente.application.activity.LoginActivity;
-import it.giga.wastegone.gestioneProfiloUtente.application.activity.RegisterActivity;
 import it.giga.wastegone.gestioneSmaltimentoRifiuti.application.activity.MapsActivity;
 import it.giga.wastegone.gestioneSmaltimentoRifiuti.application.activity.SegnalazioneActivity;
 

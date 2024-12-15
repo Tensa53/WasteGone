@@ -58,7 +58,7 @@
             android:exported="true"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".MainActivity"
+            android:name=".start.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

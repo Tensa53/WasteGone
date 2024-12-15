@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import it.giga.wastegone.MainActivity;
+import it.giga.wastegone.start.MainActivity;
 import it.giga.wastegone.R;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.PrenotazioneActivity;
 import it.giga.wastegone.gestioneEventiSensibilizzazione.application.activity.SezioneEventiActivity;

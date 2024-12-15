@@ -17,9 +17,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import it.giga.wastegone.MainActivity;
+import it.giga.wastegone.start.MainActivity;
 import it.giga.wastegone.R;
-import it.giga.wastegone.gestioneProfiloUtente.application.exception.LoginException;
 import it.giga.wastegone.gestioneProfiloUtente.application.logic.LoginRegisterLogic;
 import it.giga.wastegone.utils.FormUtils;
 
