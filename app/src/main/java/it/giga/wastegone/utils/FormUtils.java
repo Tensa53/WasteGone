@@ -158,10 +158,10 @@ public class FormUtils {
                                    String dataScadenza, String cvv)
             throws PagamentoException {
     if (nome.length() < 2 || nome.length() > 20) {
-      throw new PagamentoException("Il campo nome è obbligatorio e non può essere vuoto");
+      throw new PagamentoException("Il campo nome è obbligatorio e non può avere meno di 2 caratteri e deve averne massimo 20");
     }
-    if (cognome.length() == 2 || cognome.length() > 20) {
-      throw new PagamentoException("Il campo cognome è obbligatorio e non può essere vuoto");
+    if (cognome.length() < 2 || cognome.length() > 20) {
+      throw new PagamentoException("Il campo cognome è obbligatorio e non può avere meno di 2 caratteri e deve averne massimo 20");
     }
     if (!isValidCardNumber(numeroCarta)) {
       throw new PagamentoException("Numero di carta non valido");
