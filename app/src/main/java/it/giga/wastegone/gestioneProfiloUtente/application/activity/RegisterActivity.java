@@ -18,26 +18,76 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import it.giga.wastegone.R;
+import it.giga.wastegone.gestioneProfiloUtente.application.exception.CampiException;
 import it.giga.wastegone.gestioneProfiloUtente.application.exception.RegistrazioneException;
 import it.giga.wastegone.gestioneProfiloUtente.application.logic.LoginRegisterLogic;
 import it.giga.wastegone.gestioneProfiloUtente.storage.entity.User;
 import it.giga.wastegone.utils.FormUtils;
 
 /**
- * Activity per la registrazione di un nuovo utente.
+ * La classe {@code RegisterActivity} gestisce la registrazione di nuovi utenti
+ * nell'applicazione WasteGone. Consente di inserire i dati richiesti,
+ * validarli e salvare le informazioni nel database.
  */
 public class RegisterActivity extends AppCompatActivity {
 
-  private EditText etNome, etCognome, etEmail, etIndirizzo, etPassword, etConfermaPassword;
+  /**
+   * Campo di input per il nome dell'utente.
+   */
+  private EditText etNome;
+
+  /**
+   * Campo di input per il cognome dell'utente.
+   */
+  private EditText etCognome;
+
+  /**
+   * Campo di input per l'email dell'utente.
+   */
+  private EditText etEmail;
+
+  /**
+   * Campo di input per l'indirizzo dell'utente.
+   */
+  private EditText etIndirizzo;
+
+  /**
+   * Campo di input per la password dell'utente.
+   */
+  private EditText etPassword;
+
+  /**
+   * Campo di input per confermare la password dell'utente.
+   */
+  private EditText etConfermaPassword;
+
+  /**
+   * Pulsante per completare la registrazione.
+   */
   private Button btnRegistrati;
+
+  /**
+   * Testo che consente di accedere alla schermata di login.
+   */
   private TextView tvLogin;
+
+  /**
+   * Logica utilizzata per eseguire le operazioni di registrazione.
+   */
   private LoginRegisterLogic loginRegisterLogic;
 
   /**
-   * Metodo chiamato alla creazione dell'activity.
+   * Indica il risultato dell'operazione di registrazione.
+   * {@code true} se la registrazione è avvenuta con successo, {@code false} altrimenti.
+   */
+  private Boolean result;
+
+  /**
+   * Metodo chiamato alla creazione dell'attività.
    *
-   * @param savedInstanceState stato precedentemente salvato dell'activity
+   * @param savedInstanceState stato precedente dell'attività, se esistente.
    */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     EdgeToEdge.enable(this);
     setContentView(R.layout.activity_register);
+
     ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
       Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
       v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -61,32 +112,27 @@ public class RegisterActivity extends AppCompatActivity {
     btnRegistrati = findViewById(R.id.btnRegistrati);
     tvLogin = findViewById(R.id.tvLogin);
 
-    btnRegistrati.setOnClickListener(new View.OnClickListener() {
-      public void onClick(View v) {
-        String nome = etNome.getText().toString();
-        String cognome = etCognome.getText().toString();
-        String indirizzo = etIndirizzo.getText().toString();
-        String email = etEmail.getText().toString();
-        String password = etPassword.getText().toString();
-        String confermaPassword = etConfermaPassword.getText().toString();
+    if (loginRegisterLogic == null) {
+      loginRegisterLogic = new LoginRegisterLogic();
+    }
 
-        if (nome.isEmpty() || cognome.isEmpty() || indirizzo.isEmpty() || email.isEmpty()
-                || password.isEmpty() || confermaPassword.isEmpty()) {
-          Toast.makeText(RegisterActivity.this, "Compila tutti i campi!",
-                  Toast.LENGTH_SHORT).show();
-        } else {
-          onRegisterClicked(nome, cognome, indirizzo, email, password, confermaPassword);
-        }
+    btnRegistrati.setOnClickListener(v -> {
+      String nome = etNome.getText().toString();
+      String cognome = etCognome.getText().toString();
+      String indirizzo = etIndirizzo.getText().toString();
+      String email = etEmail.getText().toString();
+      String password = etPassword.getText().toString();
+      String confermaPassword = etConfermaPassword.getText().toString();
+
+      if (nome.isEmpty() || cognome.isEmpty() || indirizzo.isEmpty() || email.isEmpty()
+              || password.isEmpty() || confermaPassword.isEmpty()) {
+        Toast.makeText(RegisterActivity.this, "Compila tutti i campi!", Toast.LENGTH_SHORT).show();
+      } else {
+        onRegisterClicked(nome, cognome, indirizzo, email, password, confermaPassword);
       }
     });
 
-    tvLogin.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        toLoginClicked();
-      }
-    });
-
+    tvLogin.setOnClickListener(v -> toLoginClicked());
   }
 
   /**
@@ -98,53 +144,76 @@ public class RegisterActivity extends AppCompatActivity {
   }
 
   /**
-   * Metodo usato per gestire il click sul bottone di registrazione.
+   * Metodo per gestire il click sul pulsante di registrazione. Valida i dati
+   * inseriti e tenta di creare un nuovo utente.
    *
-   * @param nome il nome dell'utente
-   * @param cognome il cognome dell'utente
-   * @param indirizzo l'indirizzo dell'utente
-   * @param email l'email dell'utente
-   * @param password la password dell'utente
-   * @param confermaPassword la password confermata dell'utente
+   * @param nome              nome dell'utente.
+   * @param cognome           cognome dell'utente.
+   * @param indirizzo         indirizzo dell'utente.
+   * @param email             email dell'utente.
+   * @param password          password scelta dall'utente.
+   * @param confermaPassword  conferma della password.
    */
-  private void onRegisterClicked(String nome, String cognome, String indirizzo, String email,
-                                 String password, String confermaPassword) {
+  public void onRegisterClicked(String nome, String cognome, String indirizzo, String email,
+                                String password, String confermaPassword) {
     try {
       FormUtils formUtils = new FormUtils();
       formUtils.controllaRegistrazione(email, password, confermaPassword);
-
-      LoginRegisterLogic loginRegisterLogic = new LoginRegisterLogic();
+      formUtils.controllaAltriCampi(nome, cognome, indirizzo);
 
       loginRegisterLogic.createUser(email, password).addOnCompleteListener(new
-                OnCompleteListener<AuthResult>() {
+                                                           OnCompleteListener<AuthResult>() {
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
           if (task.isSuccessful()) {
             String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
             User user = new User(nome, cognome, email, indirizzo);
-            loginRegisterLogic.saveUser(user, userId).addOnCompleteListener(new
-                OnCompleteListener<Void>() {
-              @Override
-              public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                  Toast.makeText(RegisterActivity.this,
-                          "Registrazione avvenuta con successo", Toast.LENGTH_SHORT).show();
-                  Intent intent = new Intent(RegisterActivity.this,
-                          LoginActivity.class);
-                  startActivity(intent);
-                } else {
-                  Toast.makeText(RegisterActivity.this,
-                          "Errore nel salvataggio dei dati utente", Toast.LENGTH_SHORT).show();
-                }
+
+            loginRegisterLogic.saveUser(user, userId).addOnCompleteListener(saveTask -> {
+              if (saveTask.isSuccessful()) {
+                Toast.makeText(RegisterActivity.this,
+                        "Registrazione avvenuta con successo", Toast.LENGTH_SHORT).show();
+                result = true;
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+              } else {
+                Toast.makeText(RegisterActivity.this,
+                        "Errore nel salvataggio dei dati utente", Toast.LENGTH_SHORT).show();
+                result = false;
               }
             });
           } else {
-            etEmail.setError("Indirizzo email già in uso");
+            Exception exception = task.getException();
+            if (exception instanceof FirebaseAuthUserCollisionException) {
+              etEmail.setError("Indirizzo email già in uso");
+            } else {
+              Toast.makeText(RegisterActivity.this,
+                      "Errore durante la registrazione", Toast.LENGTH_SHORT).show();
+            }
+            result = false;
           }
         }
       });
-    } catch (RegistrazioneException e) {
+    } catch (RegistrazioneException | CampiException e) {
       Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
     }
+  }
+
+  /**
+   * Metodo per impostare la logica di registrazione, utile per test strumentali.
+   *
+   * @param loginRegisterLogic logica di registrazione da utilizzare.
+   */
+  public void setLoginRegisterLogic(LoginRegisterLogic loginRegisterLogic) {
+    this.loginRegisterLogic = loginRegisterLogic;
+  }
+
+  /**
+   * Metodo per ottenere il risultato dell'operazione di registrazione.
+   *
+   * @return {@code true} se la registrazione è avvenuta con successo, {@code false} altrimenti.
+   */
+  public Boolean getResult() {
+    return result;
   }
 }

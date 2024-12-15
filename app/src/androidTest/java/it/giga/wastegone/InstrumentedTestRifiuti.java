@@ -21,7 +21,7 @@ import it.giga.wastegone.gestioneSmaltimentoRifiuti.RecuperoRifiutoActivity;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTestRifiuti {
+public class InstrumentedTestRifiuti {
 
     @Rule
     public ActivityScenarioRule<RecuperoRifiutoActivity> activityScenarioRule = new ActivityScenarioRule<>(RecuperoRifiutoActivity.class);
@@ -156,7 +156,7 @@ public class ExampleInstrumentedTestRifiuti {
             throw new RuntimeException(e);
         }
 
-        onView(withId(R.id.tvValue)).check(matches(withText("NESSUN CONFERIMENTO")));
+        onView(withId(R.id.tvValue)).check(matches(withText("NON UTILIZZATO")));
     }
 
     @Test

@@ -2,10 +2,15 @@ package it.giga.wastegone.gestioneEventiSensibilizzazione.storage.dataAccess;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.Arrays;
+import java.util.List;
+
 import it.giga.wastegone.gestioneEventiSensibilizzazione.storage.entity.Event;
 
 /**
@@ -112,6 +117,17 @@ public class FirebaseEventDAO {
    */
   public Task<QuerySnapshot> doRetrieveAllEventByStato(Event.Stato stato) {
     return db.collection(TABLE_NAME).whereEqualTo("stato", stato).get();
+  }
+
+
+  /**
+   * Recupera tutti i documenti degli eventi che non hanno uno stato definito.
+   *
+   * @return Task < QuerySnapshot > un oggetto Task che contiene i risultati della query.
+   */
+  public Task<QuerySnapshot> doRetrieveAllEventWithoutStato() {
+    List<String> valori = Arrays.asList("IN_CORSO", "SOSPESO", "TERMINATO", "IN_PROGRAMMA");
+    return db.collection(TABLE_NAME).whereNotIn("stato", valori).get();
   }
 
 

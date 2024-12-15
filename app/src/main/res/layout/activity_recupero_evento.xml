@@ -19,31 +19,32 @@
         android:textSize="40dp" />
 
     <Button
-        android:id="@+id/btStatoEvento1"
+        android:id="@+id/btStatoNonValido"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Stato Non Valido"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btStatoEvento1"
+        android:layout_width="296dp"
         android:layout_height="wrap_content"
         android:text="Test Stato Evento 1"
         android:textSize="25dp" />
 
     <Button
         android:id="@+id/btStatoEvento2"
-        android:layout_width="wrap_content"
+        android:layout_width="296dp"
         android:layout_height="wrap_content"
         android:text="Test Stato Evento 2"
         android:textSize="25dp" />
 
     <Button
         android:id="@+id/btStatoEvento3"
-        android:layout_width="wrap_content"
+        android:layout_width="296dp"
         android:layout_height="wrap_content"
         android:text="Test Stato Evento 3"
         android:textSize="25dp" />
 
-    <Button
-        android:id="@+id/btStatoEvento4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test Stato Evento 4"
-        android:textSize="25dp" />
 
 </LinearLayout>
