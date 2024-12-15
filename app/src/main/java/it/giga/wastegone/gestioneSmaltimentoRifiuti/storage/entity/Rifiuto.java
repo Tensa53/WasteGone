@@ -40,12 +40,7 @@ public class Rifiuto {
     /**
      * Categoria per il rifiuto vetro.
      */
-    VETRO,
-
-    /**
-     * Categoria per il rifiuto tessili.
-     */
-    TESSILI
+    VETRO
   }
 
   /**

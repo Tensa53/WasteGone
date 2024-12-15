@@ -1,7 +1,7 @@
 package it.giga.wastegone.utils;
 
 import it.giga.wastegone.gestioneProfiloUtente.application.exception.CampiException;
-import it.giga.wastegone.gestioneProfiloUtente.application.exception.LoginException;
+import it.giga.wastegone.gestioneProfiloUtente.application.exception.LoginCampiException;
 import it.giga.wastegone.gestioneProfiloUtente.application.exception.RegistrazioneException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,7 +20,7 @@ public class FormUtils {
    *
    * @param email L'email da controllare.
    * @param password La password da controllare.
-   * @throws LoginException Se uno dei controlli fallisce.
+   * @throws LoginCampiException Se uno dei controlli fallisce.
    */
   public void controllaLogin(String email, String password) throws LoginCampiException {
     if (email.length() == 0) {
@@ -222,16 +222,7 @@ public class FormUtils {
     }
   }
 
-  public class LoginCampiException extends Exception {
-    /**
-     * Costruttore dell'eccezione.
-     *
-     * @param message Il messaggio di errore.
-     */
-    public LoginCampiException(String message) {
-      super(message);
-    }
-  }
+
 
   /**
    * Controlla che l'orario sia valido.

@@ -110,8 +110,6 @@ public class CalendarioAdapter
         return R.drawable.ic_alluminio;
       case VETRO:
         return R.drawable.ic_vetro;
-      case TESSILI:
-        return R.drawable.ic_tessili;
       default:
         return R.drawable.logodark;
     }
