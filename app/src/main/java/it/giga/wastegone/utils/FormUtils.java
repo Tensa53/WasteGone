@@ -176,7 +176,7 @@ public class FormUtils {
 
   // Metodo per verificare la validità del numero della carta
   private boolean isValidCardNumber(String cardNumber) {
-    return cardNumber.length() == 16 && cardNumber.matches("\\d+");
+    return cardNumber.matches("^(\\d{4}[- ]?){3}\\d{4}$");
   }
 
   // Metodo per verificare la validità della data di scadenza
