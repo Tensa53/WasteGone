@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="WasteGone" company="GIGA" webLink="http://" view-date="2024-09-23" view-index="0" gantt-divider-location="441" resource-divider-location="300" version="3.2.3240" locale="it_IT">
+    <description/>
+    <view zooming-state="default:7" id="gantt-chart">
+        <field id="tpd3" name="Nome" width="240" order="0"/>
+        <field id="tpd4" name="Data dinizio" width="92" order="1"/>
+        <field id="tpd5" name="Data di fine" width="93" order="2"/>
+        <option id="taskLabelUp" value="advancement"/>
+        <option id="taskLabelDown" value=""/>
+        <option id="taskLabelLeft" value=""/>
+        <option id="taskLabelRight" value="resources"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="color.recent">
+            <![CDATA[#000000]]>
+        </option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nome" width="193" order="0"/>
+        <field id="1" name="Ruolo predefinito" width="100" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="31" name="WasteGone Start" color="#8cb6ce" meeting="false" start="2024-10-18" duration="1" complete="100" thirdDate="2024-10-15" thirdDate-constraint="0" expand="true">
+            <depend id="0" type="1" difference="0" hardness="Strong"/>
+        </task>
+        <task id="0" name="RAD" color="#000000" meeting="false" start="2024-10-18" duration="14" complete="100" thirdDate="2024-10-18" thirdDate-constraint="0" expand="true">
+            <depend id="18" type="2" difference="0" hardness="Strong"/>
+            <task id="36" name="Start Activities" color="#8cb6ce" meeting="false" start="2024-10-18" duration="1" complete="100" thirdDate="2024-10-16" thirdDate-constraint="0" expand="true">
+                <depend id="7" type="1" difference="0" hardness="Strong"/>
+                <depend id="8" type="1" difference="0" hardness="Strong"/>
+                <depend id="9" type="1" difference="0" hardness="Strong"/>
+            </task>
+            <task id="16" name="Raccolta dei Requisiti" meeting="false" start="2024-10-18" duration="6" complete="100" expand="true">
+                <task id="7" name="Introduzione" color="#8cb6ce" meeting="false" start="2024-10-18" duration="3" complete="100" thirdDate="2024-10-18" thirdDate-constraint="0" priority="2" expand="true">
+                    <depend id="13" type="1" difference="0" hardness="Strong"/>
+                </task>
+                <task id="8" name="Sistema Attuale" color="#8cb6ce" meeting="false" start="2024-10-18" duration="3" complete="100" thirdDate="2024-10-18" thirdDate-constraint="0" expand="true"/>
+                <task id="9" name="Sistema Proposto" color="#8cb6ce" meeting="false" start="2024-10-18" duration="3" complete="100" thirdDate="2024-10-18" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes>
+                        <![CDATA[Fino alla sezione 3.3 “Requisiti non funzionali” del template]]>
+                    </notes>
+                    <depend id="10" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="10" name="Scenari" color="#8cb6ce" meeting="false" start="2024-10-23" duration="2" complete="100" thirdDate="2024-10-23" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes>
+                        <![CDATA[Rispettare i vincoli, 2 scenari a testa.]]>
+                    </notes>
+                    <depend id="11" type="2" difference="0" hardness="Strong"/>
+                    <depend id="12" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="11" name="Casi D'Uso" color="#8cb6ce" meeting="false" start="2024-10-25" duration="1" complete="100" thirdDate="2024-10-25" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes>
+                        <![CDATA[Rispettare i vincoli, 1 caso d’uso a testa.]]>
+                    </notes>
+                    <depend id="14" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+            <task id="17" name="Analisi dei Requisiti" meeting="false" start="2024-10-18" duration="14" complete="100" expand="true">
+                <task id="12" name="Mock-up and Navigational Paths" color="#8cb6ce" meeting="false" start="2024-10-25" duration="9" complete="100" thirdDate="2024-10-25" thirdDate-constraint="0" priority="0" expand="true">
+                    <depend id="19" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="21" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="22" type="2" difference="0" hardness="Rubber"/>
+                </task>
+                <task id="13" name="Glossario" color="#8cb6ce" meeting="false" start="2024-10-18" duration="14" complete="100" thirdDate="2024-10-18" thirdDate-constraint="0" expand="true">
+                    <depend id="19" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="21" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="22" type="2" difference="0" hardness="Rubber"/>
+                </task>
+                <task id="14" name="Object Model" color="#8cb6ce" meeting="false" start="2024-10-28" duration="6" complete="100" thirdDate="2024-10-28" thirdDate-constraint="0" priority="2" expand="true">
+                    <depend id="15" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="15" name="Dynamic Model" color="#8cb6ce" meeting="false" start="2024-11-05" duration="2" complete="100" thirdDate="2024-11-05" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes>
+                        <![CDATA[Rispettare i vincoli, 1 sequence diagram ogni due membri del team, Almeno un activity diagram per sistema esistente o sistema proposto e almeno uno statechart diagram ogni due membri del team. La somma degli activity e statechart diagram deve essere uguale al numero di membri del team diviso due.
+]]>
+                    </notes>
+                    <depend id="19" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="21" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="22" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="24" type="2" difference="0" hardness="Rubber"/>
+                </task>
+            </task>
+        </task>
+        <task id="18" name="SDD" color="#000000" meeting="false" start="2024-11-08" duration="5" complete="100" thirdDate="2024-11-08" thirdDate-constraint="0" expand="true">
+            <depend id="25" type="2" difference="0" hardness="Strong"/>
+            <task id="19" name="Introduzione" color="#8cb6ce" meeting="false" start="2024-11-08" duration="3" complete="100" thirdDate="2024-11-08" thirdDate-constraint="0" priority="2" expand="true">
+                <notes>
+                    <![CDATA[Rispettare i vincoli, Specifica dei design goal e analisi dei trade-off relativi ad almeno due coppie di design goal.]]>
+                </notes>
+                <depend id="26" type="2" difference="0" hardness="Rubber"/>
+                <depend id="27" type="2" difference="0" hardness="Rubber"/>
+                <depend id="29" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="20" name="Architettura Proposta" meeting="false" start="2024-11-08" duration="5" complete="100" priority="2" expand="true">
+                <task id="21" name="Panoramica" color="#8cb6ce" meeting="false" start="2024-11-08" duration="3" complete="100" thirdDate="2024-11-08" thirdDate-constraint="0" expand="true">
+                    <depend id="26" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="27" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="29" type="2" difference="0" hardness="Rubber"/>
+                </task>
+                <task id="22" name="Decomposizione in Sottosistemi" color="#8cb6ce" meeting="false" start="2024-11-08" duration="3" complete="100" thirdDate="2024-11-08" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes>
+                        <![CDATA[Rispettare i vincoli, Definizione dell’architettura del sistema.]]>
+                    </notes>
+                    <depend id="23" type="2" difference="0" hardness="Strong"/>
+                    <depend id="26" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="27" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="28" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="29" type="2" difference="0" hardness="Rubber"/>
+                </task>
+                <task id="23" name="Hardware/Software Mapping" color="#8cb6ce" meeting="false" start="2024-11-13" duration="2" complete="100" thirdDate="2024-11-13" thirdDate-constraint="0" priority="2" expand="true">
+                    <depend id="26" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="27" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="29" type="2" difference="0" hardness="Rubber"/>
+                </task>
+                <task id="24" name="Gestione dei Dati Persistenti" color="#8cb6ce" meeting="false" start="2024-11-08" duration="5" complete="100" thirdDate="2024-11-08" thirdDate-constraint="0" priority="2" expand="true">
+                    <depend id="26" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="27" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="29" type="2" difference="0" hardness="Rubber"/>
+                </task>
+            </task>
+        </task>
+        <task id="25" name="ODD" color="#000000" meeting="false" start="2024-11-15" duration="5" complete="100" thirdDate="2024-10-10" thirdDate-constraint="0" expand="true">
+            <depend id="38" type="2" difference="0" hardness="Strong"/>
+            <task id="26" name="Coding Conventions and Guidelines" color="#8cb6ce" meeting="false" start="2024-11-15" duration="5" complete="100" thirdDate="2024-10-10" thirdDate-constraint="0" expand="true">
+                <depend id="39" type="2" difference="0" hardness="Rubber"/>
+                <depend id="48" type="2" difference="0" hardness="Rubber"/>
+            </task>
+            <task id="27" name="Design Pattern" color="#8cb6ce" meeting="false" start="2024-11-15" duration="5" complete="100" thirdDate="2024-11-15" thirdDate-constraint="0" expand="true">
+                <notes>
+                    <![CDATA[Rispettare i vincoli, Individuazione di due design pattern, indicandone l’obiettivo e come sarebbero implementati.]]>
+                </notes>
+                <depend id="39" type="2" difference="0" hardness="Rubber"/>
+                <depend id="48" type="2" difference="0" hardness="Rubber"/>
+            </task>
+            <task id="28" name="Packages" color="#8cb6ce" meeting="false" start="2024-11-15" duration="5" complete="100" thirdDate="2024-11-15" thirdDate-constraint="0" expand="true">
+                <depend id="39" type="2" difference="0" hardness="Rubber"/>
+                <depend id="48" type="2" difference="0" hardness="Rubber"/>
+            </task>
+            <task id="29" name="Class Interfaces" color="#8cb6ce" meeting="false" start="2024-11-15" duration="5" complete="100" thirdDate="2024-11-15" thirdDate-constraint="0" expand="true">
+                <notes>
+                    <![CDATA[In questa parte bisogna solo definire quali saranno i tool che verranno utilizzati per la generazione delle interfacce (es., JavaDoc).]]>
+                </notes>
+                <depend id="39" type="2" difference="0" hardness="Rubber"/>
+                <depend id="48" type="2" difference="0" hardness="Rubber"/>
+            </task>
+        </task>
+        <task id="38" name="Implementazione" color="#000000" meeting="false" start="2024-11-22" duration="15" complete="100" thirdDate="2024-11-22" thirdDate-constraint="0" expand="true">
+            <depend id="46" type="1" difference="0" hardness="Rubber"/>
+            <task id="39" name="Configurazione Ambiente di Sviluppo e Repository" meeting="false" start="2024-11-22" duration="2" complete="100" priority="2" expand="true">
+                <notes>
+                    <![CDATA[Configurarzione iniziale delle componenti utili per il progetto e la repository.]]>
+                </notes>
+                <depend id="40" type="1" difference="0" hardness="Rubber"/>
+            </task>
+            <task id="40" name="Suddivisione dei Packages" meeting="false" start="2024-11-22" duration="2" complete="100" expand="true">
+                <notes>
+                    <![CDATA[Suddivisione iniziale dei pacchetti di sistema. Rivedere la suddivisione in sottosistemi nel System e Object Design.
+
+]]>
+                </notes>
+                <depend id="42" type="2" difference="0" hardness="Rubber"/>
+                <depend id="43" type="2" difference="0" hardness="Rubber"/>
+                <depend id="45" type="2" difference="0" hardness="Strong"/>
+                <depend id="53" type="2" difference="0" hardness="Rubber"/>
+            </task>
+            <task id="45" name="Generazione JavaDoc" color="#8cb6ce" meeting="false" start="2024-11-26" duration="13" complete="100" thirdDate="2024-11-26" thirdDate-constraint="0" expand="true">
+                <notes>
+                    <![CDATA[Tutti i partecipanti al progetto dovranno implementare i commenti per la JavaDoc, questo task specifica solo la generazione di essa, con la relativa scrittura del riferimento nella sezione “Class Interfaces” dell’ODD. I responsabili di questo task dovranno assicurarsi che la javadoc sia esportabile e che tutto il codice sia stato commentato.]]>
+                </notes>
+                <depend id="52" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="41" name="Gestione Profilo Utente" color="#000000" meeting="false" start="2024-11-26" duration="5" complete="100" thirdDate="2024-11-26" thirdDate-constraint="0" expand="true">
+                <task id="53" name="GPU Persistent Layer" color="#8cb6ce" meeting="false" start="2024-11-26" duration="5" complete="100" thirdDate="2024-11-26" thirdDate-constraint="0" expand="true">
+                    <notes>
+                        <![CDATA[Devono essere implementati solamente Registrazione, Login e Notificazione Utente (per consentire la personalizzazione dell’orario). Per questo layer bisogna preparare il db Firestore e salvare le entità all’interno del sistema, che dovranno essere poi legate all’application, tramite la vostra implementazione dello storage.]]>
+                    </notes>
+                    <depend id="55" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="56" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="57" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="63" type="1" difference="0" hardness="Rubber"/>
+                    <depend id="64" type="1" difference="0" hardness="Rubber"/>
+                    <depend id="65" type="1" difference="0" hardness="Rubber"/>
+                </task>
+                <task id="42" name="GPU Business Layer" color="#8cb6ce" meeting="false" start="2024-11-26" duration="5" complete="100" thirdDate="2024-11-26" thirdDate-constraint="0" expand="true">
+                    <notes>
+                        <![CDATA[Devono essere implementati solamente Registrazione, Login e Notificazione Utente (per consentire la personalizzazione dell’orario). Per questo layer si dovrà implementare tutta la logica di business e completare le transazioni che sono preparate nel persistent layer, in modo da legare storage e application.]]>
+                    </notes>
+                    <depend id="55" type="3" difference="0" hardness="Strong"/>
+                    <depend id="56" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="57" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="63" type="1" difference="0" hardness="Rubber"/>
+                    <depend id="64" type="1" difference="0" hardness="Rubber"/>
+                    <depend id="65" type="1" difference="0" hardness="Rubber"/>
+                </task>
+                <task id="43" name="GPU Presentation Layer" color="#8cb6ce" meeting="false" start="2024-11-26" duration="5" complete="100" thirdDate="2024-11-26" thirdDate-constraint="0" expand="true">
+                    <notes>
+                        <![CDATA[Devono essere implementati solamente Registrazione, Login e Notificazione Utente (per consentire la personalizzazione dell’orario). Per questo layer si dovranno implementare le interfacce utente e preparare la classe Activity per essere completata da chi si occupa del business layer.]]>
+                    </notes>
+                    <depend id="55" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="56" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="57" type="2" difference="0" hardness="Rubber"/>
+                    <depend id="63" type="1" difference="0" hardness="Rubber"/>
+                    <depend id="64" type="1" difference="0" hardness="Rubber"/>
+                    <depend id="65" type="1" difference="0" hardness="Rubber"/>
+                </task>
+            </task>
+            <task id="61" name="Gestione Smaltimento Rifiuti" color="#000000" meeting="false" start="2024-11-29" duration="6" complete="100" thirdDate="2024-11-22" thirdDate-constraint="0" expand="true">
+                <task id="63" name="GSR Persistent Layer" color="#8cb6ce" meeting="false" start="2024-11-29" duration="6" complete="100" thirdDate="2024-11-22" thirdDate-constraint="0" expand="true">
+                    <notes>
+                        <![CDATA[Devono essere implementati solamente Visualizzazione Dettagli Rifiuti e Personalizzazione Notifiche Rifiuti. Per questo layer bisogna preparare il db Firestore e salvare le entità all’interno del sistema, che dovranno essere poi legate all’application, tramite la vostra implementazione dello storage.]]>
+                    </notes>
+                    <depend id="52" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="64" name="GSR Business Layer" color="#8cb6ce" meeting="false" start="2024-11-29" duration="6" complete="100" thirdDate="2024-11-22" thirdDate-constraint="0" expand="true">
+                    <notes>
+                        <![CDATA[Devono essere implementati solamente Visualizzazione Dettagli Rifiuti e Personalizzazione Notifiche Rifiuti. Per questo layer si dovrà implementare tutta la logica di business e completare le transazioni che sono preparate nel persistent layer, in modo da legare storage e application.]]>
+                    </notes>
+                    <depend id="52" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="65" name="GSR Presentation Layer" color="#8cb6ce" meeting="false" start="2024-11-29" duration="6" complete="100" thirdDate="2024-11-22" thirdDate-constraint="0" expand="true">
+                    <notes>
+                        <![CDATA[Devono essere implementati solamente Visualizzazione Dettagli Rifiuti e Personalizzazione Notifiche Rifiuti. Per questo layer si dovranno implementare le interfacce utente e preparare la classe Activity per essere completata da chi si occupa del business layer.
+
+]]>
+                    </notes>
+                    <depend id="52" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+            <task id="54" name="Gestione Eventi e Sensibilizzazione" meeting="false" start="2024-12-03" duration="8" complete="100" expand="true">
+                <task id="55" name="GES Persistent Layer" color="#8cb6ce" meeting="false" start="2024-12-03" duration="8" complete="100" thirdDate="2024-09-30" thirdDate-constraint="0" expand="true">
+                    <notes>
+                        <![CDATA[Devono essere implementati solamente Sezione Eventi, Prenotazione Ritiro a Casa e Visualizzazione Tasse. Per questo layer bisogna preparare il db Firestore e salvare le entità all’interno del sistema, che dovranno essere poi legate all’application, tramite la vostra implementazione dello storage.]]>
+                    </notes>
+                    <depend id="52" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="56" name="GES Business Layer" color="#8cb6ce" meeting="false" start="2024-12-03" duration="8" complete="100" thirdDate="2024-09-30" thirdDate-constraint="0" expand="true">
+                    <notes>
+                        <![CDATA[Devono essere implementati solamente Sezione Eventi, Prenotazione Ritiro a Casa e Visualizzazione Tasse.  Per questo layer si dovrà implementare tutta la logica di business e completare le transazioni che sono preparate nel persistent layer, in modo da legare storage e application.]]>
+                    </notes>
+                    <depend id="52" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="57" name="GES Presentation Layer" color="#8cb6ce" meeting="false" start="2024-12-03" duration="8" complete="100" thirdDate="2024-09-30" thirdDate-constraint="0" expand="true">
+                    <notes>
+                        <![CDATA[Devono essere implementati solamente Sezione Eventi, Prenotazione Ritiro a Casa e Visualizzazione Tasse. Per questo layer si dovranno implementare le interfacce utente e preparare la classe Activity per essere completata da chi si occupa del business layer.]]>
+                    </notes>
+                    <depend id="52" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+        </task>
+        <task id="46" name="Testing" color="#000000" meeting="false" start="2024-11-22" duration="15" complete="100" thirdDate="2024-11-22" thirdDate-constraint="0" expand="true">
+            <depend id="58" type="2" difference="0" hardness="Strong"/>
+            <task id="48" name="Test Case Specification" color="#8cb6ce" meeting="false" start="2024-11-22" duration="11" complete="100" thirdDate="2024-11-22" thirdDate-constraint="0" expand="true">
+                <notes>
+                    <![CDATA[Specifica dei casi di test per i casi d’uso che sono stati esplicati all’interno del RAD. Ogni persona dovrà prendersi carico del proprio caso d’uso e fornire i casi di test.]]>
+                </notes>
+                <depend id="49" type="2" difference="0" hardness="Rubber"/>
+            </task>
+            <task id="49" name="Impl. ed Esec. Casi di Test" color="#8cb6ce" meeting="false" start="2024-12-09" duration="4" complete="100" thirdDate="2024-12-02" thirdDate-constraint="0" expand="true">
+                <notes>
+                    <![CDATA[Implementazione dei casi di test sviluppati ed esecuzione per rilevare failure.]]>
+                </notes>
+                <depend id="50" type="1" difference="0" hardness="Rubber"/>
+                <depend id="51" type="1" difference="0" hardness="Rubber"/>
+            </task>
+            <task id="50" name="Test Incident Report" color="#8cb6ce" meeting="false" start="2024-12-09" duration="4" complete="100" thirdDate="2024-12-06" thirdDate-constraint="0" expand="true">
+                <notes>
+                    <![CDATA[In questo documento dovrà essere esposta il risultato delll’esecuzione dei casi di test.]]>
+                </notes>
+                <depend id="52" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="51" name="Test Summary Report" color="#8cb6ce" meeting="false" start="2024-12-09" duration="4" complete="100" thirdDate="2024-12-06" thirdDate-constraint="0" expand="true">
+                <notes>
+                    <![CDATA[In questo documento, si mettono sotto indagine le eventuali failure documentate nel TIR e si documenterà l’eventuale risoluzione del problema.]]>
+                </notes>
+                <depend id="52" type="2" difference="0" hardness="Strong"/>
+            </task>
+        </task>
+        <task id="52" name="End Activities" color="#8cb6ce" meeting="false" start="2024-12-13" duration="1" complete="100" thirdDate="2024-12-13" thirdDate-constraint="0" expand="true"/>
+        <task id="58" name="WasteGone End" color="#8cb6ce" meeting="false" start="2024-12-13" duration="1" complete="100" thirdDate="2024-11-06" thirdDate-constraint="0" expand="true"/>
+    </tasks>
+    <resources>
+        <resource id="0" name="Francesco Paolo D'Antuono" function="2" contacts="" phone=""/>
+        <resource id="1" name="Daniele Fabiano" function="2" contacts="" phone=""/>
+        <resource id="2" name="Michela Palmieri" function="1" contacts="" phone=""/>
+        <resource id="3" name="Alessia Gatto" function="1" contacts="" phone=""/>
+        <resource id="4" name="Francesco Laudano" function="1" contacts="" phone=""/>
+        <resource id="5" name="Giovanni Croce" function="1" contacts="" phone=""/>
+        <resource id="6" name="Elisa Picilli" function="1" contacts="" phone=""/>
+        <resource id="7" name="Marco Iannuzzi" function="1" contacts="" phone=""/>
+        <resource id="8" name="Simon Carbone" function="1" contacts="" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="9" resource-id="2" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="10" resource-id="2" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="11" resource-id="2" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="12" resource-id="2" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="15" resource-id="2" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="23" resource-id="2" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="24" resource-id="2" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="26" resource-id="2" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="39" resource-id="2" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="40" resource-id="2" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="48" resource-id="2" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="49" resource-id="2" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="50" resource-id="2" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="51" resource-id="2" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="53" resource-id="2" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="63" resource-id="2" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="55" resource-id="2" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="9" resource-id="3" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="10" resource-id="3" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="11" resource-id="3" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="14" resource-id="3" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="15" resource-id="3" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="19" resource-id="3" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="29" resource-id="3" function="1" responsible="false" load="34.0"/>
+        <allocation task-id="39" resource-id="3" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="40" resource-id="3" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="45" resource-id="3" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="48" resource-id="3" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="49" resource-id="3" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="50" resource-id="3" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="51" resource-id="3" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="42" resource-id="3" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="64" resource-id="3" function="1" responsible="false" load="34.0"/>
+        <allocation task-id="56" resource-id="3" function="1" responsible="false" load="34.0"/>
+        <allocation task-id="10" resource-id="4" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="11" resource-id="4" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="14" resource-id="4" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="9" resource-id="4" function="1" responsible="false" load="34.0"/>
+        <allocation task-id="15" resource-id="4" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="21" resource-id="4" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="22" resource-id="4" function="1" responsible="false" load="34.0"/>
+        <allocation task-id="26" resource-id="4" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="39" resource-id="4" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="40" resource-id="4" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="48" resource-id="4" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="49" resource-id="4" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="50" resource-id="4" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="51" resource-id="4" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="53" resource-id="4" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="63" resource-id="4" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="55" resource-id="4" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="8" resource-id="5" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="10" resource-id="5" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="11" resource-id="5" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="12" resource-id="5" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="15" resource-id="5" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="21" resource-id="5" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="22" resource-id="5" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="29" resource-id="5" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="39" resource-id="5" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="40" resource-id="5" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="45" resource-id="5" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="49" resource-id="5" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="50" resource-id="5" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="51" resource-id="5" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="42" resource-id="5" function="1" responsible="false" load="34.0"/>
+        <allocation task-id="64" resource-id="5" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="56" resource-id="5" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="7" resource-id="6" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="10" resource-id="6" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="11" resource-id="6" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="13" resource-id="6" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="15" resource-id="6" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="23" resource-id="6" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="24" resource-id="6" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="29" resource-id="6" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="39" resource-id="6" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="40" resource-id="6" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="45" resource-id="6" function="1" responsible="false" load="34.0"/>
+        <allocation task-id="48" resource-id="6" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="49" resource-id="6" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="50" resource-id="6" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="51" resource-id="6" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="42" resource-id="6" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="64" resource-id="6" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="56" resource-id="6" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="8" resource-id="7" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="10" resource-id="7" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="11" resource-id="7" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="13" resource-id="7" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="15" resource-id="7" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="19" resource-id="7" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="27" resource-id="7" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="28" resource-id="7" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="39" resource-id="7" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="40" resource-id="7" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="48" resource-id="7" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="49" resource-id="7" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="50" resource-id="7" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="51" resource-id="7" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="43" resource-id="7" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="65" resource-id="7" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="57" resource-id="7" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="7" resource-id="8" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="10" resource-id="8" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="11" resource-id="8" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="14" resource-id="8" function="1" responsible="false" load="34.0"/>
+        <allocation task-id="15" resource-id="8" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="21" resource-id="8" function="1" responsible="false" load="34.0"/>
+        <allocation task-id="22" resource-id="8" function="1" responsible="false" load="33.0"/>
+        <allocation task-id="27" resource-id="8" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="28" resource-id="8" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="39" resource-id="8" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="40" resource-id="8" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="48" resource-id="8" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="49" resource-id="8" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="50" resource-id="8" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="51" resource-id="8" function="1" responsible="false" load="14.0"/>
+        <allocation task-id="43" resource-id="8" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="65" resource-id="8" function="1" responsible="false" load="50.0"/>
+        <allocation task-id="57" resource-id="8" function="1" responsible="false" load="50.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles>
+        <role id="1" name="Team Member"/>
+        <role id="2" name="Project Manager"/>
+    </roles>
+</project>
