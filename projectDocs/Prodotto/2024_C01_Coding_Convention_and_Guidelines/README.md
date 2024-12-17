@@ -183,7 +183,7 @@ Javadoc è uno strumento di Java che consente di generare automaticamente la doc
 ## 3.1 Consultare la JavaDoc
 Oltre ai commenti relativi alle classi e al codice, nella Javadoc saranno presenti ulteriori indicazioni sulla suddivisione dei package e l’indicazione su come si potrebbero utilizzare due Design Pattern per l’implementazione del nostro sistema.
 
-La JavaDoc generata è consultabile attraverso il seguente link.
+La JavaDoc generata è consultabile attraverso il seguente [link](https://tensa53.github.io/WasteGone/).
 
 ## 3.2 Generazione della JavaDoc
 Per generare la Javadoc attraverso l’ambiente di sviluppo Android Studio, bisogna definire una nuova configurazione di build del progetto, che usa alcune dipendenze extra e comandi aggiuntivi, con path assoluti della macchina dove viene eseguita la generazione. Non è quindi necessario effettuare il commit and push di questa configurazione. Nonostante la procedura descritta nei passi seguenti restituisca vari errori e warning, la generazione va comunque a buon fine.
